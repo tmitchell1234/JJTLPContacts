@@ -20,7 +20,17 @@ p {
     text-align: center;
 }
 
-.navbar-inverse {}
+a {
+    color: white !important;
+}
+
+.nav.navbar-nav.navbar-right li a {
+    color: white;
+}
+
+.icon {
+    font-size: 30px;
+}
 
 .navbar {
     background-color: #52734D;

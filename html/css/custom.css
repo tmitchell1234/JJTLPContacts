@@ -37,6 +37,12 @@ a {
     margin-bottom: 0;
     color: white;
     border: none;
+    border-radius: 0;
+}
+
+.navbar-form {
+    border: none;
+    border-color: red;
 }
 
 .btn-primary {

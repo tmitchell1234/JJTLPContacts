@@ -13,12 +13,12 @@ function doLogin() {
     let login = document.getElementById("loginName").ariaValueMax;
     let password = document.getElementById("loginPassword");
 
-    // var hash = md5(password);
+    var hash = md5(password);
 
     document.getElementById("loginResult").innerHTML = "";
 
-    let tmp = { login: login, password: password };
-    // var temp = {login:login, password:hash};
+    // let tmp = { login: login, password: password };
+    var tmp = { login: login, password: hash };
 
     let jsonPayload = JSON.stringify(tmp);
 

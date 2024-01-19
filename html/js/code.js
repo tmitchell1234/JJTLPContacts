@@ -104,6 +104,7 @@ function addContact() {
     let firstName = document.getElementById("contactFirstName").value;
     let lastName = document.getElementById("contactLastName").value;
 
+
     document.getElementById("contactAddResult").innerHTML = "";
 
     let tmp = { firstName: firstName, lastName: lastName, userId: userId };

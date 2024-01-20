@@ -28,6 +28,18 @@ a {
     color: white;
 }
 
+.navbar-collapse {
+    border: none;
+}
+
+.navbar-form {
+    border: none;
+}
+
+.form-control {
+    border-color: white;
+}
+
 .icon {
     font-size: 30px;
 }
@@ -38,11 +50,6 @@ a {
     color: white;
     border: none;
     border-radius: 0;
-}
-
-.navbar-form {
-    border: none;
-    border-color: red;
 }
 
 .btn-primary {

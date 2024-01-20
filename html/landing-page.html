@@ -23,14 +23,35 @@
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="index.html">&#x1F332; ForestFolio</a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapsible">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
             </div>
-            <form class="navbar-form navbar-right">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
+            <div class="navbar-collapse collapse" id="navbar-collapsible">
+
+                <div class="col-lg-4 col-md-5 col-sm-3">
+                    <form class="navbar-form" id="theSearchForm" name="theSearchForm" role="search" method="get"
+                        action="yoursearchfilescriptgoeshere">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search">
+                            <div class="input-group-btn">
+                                <a class="btn btn-primary" id="search-button" href="">Search</a>
+                            </div>
+                        </div>
+
+                    </form>
                 </div>
-                <button type="submit" class="btn btn-default">Submit</button>
-            </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Logout</a></li>
+                </ul>
+            </div>
         </div>
+        </div>
+
+
     </nav>
     <h1>** Landing Page here **</h1>
 

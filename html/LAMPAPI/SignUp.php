@@ -13,7 +13,7 @@
 	} 
 	else
 	{
-        
+
         $stmt = $conn->prepare("SELECT * FROM Users WHERE Login=?");
         $stmt->bind_param("s", $login);
         $stmt->execute();
@@ -33,7 +33,6 @@
 
         }
 
-    
 	}
 
 	function getRequestInfo()

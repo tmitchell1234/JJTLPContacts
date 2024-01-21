@@ -52,4 +52,8 @@
 		sendResultInfoAsJson( $retValue );
 	}
 	
+    function returnWithInfo ()
+    {
+        sendResultInfoAsJson("Success");
+    }
 ?>

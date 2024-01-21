@@ -28,6 +28,7 @@
             $stmt->bind_param("ssss", $firstName, $lastName, $login, $password);
             $stmt->execute();
             http_response_code(200);
+            returnWithSuccess();
             $stmt->close();
 		    $conn->close();
 
@@ -52,8 +53,8 @@
 		sendResultInfoAsJson( $retValue );
 	}
 	
-    function returnWithInfo ()
+    function returnWithSuccess ()
     {
-        sendResultInfoAsJson("Success");
+        sendResultInfoAsJson('{"Success"}');
     }
 ?>

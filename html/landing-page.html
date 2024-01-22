@@ -29,31 +29,83 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                <button type="button" class="btn btn-primary navbar-btn navbar-left" data-toggle="modal"
+                    data-target="#addContacts">
+                    Add Contact
+                </button>
             </div>
-            <div class="navbar-collapse collapse" id="navbar-collapsible">
 
+            <!-- Collapsable portion of navbar -->
+            <div class="navbar-collapse collapse" id="navbar-collapsible">
                 <div class="col-lg-4 col-md-5 col-sm-3">
                     <form class="navbar-form" id="theSearchForm" name="theSearchForm" role="search" method="get"
                         action="yoursearchfilescriptgoeshere">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search">
+                            <input id="searchText" type="text" class="form-control" placeholder="Search">
                             <div class="input-group-btn">
-                                <a class="btn btn-primary" id="search-button" href="">Search</a>
+                                <div class="btn btn-primary" id="search-button">Search</div>
                             </div>
                         </div>
-
                     </form>
                 </div>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#">Logout</a></li>
                 </ul>
             </div>
+
         </div>
         </div>
 
 
     </nav>
-    <h1>** Landing Page here **</h1>
+
+    <!-- Modal Contact Info Add Form-->
+    <div id="addContacts" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add Contact Info</h4>
+                </div>
+                <form>
+                    <div class="modal-body">
+                        <div class="form-group"> <!-- First Name field -->
+                            <label class="control-label " for="firstName">First Name</label>
+                            <input class="form-control" id="firstName" name="firstName" type="text" />
+                        </div>
+
+                        <div class="form-group"> <!-- Last Name field -->
+                            <label class="control-label " for="lastName">Last Name</label>
+                            <input class="form-control" id="lastName" name="lastName" type="text" />
+                        </div>
+
+                        <div class="form-group"> <!-- Phone Number field -->
+                            <label class="control-label " for="phoneNumber">Phone Number</label>
+                            <input class="form-control" id="phoneNumber" name="phoneNumber" type="tel"
+                                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" />
+                        </div>
+
+                        <div class="form-group"> <!-- Email Address field -->
+                            <label class="control-label " for="emailAddress">Email Address</label>
+                            <input class="form-control" id="emailAddress" name="emailAddress" type="email" />
+                        </div>
+
+                        <div class="form-group"> <!-- Friendship Level field -->
+                            <label class="control-label " for="friendshipLevel">Friendship Level</label>
+                            <input class="form-control" id="friendshipLevel" name="friendshipLevel" type="number" />
+                        </div>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
 
     <!-- Bootstrap stuff don't touch -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

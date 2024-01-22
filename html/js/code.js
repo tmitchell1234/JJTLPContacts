@@ -1,4 +1,4 @@
-const urlBase = ''
+const urlBase = 'forestfolio.xyz/LAMPAPI/'
 const extension = 'php'
 
 let userId = 0;

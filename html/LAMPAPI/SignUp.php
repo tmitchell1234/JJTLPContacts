@@ -29,11 +29,10 @@
             $stmt->execute();
             http_response_code(200);
             returnWithSuccess();
-            $stmt->close();
-		    $conn->close();
-
         }
 
+        $stmt->close();
+		$conn->close();
 	}
 
 	function getRequestInfo()

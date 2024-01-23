@@ -48,12 +48,20 @@ a {
     border-radius: 0;
 }
 
+#navButton {
+    border-color: #ae876d;
+}
+
+#navButton:hover {
+    background-color: #ae876d;
+}
+
 .btn-primary {
-    background-color: #917663;
-    border-color: white;
+    background-color: #ae876d;
+    border: none;
 }
 
 .btn-primary:hover {
     background-color: #F0E2D0;
-    border-color: white;
+    border: none;
 }

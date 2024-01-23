@@ -22,15 +22,12 @@
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="index.html">&#x1F332; ForestFolio</a>
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapsible">
+                <button id="navButton" type="button" class="navbar-toggle navButton" data-toggle="collapse"
+                    data-target="#navbar-collapsible">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                </button>
-                <button type="button" class="btn btn-primary navbar-btn navbar-left" data-toggle="modal"
-                    data-target="#addContacts">
-                    Add Contact
                 </button>
             </div>
 
@@ -65,7 +62,10 @@
                     <th>Last Name</th>
                     <th>Email Address</th>
                     <th>Friendship Level</th>
-                    <th></th>
+                    <th><button type="button" class="btn btn-primary navbar-btn navbar-left" data-toggle="modal"
+                            data-target="#addContacts">
+                            <span class="glyphicon glyphicon-plus"></span> Add Contact
+                        </button></th>
                 </tr>
             </thead>
             <tbody>

@@ -9,6 +9,7 @@
     $friendshipLevel = $inData["friendshipLevel"];
 
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
+	sendResultInfoAsJson("connection worked");
 	if ($conn->connect_error) 
 	{
 		returnWithError( $conn->connect_error );
@@ -16,7 +17,7 @@
 	else
 	{
         $stmt = $conn->prepare("INSERT into Users (FirstName, LastName, CreatedByUserID, PhoneNumber, EmailAddress, FriendshipLevel) VALUES(?,?,?,?,?,?)");
-        $stmt->bind_param("ssissi", $firstName, $lastName, $createdByUserId, $phoneNumber, $emailAddress, $friendshipLevel);
+        $stmt->bind_param("ssssss", $firstName, $lastName, $createdByUserId, $phoneNumber, $emailAddress, $friendshipLevel);
         $stmt->execute();
         http_response_code(200);
         returnWithSuccess();

@@ -9,7 +9,6 @@
     $friendshipLevel = $inData["friendshipLevel"];
 
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
-	sendResultInfoAsJson("connection worked");
 	if ($conn->connect_error) 
 	{
 		returnWithError( $conn->connect_error );

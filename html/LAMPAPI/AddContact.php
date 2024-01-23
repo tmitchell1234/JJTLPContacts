@@ -1,12 +1,12 @@
 <?php
 	$inData = getRequestInfo();
 	
-    $phoneNumber = $inData["PhoneNumber"];
-    $emailAddress = $inData["EmailAddress"];
+    $phoneNumber = $inData["phoneNumber"];
+    $emailAddress = $inData["emailAddress"];
     $firstName = $inData["firstName"];
     $lastName = $inData["lastName"];
-    $createdByUserId = $inData["CreatedByUserId"];
-    $friendshipLevel = $inData["FriendshipLevel"];
+    $createdByUserId = $inData["createdByUserId"];
+    $friendshipLevel = $inData["friendshipLevel"];
 
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
 	if ($conn->connect_error) 

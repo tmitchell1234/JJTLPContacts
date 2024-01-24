@@ -109,14 +109,14 @@ function addContact() {
     let lastName = document.getElementById("lastName").value;
     let email = document.getElementById("emailAddress").value;
     let phone = document.getElementById("phoneNumber").value;
-    let friendLvl = document.getElementById("friendshipLevel").value
+    let friendLvl = parseInt(document.getElementById("friendshipLevel").value, 10);
 
     // document.getElementById("contactAddResult").innerHTML = "";
 
     let tmp = { firstName: firstName, lastName: lastName, createdByUserId: userId, emailAddress: email, friendshipLevel: friendLvl, phoneNumber: phone };
     let jsonPayload = JSON.stringify(tmp);
 
-    alert(jsonPayload);
+    console.log(jsonPayload)
 
     let url = urlBase + '/AddContact.' + extension;
 

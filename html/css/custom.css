@@ -58,10 +58,11 @@ a {
 
 .btn-primary {
     background-color: #ae876d;
-    border: none;
+    border-color: white;
+    border-width: 1px;
 }
 
 .btn-primary:hover {
     background-color: #F0E2D0;
-    border: none;
+    border-color: white;
 }

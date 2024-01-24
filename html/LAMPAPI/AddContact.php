@@ -15,14 +15,25 @@
 	} 
 	else
 	{
-        $stmt = $conn->prepare("INSERT into Contacts (FirstName, LastName, CreatedByUserID, PhoneNumber, EmailAddress, FriendshipLevel) VALUES(?,?,?,?,?,?)");
+        $stmt = $conn->prepare("SELECT * FROM Contacts WHERE FirstName=? AND LastName=? AND CreatedByUserID=? AND PhoneNumber=? AND EmailAddress=? AND FriendshipLevel=?");
         $stmt->bind_param("ssissi", $firstName, $lastName, $createdByUserId, $phoneNumber, $emailAddress, $friendshipLevel);
         $stmt->execute();
-        http_response_code(200);
-        returnWithSuccess();
-        $stmt->close();
-		$conn->close();
+        $result = $stmt->get_result();
 
+        if ($result->fetch_assoc()){
+            http_response_code(409);
+            returnWithError("Contact is already created");
+        }
+		else{
+			$stmt = $conn->prepare("INSERT into Contacts (FirstName, LastName, CreatedByUserID, PhoneNumber, EmailAddress, FriendshipLevel) VALUES(?,?,?,?,?,?)");
+        	$stmt->bind_param("ssissi", $firstName, $lastName, $createdByUserId, $phoneNumber, $emailAddress, $friendshipLevel);
+        	$stmt->execute();
+        	http_response_code(200);
+        	returnWithSuccess();
+        	$stmt->close();
+			$conn->close();
+		}
+		
 	}
 
 	function getRequestInfo()

@@ -1,4 +1,4 @@
-const urlBase = 'forestfolio.xyz/LAMPAPI/'
+const urlBase = 'http://forestfolio.xyz/LAMPAPI'
 const extension = 'php'
 
 let userId = 0;
@@ -26,11 +26,13 @@ function doLogin() {
 
     alert(jsonPayload);
 
-    let url = urlBase + 'Login.' + extension;
+    let url = urlBase + '/Login.' + extension;
 
     let xhr = new XMLHttpRequest();
     xhr.open("POST", url, true);
+
     xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
 
     try {
         xhr.onreadystatechange = function () {
@@ -103,30 +105,36 @@ function doLogout() {
 }
 
 function addContact() {
-    let firstName = document.getElementById("contactFirstName").value;
-    let lastName = document.getElementById("contactLastName").value;
+    let firstName = document.getElementById("firstName").value;
+    let lastName = document.getElementById("lastName").value;
+    let email = document.getElementById("emailAddress").value;
+    let phone = document.getElementById("phoneNumber").value;
+    let friendLvl = document.getElementById("friendshipLevel").value
 
+    // document.getElementById("contactAddResult").innerHTML = "";
 
-    document.getElementById("contactAddResult").innerHTML = "";
-
-    let tmp = { firstName: firstName, lastName: lastName, userId: userId };
+    let tmp = { firstName: firstName, lastName: lastName, createdByUserId: userId, emailAddress: email, friendshipLevel: friendLvl, phoneNumber: phone };
     let jsonPayload = JSON.stringify(tmp);
+
+    alert(jsonPayload);
 
     let url = urlBase + '/AddContact.' + extension;
 
     let xhr = new XMLHttpRequest();
     xhr.open("POST", url, true);
-    xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
     try {
         xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("contactAddResult").innerHTML = "Contact has been added";
+                alert("yay")
+                // document.getElementById("contactAddResult").innerHTML = "Contact has been added";
             }
         };
         xhr.send(jsonPayload);
     }
     catch (err) {
-        document.getElementById("contactAddResult").innerHTML = err.message;
+        alert("nay")
+        // document.getElementById("contactAddResult").innerHTML = err.message;
     }
 
 }

@@ -27,7 +27,8 @@
         $result = $stmt->get_result();
 
         if ($result->fetch_assoc()){
-            $stmt = $conn->prepare("UPDATE Contacts SET (FirstName, LastName, CreatedByUserID, PhoneNumber, EmailAddress, FriendshipLevel) VALUES(?,?,?,?,?,?) WHERE FirstName=? AND LastName=? AND CreatedByUserID=? AND PhoneNumber=? AND EmailAddress=? AND FriendshipLevel=?");
+            sendResultAsJson("hi");
+            $stmt = $conn->prepare("UPDATE Contacts SET FirstName=?, LastName=?, CreatedByUserID=?, PhoneNumber=?, EmailAddress=?, FriendshipLevel=? WHERE FirstName=? AND LastName=? AND CreatedByUserID=? AND PhoneNumber=? AND EmailAddress=? AND FriendshipLevel=?");
             $stmt->bind_param("ssissississi", $newFirstName, $newLastName, $newCreatedByUserId, $newNumber, $newAddress, $newFriendshipLevel, $firstName, $lastName, $createdByUserId, $phoneNumber, $emailAddress, $friendshipLevel);
             $stmt->execute();
             http_response_code(200);

@@ -10,9 +10,9 @@ jobs:
       - name: Deploy ForestFolio
         uses: appleboy/ssh-action@v0.1.2
         with:
-          host: forestfolio.xyz
+          host: ${{secrets.SSH_HOST}}
           key: ${{secrets.SSH_KEY}}
-          username: root
+          username: ${{ secrets.SSH_USERNAME }}
 
           script:
             mkdir test

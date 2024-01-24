@@ -15,8 +15,8 @@
 	} 
 	else
 	{
-        $stmt = $conn->prepare("INSERT into Users (FirstName, LastName, CreatedByUserID, PhoneNumber, EmailAddress, FriendshipLevel) VALUES(?,?,?,?,?,?)");
-        $stmt->bind_param("ssssss", $firstName, $lastName, $createdByUserId, $phoneNumber, $emailAddress, $friendshipLevel);
+        $stmt = $conn->prepare("INSERT into Contacts (FirstName, LastName, CreatedByUserID, PhoneNumber, EmailAddress, FriendshipLevel) VALUES(?,?,?,?,?,?)");
+        $stmt->bind_param("ssissi", $firstName, $lastName, $createdByUserId, $phoneNumber, $emailAddress, $friendshipLevel);
         $stmt->execute();
         http_response_code(200);
         returnWithSuccess();

@@ -7,15 +7,14 @@
 #   deploy:
 #     runs-on: ubuntu-latest
 #     steps:
-#       - name: Deploy ForestFolio
-#         uses: appleboy/ssh-action@v1.02
+#       - uses: actions/download-artifact@v2
 #         with:
-#           host: ${{secrets.SSH_HOST}}
-#           key: ${{secrets.SSH_KEY}}
-#           username: ${{ secrets.SSH_USERNAME }}
-
-#           script:
-#             mkdir test
-#             cd test
-#             git clone git@github.com:https://github.com/tmitchell1234/JJTLPContacts.git
-#             echo 'DEPLOYED FOREST FOLIO'
+#           name: build
+#           path: build
+#       - name: Create SSH key
+#         run: |
+#           install -m 600 -D /dev/null ~/.ssh/id_rsa
+#           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+#           echo "${{ secrets.SSH_HOST }}" > ~/.ssh/known_hosts
+#       - name: Deploy with rsync
+#         run: rsync -rav --delete build/ user@host:/

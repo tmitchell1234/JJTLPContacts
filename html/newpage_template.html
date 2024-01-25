@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <!-- Default Browser stuff -->
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -11,20 +10,93 @@
     <title>JTTLP Contacts</title>
 
     <!-- Bootstrap stuff don't touch -->
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link
+      href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
 
     <!-- Custom CSS Stuff -->
     <link href="css/custom.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-</head>
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
 
-<body>
-
+  <body>
     <h1>** Insert Login page here **</h1>
+    <h2>Convert JSON data into a html table using Javascript</h2>
+    <p>Click the following button to convert JSON results into HTML table</p>
+    <br />
+    <button id="btn" onclick="convert( )">Click Here</button> <br />
+    <h3>Resulting Table:</h3>
+    <div id="container"></div>
+    <script>
+      // Function to convert JSON data to HTML table
+      function convert() {
+        // Sample JSON data
+        let jsonData = [
+          {
+            name: "Saurabh",
+            age: "20",
+            city: "Prayagraj",
+          },
+          {
+            name: "Vipin",
+            age: 23,
+            city: "Lucknow",
+          },
+          {
+            name: "Saksham",
+            age: 21,
+            city: "Noida",
+          },
+        ];
+
+        // Get the container element where the table will be inserted
+        let container = document.getElementById("container");
+
+        // Create the table element
+        let table = document.createElement("table");
+
+        // Get the keys (column names) of the first object in the JSON data
+        let cols = Object.keys(jsonData[0]);
+
+        // Create the header element
+        let thead = document.createElement("thead");
+        let tr = document.createElement("tr");
+
+        // Loop through the column names and create header cells
+        cols.forEach((item) => {
+          let th = document.createElement("th");
+          th.innerText = item; // Set the column name as the text of the header cell
+          tr.appendChild(th); // Append the header cell to the header row
+        });
+        thead.appendChild(tr); // Append the header row to the header
+        table.append(tr); // Append the header to the table
+
+        // Loop through the JSON data and create table rows
+        jsonData.forEach((item) => {
+          let tr = document.createElement("tr");
+
+          // Get the values of the current object in the JSON data
+          let vals = Object.values(item);
+
+          // Loop through the values and create table cells
+          vals.forEach((elem) => {
+            let td = document.createElement("td");
+            td.innerText = elem; // Set the value as the text of the table cell
+            tr.appendChild(td); // Append the table cell to the table row
+          });
+          table.appendChild(tr); // Append the table row to the table
+        });
+        container.appendChild(table); // Append the table to the container element
+      }
+    </script>
 
     <!-- Bootstrap stuff don't touch -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</body>
-
+  </body>
 </html>

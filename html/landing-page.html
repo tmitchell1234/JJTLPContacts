@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <!-- Default Browser stuff -->
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -11,135 +10,307 @@
     <title>ForestFolio Contacts</title>
 
     <!-- Bootstrap stuff don't touch -->
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link
+      href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <link href="css/custom.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
 
-</head>
-
-<body>
+  <body>
     <!-- Navbar -->
     <nav class="navbar navbar-inverse navbar-static-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="index.html">&#x1F332; ForestFolio</a>
-                <button type="button" class="btn btn-primary navbar-btn navbar-left" data-toggle="modal"
-                    data-target="#addContacts">
-                    <span class="glyphicon glyphicon-plus"></span> Add Contact
-                </button>
-                <button id="navButton" type="button" class="navbar-toggle navButton" data-toggle="collapse"
-                    data-target="#navbar-collapsible">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="index.html">&#x1F332; ForestFolio</a>
+          <button
+            type="button"
+            class="btn btn-primary navbar-btn navbar-left"
+            data-toggle="modal"
+            data-target="#addContacts"
+          >
+            <span class="glyphicon glyphicon-plus"></span> Add Contact
+          </button>
+          <button
+            id="navButton"
+            type="button"
+            class="navbar-toggle navButton"
+            data-toggle="collapse"
+            data-target="#navbar-collapsible"
+          >
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
 
-            <!-- Collapsable portion of navbar -->
-            <div class="navbar-collapse collapse" id="navbar-collapsible">
-                <div class="col-lg-4 col-md-5 col-sm-3">
-                    <form class="navbar-form" id="theSearchForm" name="theSearchForm" role="search" method="get"
-                        action="yoursearchfilescriptgoeshere">
-                        <div class="input-group">
-                            <input id="searchText" type="text" class="form-control" placeholder="Search">
-                            <div class="input-group-btn">
-                                <div class="btn btn-primary" id="search-button">Search</div>
-                            </div>
-                        </div>
-                    </form>
+        <!-- Collapsable portion of navbar -->
+        <div class="navbar-collapse collapse" id="navbar-collapsible">
+          <div class="col-lg-4 col-md-5 col-sm-3">
+            <form
+              class="navbar-form"
+              id="theSearchForm"
+              name="theSearchForm"
+              role="search"
+              method="get"
+              action="yoursearchfilescriptgoeshere"
+            >
+              <div class="input-group">
+                <input
+                  id="searchText"
+                  type="text"
+                  class="form-control"
+                  placeholder="Search"
+                />
+                <div class="input-group-btn">
+                  <div class="btn btn-primary" id="search-button">Search</div>
                 </div>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Logout</a></li>
-                </ul>
-            </div>
-
+              </div>
+            </form>
+          </div>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Logout</a></li>
+          </ul>
         </div>
-        </div>
+      </div>
     </nav>
 
+    <!-- Contacts Table -->
     <div class="table-responsive">
-        <table class="table table-bordered table-hover table-fit">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Email Address</th>
-                    <th>Friendship Level</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>0</td>
-                    <td>John</td>
-                    <td>Doe</td>
-                    <td>Email Address</td>
-                    <td>10000000</td>
-                    <td>
-                        <button class="btn btn-info"><span class="glyphicon glyphicon-edit"></span></button>
-                        <button class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+      <table
+        id="contactsTable"
+        class="table table-bordered table-hover table-fit"
+      >
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email Address</th>
+            <th>Friendship Level</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="contactsBody">
+          <tr>
+            <td>0</td>
+            <td>John</td>
+            <td>Doe</td>
+            <td>Email Address</td>
+            <td>10000000</td>
+            <td>
+              <button class="btn btn-info">
+                <span class="glyphicon glyphicon-edit"></span>
+              </button>
+              <button class="btn btn-danger">
+                <span class="glyphicon glyphicon-trash"></span>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <!-- Modal Contact Info Add Form-->
+
+    <!-- Modal Contact Info Edit Form-->
     <div id="addContacts" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Add Contact Info</h4>
-                </div>
-                <form>
-                    <div class="modal-body">
-                        <div class="form-group"> <!-- First Name field -->
-                            <label class="control-label " for="firstName">First Name</label>
-                            <input class="form-control" id="firstName" name="firstName" type="text" />
-                        </div>
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              &times;
+            </button>
+            <h4 class="modal-title">Add Contact Info</h4>
+          </div>
+          <form>
+            <div class="modal-body">
+              <div class="form-group">
+                <!-- First Name field -->
+                <label class="control-label" for="firstName">First Name</label>
+                <input
+                  class="form-control"
+                  id="firstName"
+                  name="firstName"
+                  type="text"
+                />
+              </div>
 
-                        <div class="form-group"> <!-- Last Name field -->
-                            <label class="control-label " for="lastName">Last Name</label>
-                            <input class="form-control" id="lastName" name="lastName" type="text" />
-                        </div>
+              <div class="form-group">
+                <!-- Last Name field -->
+                <label class="control-label" for="lastName">Last Name</label>
+                <input
+                  class="form-control"
+                  id="lastName"
+                  name="lastName"
+                  type="text"
+                />
+              </div>
 
-                        <div class="form-group"> <!-- Phone Number field  -->
-                            <label class="control-label " for="phoneNumber">Phone Number</label>
-                            <input class="form-control" id="phoneNumber" name="phoneNumber" type="tel"
-                                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" />
-                            <span id="phoneFormat" class="help-block">Follow this format: 123-456-7890</span>
-                        </div>
+              <div class="form-group">
+                <!-- Phone Number field  -->
+                <label class="control-label" for="phoneNumber"
+                  >Phone Number</label
+                >
+                <input
+                  class="form-control"
+                  id="phoneNumber"
+                  name="phoneNumber"
+                  type="tel"
+                  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                />
+                <span id="phoneFormat" class="help-block"
+                  >Follow this format: 123-456-7890</span
+                >
+              </div>
 
+              <div class="form-group">
+                <!-- Email Address field -->
+                <label class="control-label" for="emailAddress"
+                  >Email Address</label
+                >
+                <input
+                  class="form-control"
+                  id="emailAddress"
+                  name="emailAddress"
+                  type="email"
+                />
+              </div>
 
-                        <div class="form-group"> <!-- Email Address field -->
-                            <label class="control-label " for="emailAddress">Email Address</label>
-                            <input class="form-control" id="emailAddress" name="emailAddress" type="email" />
-                        </div>
-
-                        <div class="form-group"> <!-- Friendship Level field -->
-                            <label class="control-label " for="friendshipLevel">Friendship
-                                Level</label>
-                            <input class="form-control" id="friendshipLevel" name="friendshipLevel" type="number" />
-                        </div>
-
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger">Cancel</button>
-                        <button type="button" class="btn btn-success" onClick="addContact();">Submit</button>
-                    </div>
-                </form>
+              <div class="form-group">
+                <!-- Friendship Level field -->
+                <label class="control-label" for="friendshipLevel"
+                  >Friendship Level</label
+                >
+                <input
+                  class="form-control"
+                  id="friendshipLevel"
+                  name="friendshipLevel"
+                  type="number"
+                />
+              </div>
             </div>
 
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger">Cancel</button>
+              <button
+                type="button"
+                class="btn btn-success"
+                onClick="addContact();"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
         </div>
+      </div>
+    </div>
+
+    <div id="editContacts" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              &times;
+            </button>
+            <h4 class="modal-title">Add Contact Info</h4>
+          </div>
+          <form>
+            <div class="modal-body">
+              <div class="form-group">
+                <!-- First Name field -->
+                <label class="control-label" for="firstName">First Name</label>
+                <input
+                  class="form-control"
+                  id="firstName"
+                  name="firstName"
+                  type="text"
+                  value=""
+                />
+              </div>
+
+              <div class="form-group">
+                <!-- Last Name field -->
+                <label class="control-label" for="lastName">Last Name</label>
+                <input
+                  class="form-control"
+                  id="lastName"
+                  name="lastName"
+                  type="text"
+                  value=""
+                />
+              </div>
+
+              <div class="form-group">
+                <!-- Phone Number field  -->
+                <label class="control-label" for="phoneNumber"
+                  >Phone Number</label
+                >
+                <input
+                  class="form-control"
+                  id="phoneNumber"
+                  name="phoneNumber"
+                  type="tel"
+                  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                  value=""
+                />
+                <span id="phoneFormat" class="help-block"
+                  >Follow this format: 123-456-7890</span
+                >
+              </div>
+
+              <div class="form-group">
+                <!-- Email Address field -->
+                <label class="control-label" for="emailAddress"
+                  >Email Address</label
+                >
+                <input
+                  class="form-control"
+                  id="emailAddress"
+                  name="emailAddress"
+                  type="email"
+                  value=""
+                />
+              </div>
+
+              <div class="form-group">
+                <!-- Friendship Level field -->
+                <label class="control-label" for="friendshipLevel"
+                  >Friendship Level</label
+                >
+                <input
+                  class="form-control"
+                  id="friendshipLevel"
+                  name="friendshipLevel"
+                  type="number"
+                  value=""
+                />
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger">Cancel</button>
+              <button
+                type="button"
+                class="btn btn-success"
+                onClick="addContact();"
+                value=""
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
 
     <script src="./js/code.js"></script>
     <!-- Bootstrap stuff don't touch -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</body>
-
+  </body>
 </html>

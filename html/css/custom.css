@@ -1,68 +1,68 @@
 /* Use this sheet to add page customization to Bootstrap components */
 
 body {
-    background: #FEFFDE;
-    font-family: 'Montserrat', sans-serif;
+  background: #feffde;
+  font-family: "Montserrat", sans-serif;
 }
 
 h1,
 h2 {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 p {
-    font-size: 16px;
+  font-size: 16px;
 }
 
 .jumbotron {
-    background: #70AF85;
-    color: white;
-    text-align: center;
+  background: #70af85;
+  color: white;
+  text-align: center;
 }
 
 a {
-    color: white !important;
+  color: white !important;
 }
 
 .nav.navbar-nav.navbar-right li a {
-    color: white;
+  color: white;
 }
 
 .navbar-collapse {
-    border: none;
+  border: none;
 }
 
 .navbar-form {
-    border: none;
+  border: none;
 }
 
 .icon {
-    font-size: 30px;
+  font-size: 30px;
 }
 
 .navbar {
-    background-color: #52734D;
-    margin-bottom: 0;
-    color: white;
-    border: none;
-    border-radius: 0;
+  background-color: #52734d;
+  margin-bottom: 0;
+  color: white;
+  border: none;
+  border-radius: 0;
 }
 
 #navButton {
-    border-color: #ae876d;
+  border-color: #ae876d;
 }
 
 #navButton:hover {
-    background-color: #ae876d;
+  background-color: #ae876d;
 }
 
 .btn-primary {
-    background-color: #ae876d;
-    border-color: white;
-    border-width: 1px;
+  background-color: #ae876d;
+  border-color: white;
+  border-width: 1px;
 }
 
 .btn-primary:hover {
-    background-color: #F0E2D0;
-    border-color: white;
+  background-color: #f0e2d0;
+  border-color: white;
 }

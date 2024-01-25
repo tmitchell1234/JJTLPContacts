@@ -111,16 +111,15 @@ function doLogout() {
 }
 
 function addContact() {
+  let friendLvl = 0;
   let firstName = document.getElementById("firstName").value;
   let lastName = document.getElementById("lastName").value;
   let email = document.getElementById("emailAddress").value;
   let phone = document.getElementById("phoneNumber").value;
-  let friendLvl = parseInt(
-    document.getElementById("friendshipLevel").value,
-    10
-  );
+  friendLvl = parseInt(document.getElementById("friendshipLevel").value, 10);
 
-  // document.getElementById("contactAddResult").innerHTML = "";
+  document.getElementById("contactAddResult").innerHTML = "";
+  //   document.getElementById("contactAddResult").className = "label";
 
   let tmp = {
     firstName: firstName,
@@ -143,13 +142,16 @@ function addContact() {
     xhr.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
         alert("yay");
-        // document.getElementById("contactAddResult").innerHTML = "Contact has been added";
+
+        // document.getElementById("contactAddResult").innerHTML =
+        //   "Contact has been added";
       }
     };
     xhr.send(jsonPayload);
   } catch (err) {
     alert("nay");
-    // document.getElementById("contactAddResult").innerHTML = err.message;
+    // document.getElementById("contactAddResult").className += " label-danger";
+    document.getElementById("contactAddResult").innerHTML = err.message;
   }
 }
 
@@ -168,7 +170,6 @@ function convertJSONtoTable(data) {
       td.innerText = elem;
       tr.appendChild(td);
     });
-    tr.appendChild(td);
 
     tableBody.appendChild(tr);
   });
@@ -176,11 +177,14 @@ function convertJSONtoTable(data) {
 
 function searchContact() {
   let srch = document.getElementById("searchText").value;
+  console.log(srch);
+
   document.getElementById("contactSearchResult").innerHTML = "";
+  document.getElementById("contactSearchResult").className = "label";
 
   let contactList = "";
 
-  let tmp = { search: srch, userId: userId };
+  let tmp = { search: srch, createdByUserId: 5 };
   let jsonPayload = JSON.stringify(tmp);
 
   let url = urlBase + "/SearchContacts." + extension;
@@ -191,22 +195,27 @@ function searchContact() {
   try {
     xhr.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("contactSearchResult").className +=
+          " label-success";
         document.getElementById("contactSearchResult").innerHTML =
           "Contact(s) have been retrieved";
         let jsonObject = JSON.parse(xhr.responseText);
 
-        for (let i = 0; i < jsonObject.results.length; i++) {
-          contactList += jsonObject.results[i];
-          if (i < jsonObject.results.length - 1) {
-            contactList += "<br />\r\n";
-          }
-        }
+        // for (let i = 0; i < jsonObject.results.length; i++) {
+        //   contactList += jsonObject.results[i];
+        //   if (i < jsonObject.results.length - 1) {
+        //     contactList += "<br />\r\n";
+        //   }
+        // }
 
-        document.getElementsByTagName("p")[0].innerHTML = contactList;
+        convertJSONtoTable(jsonObject["result"]);
+
+        // document.getElementsByTagName("p")[0].innerHTML = contactList;
       }
     };
     xhr.send(jsonPayload);
   } catch (err) {
+    document.getElementById("contactSearchResult").className += " label-danger";
     document.getElementById("contactSearchResult").innerHTML = err.message;
   }
 }

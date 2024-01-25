@@ -18,13 +18,128 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
 </head>
 
+<style>
+
+    .login-container {
+        background-color: #52734d80;
+        padding: 20px;
+        border-radius: 8px;
+        width: 300px;
+        text-align: center;
+        margin: 10vh auto;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .toggle-btn {
+      cursor: pointer;
+      color: #3498db;
+    }
+  </style>
+
 <body>
 
-    <h1>** Insert Login page here **</h1>
+	<!-- Navbar -->
+	<nav class="navbar navbar-inverse navbar-static-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+					data-target="#navbar-content" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html">&#x1F332; ForestFolio</a>
+			</div>
+			<div class="collapse navbar-collapse" id="navbar-content">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="login.html">Login/Sign-up</a></li>
+					<li><a href="about.html">About</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 
-    <!-- Bootstrap stuff don't touch -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!-- Jumbotron -->
+	<div class="jumbotron">
+		<div class="container">
+			<h1>&#x1F332; ForestFolio</h1>
+			<p>Make Connections. Grow your forest.</p>
+		</div>
+	</div>
+
+    <!-- Login -->
+<div class="login-container">
+    <form id="loginForm">
+        <h2>Login</h2>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="button" onclick="login()">Login</button>
+
+        <br>
+        <p class="toggle-btn" onclick="toggleForm('signup')">Don't have an account? Sign up!</p>
+    </form>
+
+    <form id="signupForm" style="display: none;">
+        <h2>Sign Up</h2>
+        <label for="newUsername">Username:</label>
+        <input type="text" id="newUsername" name="newUsername" required>
+
+        <label for="newPassword">Password:</label>
+        <input type="password" id="newPassword" name="newPassword" required>
+
+        <button type="button" onclick="signup()">Sign Up</button>
+
+        <br>
+        <p class="toggle-btn" onclick="toggleForm('login')">Already have an account? Login!</p>
+    </form>
+</div>
+
+<script>
+    function toggleForm(formToShow) {
+        if (formToShow === 'signup') {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('signupForm').style.display = 'block';
+        } else {
+            document.getElementById('signupForm').style.display = 'none';
+            document.getElementById('loginForm').style.display = 'block';
+        }
+    }
+
+    function login() {
+        // Add your login logic here
+        alert('Login button clicked!');
+    }
+
+    function signup() {
+        // Add your signup logic here
+        alert('Signup button clicked!');
+    }
+</script>
+
+	<!-- Bootstrap stuff don't touch -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 
 </html>

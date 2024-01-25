@@ -56,6 +56,11 @@ a {
   background-color: #ae876d;
 }
 
+.label {
+  display: inline-block;
+  margin-top: 1.5em;
+}
+
 .btn-primary {
   background-color: #ae876d;
   border-color: white;

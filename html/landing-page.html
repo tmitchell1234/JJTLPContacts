@@ -52,31 +52,40 @@
 
         <!-- Collapsable portion of navbar -->
         <div class="navbar-collapse collapse" id="navbar-collapsible">
-          <div class="col-lg-4 col-md-5 col-sm-3">
-            <form
-              class="navbar-form"
-              id="theSearchForm"
-              name="theSearchForm"
-              role="search"
-              method="get"
-              action="yoursearchfilescriptgoeshere"
-            >
-              <div class="input-group">
-                <input
-                  id="searchText"
-                  type="text"
-                  class="form-control"
-                  placeholder="Search"
-                />
-                <div class="input-group-btn">
-                  <div class="btn btn-primary" id="search-button">Search</div>
+          <div class="container-fluid">
+            <div class="col-lg-4 col-md-5 col-sm-3">
+              <form
+                class="navbar-form"
+                id="theSearchForm"
+                name="theSearchForm"
+                role="search"
+                method="get"
+                action="yoursearchfilescriptgoeshere"
+              >
+                <div class="input-group">
+                  <input
+                    id="searchText"
+                    type="text"
+                    class="form-control"
+                    placeholder="Search"
+                  />
+                  <div class="input-group-btn">
+                    <div
+                      class="btn btn-primary"
+                      id="search-button"
+                      onclick="searchContact()"
+                    >
+                      Search
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </form>
+              </form>
+            </div>
+            <div id="contactAddResult" class="label"></div>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#">Logout</a></li>
+            </ul>
           </div>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Logout</a></li>
-          </ul>
         </div>
       </div>
     </nav>
@@ -98,7 +107,7 @@
           </tr>
         </thead>
         <tbody id="contactsBody">
-          <tr>
+          <!-- <tr>
             <td>0</td>
             <td>John</td>
             <td>Doe</td>
@@ -112,7 +121,7 @@
                 <span class="glyphicon glyphicon-trash"></span>
               </button>
             </td>
-          </tr>
+          </tr> -->
         </tbody>
       </table>
     </div>

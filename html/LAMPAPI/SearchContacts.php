@@ -3,7 +3,8 @@
   $inData = getRequestInfo();
 	$searchResults = "";
 	$searchCount = 0;
-
+	$search = "" . $inData["search"];
+	$statement = "SELECT * FROM Contacts WHERE (";
 		
 
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
@@ -13,9 +14,18 @@
 	}
 	else
 	{
-    $stmt = $conn->prepare("SELECT * FROM Contacts WHERE (FirstName LIKE ? OR LastName LIKE ? ) AND CreatedByUserID=?");
-    $searchName = "%" . $inData["search"] . "%";
-    $stmt->bind_param("ssi", $searchName, $searchName, $inData["createdByUserId"]);
+		$searchList = explode(" ", $search);
+		foreach ($searchList as $name){
+			$statement .= "FirstName LIKE %" . $name . "% OR LastName LIKE %" . $name . "% OR ";
+		}
+		$statement = substr($statement,0,-3);
+		$statement .= ") AND CreatedByUserID= " . $inData["createdByUserId"];
+
+
+		$stmt = $conn->prepare($statement);
+		//$stmt = $conn->prepare("SELECT * FROM Contacts WHERE (FirstName LIKE ? OR LastName LIKE ? ) AND CreatedByUserID=?");
+    	//$searchName = "%" . $inData["search"] . "%";
+    	//$stmt->bind_param("ssi", $searchName, $searchName, $inData["createdByUserId"]);
 		$stmt->execute();
 
 		$result = $stmt->get_result();

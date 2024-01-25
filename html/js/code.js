@@ -118,7 +118,7 @@ function addContact() {
   let phone = document.getElementById("phoneNumber").value;
   friendLvl = parseInt(document.getElementById("friendshipLevel").value, 10);
 
-  document.getElementById("contactAddResult").innerHTML = "";
+  //   document.getElementById("contactAddResult").innerHTML = "";
   //   document.getElementById("contactAddResult").className = "label";
 
   let tmp = {
@@ -151,7 +151,7 @@ function addContact() {
   } catch (err) {
     alert("nay");
     // document.getElementById("contactAddResult").className += " label-danger";
-    document.getElementById("contactAddResult").innerHTML = err.message;
+    // document.getElementById("contactAddResult").innerHTML = err.message;
   }
 }
 

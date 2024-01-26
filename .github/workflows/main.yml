@@ -7,15 +7,12 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy ForestFolio
-        uses: appleboy/ssh-action@v0.1.2
+      - name: copy file via ssh password
+        uses: appleboy/scp-action@v0.1.7
         with:
-          host: ${{secrets.SSH_HOST}}
-          key: ${{secrets.SSH_KEY}}
-          username: ${{secrets.SSH_USERNAME}}
-
-          script:
-            mkdir test
-            cd test
-            git clone git@github.com:https://github.com/tmitchell1234/JJTLPContacts.git
-            echo 'DEPLOYED FOREST FOLIO'
+          host: ${{SSH_HOST}}
+          username: ${{SSH_USERNAME}}
+          password: ${{SSH_PASSWORD}}
+          port: 22
+          source: ""
+          target: "/var/www/html"

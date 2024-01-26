@@ -124,6 +124,16 @@ $("#addContacts").on("hidden.bs.modal", function (e) {
     .end();
 });
 
+$("#editContacts").on("hidden.bs.modal", function (e) {
+  $(this)
+    .find("input,textarea,select")
+    .val("")
+    .end()
+    .find("input[type=checkbox], input[type=radio]")
+    .prop("checked", "")
+    .end();
+});
+
 function addContact() {
   let firstName = document.getElementById("firstName").value;
   let lastName = document.getElementById("lastName").value;
@@ -176,8 +186,31 @@ function addContact() {
   }
 }
 
+function onClickEdit(i) {
+  let firstName = document.getElementById("firstName");
+  let lastName = document.getElementById("lastName");
+  let email = document.getElementById("emailAddress");
+  let phone = document.getElementById("phoneNumber");
+  let friendLvl = document.getElementById("friendshipLevel");
+
+  firstName.value = document.getElementById(`firstName ${i}`).innerText;
+  lastName.value = document.getElementById(`lastName ${i}`).innerText;
+  email.value = document.getElementById(`emailAddress ${i}`).innerText;
+  phone.value = document.getElementById(`phoneNumber ${i}`).innerText;
+  friendLvl.value = document.getElementById(`friendshipLevel ${i}`).innerText;
+}
+
 // TODO: *** Put edit contact function
-function editContact() {}
+function editContact() {
+  // let firstName = document.getElementById("firstName").value;
+  // let lastName = document.getElementById("lastName").value;
+  // let email = document.getElementById("emailAddress").value;
+  // let phone = document.getElementById("phoneNumber").value;
+  // friendLvl = parseInt(document.getElementById("friendshipLevel").value, 10);
+  // if (!friendLvl) {
+  //   friendLvl = 0;
+  // }
+}
 
 function deleteContactWrapper(id) {
   if (
@@ -302,7 +335,8 @@ function convertJSONtoTable(data) {
 
     td = document.createElement("td");
     td.innerHTML = `
-    <button id="${i}" class="btn btn-info">
+    <button id="${i}" class="btn btn-info" data-toggle="modal"
+    data-target="#editContacts" onclick="onClickEdit();">
       <span class="glyphicon glyphicon-edit"></span>
     </button> 
     &nbsp;&nbsp; 

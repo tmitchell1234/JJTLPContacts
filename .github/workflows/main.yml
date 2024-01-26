@@ -15,5 +15,5 @@ jobs:
           password: ${{secrets.SSH_PASSWORD}}
           port: 22
           source: "."
-          target: "~/var/www/"
+          target: "/var/www/html"
           timeout: 120s

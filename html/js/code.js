@@ -5,6 +5,8 @@ let userId = 0;
 let firstName = "";
 let lastName = "";
 
+let srch = "";
+
 function doLogin() {
   userId = 0;
   firstName = "";
@@ -226,6 +228,13 @@ function deleteContact(i) {
             " label-danger";
           document.getElementById("contactSearchResult").innerHTML =
             "Contact has been Deleted";
+
+          document.getElementById(`row ${i}`).remove();
+
+          document.getElementById("contactSearchResult").className +=
+            " label-danger";
+
+          searchContact();
         } else {
           err = JSON.parse(xhr.responseText).error;
           document.getElementById("contactSearchResult").className +=
@@ -239,10 +248,6 @@ function deleteContact(i) {
     document.getElementById("contactSearchResult").className += " label-info";
     document.getElementById("contactSearchResult").innerHTML = err.message;
   }
-  document.getElementById(`row ${i}`).remove();
-
-  document.getElementById("contactSearchResult").className += " label-danger";
-  document.getElementById("contactSearchResult").innerHTML = "Contact Deleted";
 }
 
 function convertJSONtoTable(data) {
@@ -311,7 +316,7 @@ function convertJSONtoTable(data) {
 }
 
 function searchContact() {
-  let srch = document.getElementById("searchText").value;
+  srch = document.getElementById("searchText").value;
 
   document.getElementById("contactSearchResult").innerHTML = "";
   document.getElementById("contactSearchResult").className = "label";

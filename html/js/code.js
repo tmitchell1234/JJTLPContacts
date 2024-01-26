@@ -173,7 +173,7 @@ function editContact() {}
 function deleteContactWrapper(id) {
   if (
     confirm(
-      "Are you sure you want to delete this contact? (This choice is permananent"
+      "Are you sure you want to delete this contact? \n(This choice is CANNOT BE REVERSED)"
     )
   ) {
     deleteContact(id);
@@ -222,6 +222,9 @@ function deleteContact(i) {
   // }
 
   document.getElementById(`row ${i}`).remove();
+
+  document.getElementById("contactSearchResult").className += " label-danger";
+  document.getElementById("contactSearchResult").innerHTML = "Contact Deleted";
 }
 
 function convertJSONtoTable(data) {

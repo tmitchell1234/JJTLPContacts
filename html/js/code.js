@@ -154,16 +154,16 @@ function addContact() {
   try {
     xhr.onreadystatechange = function () {
       if (this.readyState == 4) {
-        if ((this.status = 200)) {
+        if (this.status == 200) {
           document.getElementById("contactAddResult").className +=
             " label-success";
           document.getElementById("contactAddResult").innerHTML =
             "Contact has been added";
         } else {
-          err = JSON.parse(xhr.reponseText).error;
+          err = JSON.parse(xhr.responseText).error;
           document.getElementById("contactAddResult").className +=
             " label-danger";
-          document.getElementById("contactAddResult").innerHTML = err.message;
+          document.getElementById("contactAddResult").innerHTML = err;
         }
       }
     };

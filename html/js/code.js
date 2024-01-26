@@ -153,16 +153,18 @@ function addContact() {
 
   try {
     xhr.onreadystatechange = function () {
-      if (this.readyState == 4 && this.status == 200) {
-        document.getElementById("contactAddResult").className +=
-          " label-success";
-        document.getElementById("contactAddResult").innerHTML =
-          "Contact has been added";
-      } else if (this.readyState == 4 && this.status == 409) {
-        err = "This Contact has already been added";
-        document.getElementById("contactAddResult").className +=
-          " label-danger";
-        document.getElementById("contactAddResult").innerHTML = err.message;
+      if (this.readyState == 4) {
+        if ((this.status = 200)) {
+          document.getElementById("contactAddResult").className +=
+            " label-success";
+          document.getElementById("contactAddResult").innerHTML =
+            "Contact has been added";
+        } else {
+          err = JSON.parse(xhr.reponseText).error;
+          document.getElementById("contactAddResult").className +=
+            " label-danger";
+          document.getElementById("contactAddResult").innerHTML = err.message;
+        }
       }
     };
     xhr.send(jsonPayload);

@@ -111,12 +111,15 @@ function doLogout() {
 }
 
 function addContact() {
-  let friendLvl = 0;
   let firstName = document.getElementById("firstName").value;
   let lastName = document.getElementById("lastName").value;
   let email = document.getElementById("emailAddress").value;
   let phone = document.getElementById("phoneNumber").value;
   friendLvl = parseInt(document.getElementById("friendshipLevel").value, 10);
+
+  if (friendLvl == null) {
+    friendLvl = 0;
+  }
 
   document.getElementById("contactAddResult").innerHTML = "";
   document.getElementById("contactAddResult").className = "label";

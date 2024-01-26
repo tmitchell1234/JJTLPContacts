@@ -174,7 +174,6 @@ function convertJSONtoTable(data) {
   let jsonData = "";
 
   let tableBody = document.getElementById("contactsBody");
-
   tableBody.innerHTML = "";
 
   if (Object.keys(data).length == 2) {
@@ -183,6 +182,7 @@ function convertJSONtoTable(data) {
     document.getElementById("contactSearchResult").className += " label-danger";
     document.getElementById("contactSearchResult").innerHTML =
       "No Records Found";
+    return;
   }
 
   jsonData.forEach((item) => {

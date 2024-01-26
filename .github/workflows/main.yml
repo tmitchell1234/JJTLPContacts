@@ -27,15 +27,11 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy ForestFolio
-        uses: appleboy/ssh-action@v0.1.2
+      - name: Copy folder content recursively to remote
+        uses: garygrossgarten/github-action-scp@release
         with:
-          host: ${{secrets.SSH_HOST}}
-          username: ${{secrets.SSH_USERNAME}}
-          password: ${{secrets.SSH_PASSWORD}}
-          port: 22
-          script:
-            mkdir test
-            cd test
-            git clone git@github.com:https://github.com/tmitchell1234/JJTLPContacts.git
-            echo 'DEPLOYED FOREST FOLIO'
+          local: html
+          remote: ~/test
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.SSH_USER }}
+          password: ${{ secrets.PASSWORD }}

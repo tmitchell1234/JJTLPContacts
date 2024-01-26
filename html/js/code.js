@@ -5,7 +5,7 @@ let userId = 0;
 let firstName = "";
 let lastName = "";
 
-// Put Registration Function Here
+// TODO: *** Put Registration Function Here
 
 function doLogin() {
   userId = 0;
@@ -131,8 +131,6 @@ function addContact() {
   };
   let jsonPayload = JSON.stringify(tmp);
 
-  console.log(jsonPayload);
-
   let url = urlBase + "/AddContact." + extension;
 
   let xhr = new XMLHttpRequest();
@@ -154,10 +152,22 @@ function addContact() {
   }
 }
 
+// TODO: *** Put edit contact function
+
 function convertJSONtoTable(data) {
-  let jsonData = data;
+  let jsonData = "";
+
+  if (Object.keys(data).length == 2) {
+    jsonData = data["results"];
+  } else {
+    jsonData = [data];
+  }
+
+  console.log(jsonData);
 
   let tableBody = document.getElementById("contactsBody");
+
+  tableBody.innerHTML = "";
 
   jsonData.forEach((item) => {
     let tr = document.createElement("tr");
@@ -176,12 +186,9 @@ function convertJSONtoTable(data) {
 
 function searchContact() {
   let srch = document.getElementById("searchText").value;
-  console.log(srch);
 
   document.getElementById("contactSearchResult").innerHTML = "";
   document.getElementById("contactSearchResult").className = "label";
-
-  let contactList = "";
 
   let tmp = { search: srch, createdByUserId: 5 };
   let jsonPayload = JSON.stringify(tmp);
@@ -198,20 +205,13 @@ function searchContact() {
           " label-success";
         document.getElementById("contactSearchResult").innerHTML =
           "Contact(s) have been retrieved";
+
         let jsonObject = JSON.parse(xhr.responseText);
 
-        // for (let i = 0; i < jsonObject.results.length; i++) {
-        //   contactList += jsonObject.results[i];
-        //   if (i < jsonObject.results.length - 1) {
-        //     contactList += "<br />\r\n";
-        //   }
-        // }
-
-        convertJSONtoTable(jsonObject["result"]);
-
-        // document.getElementsByTagName("p")[0].innerHTML = contactList;
+        convertJSONtoTable(jsonObject);
       }
     };
+
     xhr.send(jsonPayload);
   } catch (err) {
     document.getElementById("contactSearchResult").className += " label-danger";

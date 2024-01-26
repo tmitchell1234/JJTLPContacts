@@ -187,14 +187,27 @@ function convertJSONtoTable(data) {
 
   jsonData.forEach((item) => {
     let tr = document.createElement("tr");
-
     let vals = Object.values(item);
 
-    vals.forEach((elem) => {
-      let td = document.createElement("td");
-      td.innerText = elem;
-      tr.appendChild(td);
-    });
+    let td = document.createElement("td");
+    td.innerText = item.ID;
+    tr.appendChild();
+
+    td = document.createElement("td");
+    td.innerText = item.FirstName;
+    tr.appendChild();
+
+    td = document.createElement("td");
+    td.innerText = item.LastName;
+    tr.appendChild();
+
+    td = document.createElement("td");
+    td.innerText = item.EmailAddress;
+    tr.appendChild();
+
+    td = document.createElement("td");
+    td.innerText = item.PhoneNumber;
+    tr.appendChild();
 
     tableBody.appendChild(tr);
   });

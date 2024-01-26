@@ -158,8 +158,8 @@ function addContact() {
           " label-success";
         document.getElementById("contactAddResult").innerHTML =
           "Contact has been added";
-      } else {
-        err = xhr.responseText;
+      } else if (this.readyState == 4 && this.status == 409) {
+        err = "This Contact has already been added";
         document.getElementById("contactAddResult").className +=
           " label-danger";
         document.getElementById("contactAddResult").innerHTML = err.message;

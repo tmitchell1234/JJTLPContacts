@@ -127,6 +127,102 @@
               <div id="contactAddResult" class="label"></div>
               <div class="form-group">
                 <!-- First Name field -->
+                <label class="control-label" for="firstName">First Name</label>
+                <input
+                  class="form-control"
+                  id="firstName"
+                  name="firstName"
+                  type="text"
+                />
+              </div>
+
+              <div class="form-group">
+                <!-- Last Name field -->
+                <label class="control-label" for="lastName">Last Name</label>
+                <input
+                  class="form-control"
+                  id="lastName"
+                  name="lastName"
+                  type="text"
+                />
+              </div>
+
+              <div class="form-group">
+                <!-- Phone Number field  -->
+                <label class="control-label" for="phoneNumber"
+                  >Phone Number</label
+                >
+                <input
+                  class="form-control"
+                  id="phoneNumber"
+                  name="phoneNumber"
+                  type="tel"
+                  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                />
+                <span id="phoneFormat" class="help-block"
+                  >Follow this format: 123-456-7890</span
+                >
+              </div>
+
+              <div class="form-group">
+                <!-- Email Address field -->
+                <label class="control-label" for="emailAddress"
+                  >Email Address</label
+                >
+                <input
+                  class="form-control"
+                  id="emailAddress"
+                  name="emailAddress"
+                  type="email"
+                />
+              </div>
+
+              <div class="form-group">
+                <!-- Friendship Level field -->
+                <label class="control-label" for="friendshipLevel"
+                  >Friendship Level</label
+                >
+                <input
+                  class="form-control"
+                  id="friendshipLevel"
+                  name="friendshipLevel"
+                  type="number"
+                />
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">
+                Close
+              </button>
+              <button
+                type="button"
+                class="btn btn-success"
+                onClick="addContact();"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- ***** TODO: Modal Contact Edit Add Form-->
+    <div id="editContacts" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              &times;
+            </button>
+            <h4 class="modal-title">Add Contact Info</h4>
+          </div>
+          <form>
+            <div id="contactModal" class="modal-body">
+              <div id="contactAddResult" class="label"></div>
+              <div class="form-group">
+                <!-- First Name field -->
                 <label id="editFirstName" class="control-label" for="firstName"
                   >First Name</label
                 >
@@ -193,102 +289,6 @@
                   id="editFriendshipLevel"
                   class="control-label"
                   for="friendshipLevel"
-                  >Friendship Level</label
-                >
-                <input
-                  class="form-control"
-                  id="friendshipLevel"
-                  name="friendshipLevel"
-                  type="number"
-                />
-              </div>
-            </div>
-
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">
-                Close
-              </button>
-              <button
-                type="button"
-                class="btn btn-success"
-                onClick="addContact();"
-              >
-                Submit
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-
-    <!-- ***** TODO: Modal Contact Edit Add Form-->
-    <div id="editContacts" class="modal fade" role="dialog">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">
-              &times;
-            </button>
-            <h4 class="modal-title">Add Contact Info</h4>
-          </div>
-          <form>
-            <div id="contactModal" class="modal-body">
-              <div id="contactAddResult" class="label"></div>
-              <div class="form-group">
-                <!-- First Name field -->
-                <label class="control-label" for="firstName">First Name</label>
-                <input
-                  class="form-control"
-                  id="firstName"
-                  name="firstName"
-                  type="text"
-                />
-              </div>
-
-              <div class="form-group">
-                <!-- Last Name field -->
-                <label class="control-label" for="lastName">Last Name</label>
-                <input
-                  class="form-control"
-                  id="lastName"
-                  name="lastName"
-                  type="text"
-                />
-              </div>
-
-              <div class="form-group">
-                <!-- Phone Number field  -->
-                <label class="control-label" for="phoneNumber"
-                  >Phone Number</label
-                >
-                <input
-                  class="form-control"
-                  id="phoneNumber"
-                  name="phoneNumber"
-                  type="tel"
-                  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                />
-                <span id="phoneFormat" class="help-block"
-                  >Follow this format: 123-456-7890</span
-                >
-              </div>
-
-              <div class="form-group">
-                <!-- Email Address field -->
-                <label class="control-label" for="emailAddress"
-                  >Email Address</label
-                >
-                <input
-                  class="form-control"
-                  id="emailAddress"
-                  name="emailAddress"
-                  type="email"
-                />
-              </div>
-
-              <div class="form-group">
-                <!-- Friendship Level field -->
-                <label class="control-label" for="friendshipLevel"
                   >Friendship Level</label
                 >
                 <input

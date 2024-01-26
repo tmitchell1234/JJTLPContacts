@@ -213,11 +213,13 @@ function convertJSONtoTable(data) {
     td.innerHTML = `<button class="btn btn-info">
     <span class="glyphicon glyphicon-edit"></span>
   </button>`;
+    tr.appendChild(td);
 
     td = document.createElement("td");
     td.innerHTML = `<button class="btn btn-danger">
     <span class="glyphicon glyphicon-trash"></span>
   </button>`;
+    tr.appendChild(td);
 
     tableBody.appendChild(tr);
   });

@@ -5,8 +5,6 @@ let userId = 0;
 let firstName = "";
 let lastName = "";
 
-// TODO: *** Put Registration Function Here
-
 function doLogin() {
   userId = 0;
   firstName = "";
@@ -60,6 +58,9 @@ function doLogin() {
   }
 }
 
+// TODO: *** Put Registration Function Here
+function doSignUp() {}
+
 function saveCookie() {
   let minutes = 20;
   let date = new Date();
@@ -110,6 +111,7 @@ function doLogout() {
   window.location.href = "index.html";
 }
 
+// Clears add contacts modal form when its closed in anyway
 $("#addContacts").on("hidden.bs.modal", function (e) {
   $(this)
     .find("input,textarea,select")
@@ -166,6 +168,7 @@ function addContact() {
 }
 
 // TODO: *** Put edit contact function
+function editContact() {}
 
 function convertJSONtoTable(data) {
   let jsonData = "";

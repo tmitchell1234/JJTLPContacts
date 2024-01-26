@@ -380,7 +380,7 @@ function convertJSONtoTable(data) {
     td = document.createElement("td");
     td.innerHTML = `
     <button id="${i}" class="btn btn-info" data-toggle="modal"
-    data-target="#editContacts" onclick="onClickEdit();">
+    data-target="#editContacts" onclick="onClickEdit(this.id);">
       <span class="glyphicon glyphicon-edit"></span>
     </button> 
     &nbsp;&nbsp; 

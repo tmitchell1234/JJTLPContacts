@@ -81,7 +81,7 @@
                 </div>
               </form>
             </div>
-            <div id="contactAddResult" class="label"></div>
+            <div id="contactSearchResult" class="label"></div>
             <ul class="nav navbar-nav navbar-right">
               <li><a href="#">Logout</a></li>
             </ul>
@@ -137,7 +137,8 @@
             <h4 class="modal-title">Add Contact Info</h4>
           </div>
           <form>
-            <div class="modal-body">
+            <div id="contactModal" class="modal-body">
+              <div id="contactAddResult" class="label"></div>
               <div class="form-group">
                 <!-- First Name field -->
                 <label class="control-label" for="firstName">First Name</label>
@@ -205,7 +206,7 @@
             </div>
 
             <div class="modal-footer">
-              <button type="button" class="btn btn-danger">Cancel</button>
+              <button type="button" class="btn btn-danger">Close</button>
               <button
                 type="button"
                 class="btn btn-success"

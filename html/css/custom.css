@@ -56,9 +56,13 @@ a {
   background-color: #ae876d;
 }
 
-.label {
+#contactSearchResult {
   display: inline-block;
   margin-top: 1.5em;
+}
+#contactAddResult {
+  display: inline-block;
+  margin-bottom: 1.5em;
 }
 
 .btn-primary {

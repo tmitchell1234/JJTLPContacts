@@ -118,8 +118,8 @@ function addContact() {
   let phone = document.getElementById("phoneNumber").value;
   friendLvl = parseInt(document.getElementById("friendshipLevel").value, 10);
 
-  //   document.getElementById("contactAddResult").innerHTML = "";
-  //   document.getElementById("contactAddResult").className = "label";
+  document.getElementById("contactAddResult").innerHTML = "";
+  document.getElementById("contactAddResult").className = "label";
 
   let tmp = {
     firstName: firstName,
@@ -141,17 +141,16 @@ function addContact() {
   try {
     xhr.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
-        alert("yay");
-
-        // document.getElementById("contactAddResult").innerHTML =
-        //   "Contact has been added";
+        document.getElementById("contactAddResult").className +=
+          " label-success";
+        document.getElementById("contactAddResult").innerHTML =
+          "Contact has been added";
       }
     };
     xhr.send(jsonPayload);
   } catch (err) {
-    alert("nay");
-    // document.getElementById("contactAddResult").className += " label-danger";
-    // document.getElementById("contactAddResult").innerHTML = err.message;
+    document.getElementById("contactAddResult").className += " label-danger";
+    document.getElementById("contactAddResult").innerHTML = err.message;
   }
 }
 

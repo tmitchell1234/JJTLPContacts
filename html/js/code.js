@@ -209,6 +209,16 @@ function convertJSONtoTable(data) {
     td.innerText = item.PhoneNumber;
     tr.appendChild(td);
 
+    td = document.createElement("td");
+    td.innerHTML = `<button class="btn btn-info">
+    <span class="glyphicon glyphicon-edit"></span>
+  </button>`;
+
+    td = document.createElement("td");
+    td.innerHTML = `<button class="btn btn-danger">
+    <span class="glyphicon glyphicon-trash"></span>
+  </button>`;
+
     tableBody.appendChild(tr);
   });
 }

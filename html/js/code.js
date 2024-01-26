@@ -185,9 +185,10 @@ function convertJSONtoTable(data) {
     return;
   }
 
-  jsonData.forEach((item) => {
+  for (i = 0; i < jsonData.length; i++) {
+    let item = jsonData[i];
+
     let tr = document.createElement("tr");
-    let vals = Object.values(item);
 
     let td = document.createElement("td");
     td.innerText = item.ID;
@@ -211,17 +212,17 @@ function convertJSONtoTable(data) {
 
     td = document.createElement("td");
     td.innerHTML = `
-    <button class="btn btn-info">
+    <button id="${i}" class="btn btn-info">
       <span class="glyphicon glyphicon-edit"></span>
     </button> 
     &nbsp;&nbsp; 
-    <button class="btn btn-danger">
+    <button id="${i}" class="btn btn-danger">
       <span class="glyphicon glyphicon-trash"></span>
     </button>`;
     tr.appendChild(td);
 
     tableBody.appendChild(tr);
-  });
+  }
 }
 
 function searchContact() {

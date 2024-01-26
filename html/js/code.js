@@ -170,6 +170,50 @@ function addContact() {
 // TODO: *** Put edit contact function
 function editContact() {}
 
+function deleteContact(i) {
+  let firstName = document.getElementById(`firstName ${i}`).value;
+  let lastName = document.getElementById(`lastName ${i}`).value;
+  let email = document.getElementById(`emailAddress ${i}`).value;
+  let phone = document.getElementById(`phoneNumber ${i}`).value;
+
+  document.getElementById("contactSearchResult").innerHTML = "";
+  document.getElementById("contactSearchResult").className = "label";
+
+  let tmp = {
+    firstName: firstName,
+    lastName: lastName,
+    createdByUserId: userId,
+    emailAddress: email,
+    phoneNumber: phone,
+  };
+
+  let jsonPayload = JSON.stringify(tmp);
+
+  console.log(jsonPayload);
+
+  // let url = urlBase + "/AddContact." + extension;
+
+  // let xhr = new XMLHttpRequest();
+  // xhr.open("POST", url, true);
+
+  // try {
+  //   xhr.onreadystatechange = function () {
+  //     if (this.readyState == 4 && this.status == 200) {
+  //       document.getElementById("contactAddResult").className +=
+  //         " label-success";
+  //       document.getElementById("contactAddResult").innerHTML =
+  //         "Contact has been added";
+  //     }
+  //   };
+  //   xhr.send(jsonPayload);
+  // } catch (err) {
+  //   document.getElementById("contactAddResult").className += " label-danger";
+  //   document.getElementById("contactAddResult").innerHTML = err.message;
+  // }
+
+  document.getElementById(`row ${i}`).remove();
+}
+
 function convertJSONtoTable(data) {
   let jsonData = "";
 
@@ -189,24 +233,30 @@ function convertJSONtoTable(data) {
     let item = jsonData[i];
 
     let tr = document.createElement("tr");
+    tr.id = `row ${i}`;
 
     let td = document.createElement("td");
+    td.id = `ID ${i}`;
     td.innerText = item.ID;
     tr.appendChild(td);
 
     td = document.createElement("td");
+    td.id = `firstName ${i}`;
     td.innerText = item.FirstName;
     tr.appendChild(td);
 
     td = document.createElement("td");
+    td.id = `lastName ${i}`;
     td.innerText = item.LastName;
     tr.appendChild(td);
 
     td = document.createElement("td");
+    td.id = `emailAddress ${i}`;
     td.innerText = item.EmailAddress;
     tr.appendChild(td);
 
     td = document.createElement("td");
+    td.id = `phoneNumber ${i}`;
     td.innerText = item.PhoneNumber;
     tr.appendChild(td);
 
@@ -217,9 +267,11 @@ function convertJSONtoTable(data) {
     </button> 
     &nbsp;&nbsp; 
     <button id="${i}" class="btn btn-danger">
-      <span class="glyphicon glyphicon-trash"></span>
+      <span class="glyphicon glyphicon-trash onclick="deleteContact(this.id);"></span>
     </button>`;
     tr.appendChild(td);
+
+    tr.id = i;
 
     tableBody.appendChild(tr);
   }

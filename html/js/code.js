@@ -176,10 +176,10 @@ function convertJSONtoTable(data) {
   if (Object.keys(data).length == 2) {
     jsonData = data["results"];
   } else {
-    jsonData = [data];
+    document.getElementById("contactSearchResult").className += " label-danger";
+    document.getElementById("contactSearchResult").innerHTML =
+      "No Records Found";
   }
-
-  console.log(jsonData);
 
   let tableBody = document.getElementById("contactsBody");
 

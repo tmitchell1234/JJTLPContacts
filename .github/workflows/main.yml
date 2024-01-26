@@ -18,20 +18,56 @@
 #           target: "/var/www/html"
 #           timeout: 120s
 
-name: Build & Deploy
+# name: Build & Deploy
+# on:
+#   push:
+#     branches: [main]
+
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Copy folder content recursively to remote
+#         uses: garygrossgarten/github-action-scp@release
+#         with:
+#           local: html
+#           remote: ~/test
+#           host: ${{ secrets.HOST }}
+#           username: ${{ secrets.SSH_USER }}
+#           password: ${{ secrets.PASSWORD }}
+
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
 on:
   push:
-    branches: [main]
+    branches: [ main ]
 
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  deploy:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
     runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: Copy folder content recursively to remote
-        uses: garygrossgarten/github-action-scp@release
-        with:
-          local: html
-          remote: ~/test
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.SSH_USER }}
-          password: ${{ secrets.PASSWORD }}
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+
+    # Runs a set of commands using the runners shell
+    - name: Run a multi-line script
+      run: |
+        mkdir ../build
+        cp -TR . ../build
+        tar -cvf deploy.tar ../build/
+
+    - name: copy file via ssh password
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: 22
+        source: "."
+        target: "~/test"

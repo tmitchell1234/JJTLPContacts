@@ -187,11 +187,11 @@ function addContact() {
 }
 
 function onClickEdit(i) {
-  let firstName = document.getElementById("firstName");
-  let lastName = document.getElementById("lastName");
-  let email = document.getElementById("emailAddress");
-  let phone = document.getElementById("phoneNumber");
-  let friendLvl = document.getElementById("friendshipLevel");
+  let firstName = document.getElementById("editFirstName");
+  let lastName = document.getElementById("editLastName");
+  let email = document.getElementById("editEmailAddress");
+  let phone = document.getElementById("editPhoneNumber");
+  let friendLvl = document.getElementById("editFriendshipLevel");
 
   firstName.value = document.getElementById(`firstName ${i}`).innerText;
   lastName.value = document.getElementById(`lastName ${i}`).innerText;
@@ -202,14 +202,58 @@ function onClickEdit(i) {
 
 // TODO: *** Put edit contact function
 function editContact() {
-  // let firstName = document.getElementById("firstName").value;
-  // let lastName = document.getElementById("lastName").value;
-  // let email = document.getElementById("emailAddress").value;
-  // let phone = document.getElementById("phoneNumber").value;
-  // friendLvl = parseInt(document.getElementById("friendshipLevel").value, 10);
-  // if (!friendLvl) {
-  //   friendLvl = 0;
-  // }
+  let firstName = document.getElementById("editFirstName").value;
+  let lastName = document.getElementById("editLastName").value;
+  let email = document.getElementById("editEmailAddress").value;
+  let phone = document.getElementById("editPhoneNumber").value;
+  let friendLvl = parseInt(
+    document.getElementById("editFriendshipLevel").value,
+    10
+  );
+
+  if (!friendLvl) {
+    friendLvl = 0;
+  }
+
+  document.getElementById("contactEditResult").innerHTML = "";
+  document.getElementById("contactEditResult").className = "label";
+
+  let tmp = {
+    firstName: firstName,
+    lastName: lastName,
+    createdByUserId: userId,
+    emailAddress: email,
+    friendshipLevel: friendLvl,
+    phoneNumber: phone,
+  };
+  let jsonPayload = JSON.stringify(tmp);
+
+  let url = urlBase + "/EditContact." + extension;
+
+  let xhr = new XMLHttpRequest();
+  xhr.open("POST", url, true);
+
+  try {
+    xhr.onreadystatechange = function () {
+      if (this.readyState == 4) {
+        if (this.status == 200) {
+          document.getElementById("contactEditResult").className +=
+            " label-success";
+          document.getElementById("contactEditResult").innerHTML =
+            "Contact has been edited";
+        } else {
+          err = JSON.parse(xhr.responseText).error;
+          document.getElementById("contactEditResult").className +=
+            " label-danger";
+          document.getElementById("contactEditResult").innerHTML = err;
+        }
+      }
+    };
+    xhr.send(jsonPayload);
+  } catch (err) {
+    document.getElementById("contactEditResult").className += " label-danger";
+    document.getElementById("contactEditResult").innerHTML = err.message;
+  }
 }
 
 function deleteContactWrapper(id) {

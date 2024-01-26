@@ -38,7 +38,7 @@
 			}
 			$searchCount++;
 
-			$searchResults .= '{"FirstName" : "' . $row["FirstName"]. '", "LastName" : "' . $row["LastName"]. '", "EmailAddress" : "' . $row["EmailAddress"]. '", "PhoneNumber" : "' . $row["PhoneNumber"]. '", "CreatedByUserID" : "' . $row["CreatedByUsedID"].'", "ID" : "' . $row["ID"].'", "FriendshipLevel" : "' . $row["FriendshipLevel"]. '"}';
+			$searchResults .= '{"FirstName" : "' . $row["FirstName"]. '", "LastName" : "' . $row["LastName"]. '", "EmailAddress" : "' . $row["EmailAddress"]. '", "PhoneNumber" : "' . $row["PhoneNumber"]. '", "CreatedByUserID" : "' . $row["CreatedByUserID"].'", "ID" : "' . $row["ID"].'", "FriendshipLevel" : "' . $row["FriendshipLevel"]. '"}';
 		}
 
 		if( $searchCount == 0 )

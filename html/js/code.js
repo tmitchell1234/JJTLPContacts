@@ -267,8 +267,7 @@ function convertJSONtoTable(data) {
     tr.id = `row ${i}`;
 
     let td = document.createElement("td");
-    td.id = `ID ${i}`;
-    td.innerText = item.ID;
+    td.innerText = i + 1;
     tr.appendChild(td);
 
     td = document.createElement("td");

@@ -185,7 +185,10 @@ function deleteContact(i) {
   let lastName = document.getElementById(`lastName ${i}`).innerText;
   let email = document.getElementById(`emailAddress ${i}`).innerText;
   let phone = document.getElementById(`phoneNumber ${i}`).innerText;
-  let friendLvl = document.getElementById(`friendshipLevel ${i}`).innerText;
+  let friendLvl = parseInt(
+    document.getElementById(`friendshipLevel ${i}`).innerText,
+    10
+  );
 
   document.getElementById("contactSearchResult").innerHTML = "";
   document.getElementById("contactSearchResult").className = "label";

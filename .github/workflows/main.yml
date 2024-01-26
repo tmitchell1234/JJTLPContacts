@@ -63,7 +63,7 @@ jobs:
         tar -cvf deploy.tar ../build/
 
     - name: copy file via ssh password
-      uses: appleboy/scp-action@0.1.3
+      uses: appleboy/scp-action@v0.1.3
       with:
         host: ${{ secrets.SSH_HOST }}
         username: ${{ secrets.SSH_USERNAME }}

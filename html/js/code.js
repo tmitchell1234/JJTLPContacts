@@ -210,15 +210,14 @@ function convertJSONtoTable(data) {
     tr.appendChild(td);
 
     td = document.createElement("td");
-    let parentContainer = document.createElement("div");
-    parentContainer.className = "d-flex justify-content-space-between";
-    parentContainer.innerHTML = `<button class="btn btn-info">
-    <span class="glyphicon glyphicon-edit"></span>
-  </button>`;
-    parentContainer.innerHTML += `<button class="btn btn-danger">
-    <span class="glyphicon glyphicon-trash"></span>
-  </button>`;
-    td.appendChild(parentContainer);
+    td.innerHTML = `
+    <button class="btn btn-info">
+      <span class="glyphicon glyphicon-edit"></span>
+    </button> 
+    &nbsp;&nbsp; 
+    <button class="btn btn-danger">
+      <span class="glyphicon glyphicon-trash"></span>
+    </button>`;
     tr.appendChild(td);
 
     tableBody.appendChild(tr);

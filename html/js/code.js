@@ -129,7 +129,7 @@ function addContact() {
   let phone = document.getElementById("phoneNumber").value;
   friendLvl = parseInt(document.getElementById("friendshipLevel").value, 10);
 
-  if (friendLvl == null) {
+  if (!friendLvl) {
     friendLvl = 0;
   }
 
@@ -158,6 +158,11 @@ function addContact() {
           " label-success";
         document.getElementById("contactAddResult").innerHTML =
           "Contact has been added";
+      } else {
+        err = xhr.responseText;
+        document.getElementById("contactAddResult").className +=
+          " label-danger";
+        document.getElementById("contactAddResult").innerHTML = err.message;
       }
     };
     xhr.send(jsonPayload);

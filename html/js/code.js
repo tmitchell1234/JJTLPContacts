@@ -191,23 +191,23 @@ function convertJSONtoTable(data) {
 
     let td = document.createElement("td");
     td.innerText = item.ID;
-    tr.appendChild();
+    tr.appendChild(td);
 
     td = document.createElement("td");
     td.innerText = item.FirstName;
-    tr.appendChild();
+    tr.appendChild(td);
 
     td = document.createElement("td");
     td.innerText = item.LastName;
-    tr.appendChild();
+    tr.appendChild(td);
 
     td = document.createElement("td");
     td.innerText = item.EmailAddress;
-    tr.appendChild();
+    tr.appendChild(td);
 
     td = document.createElement("td");
     td.innerText = item.PhoneNumber;
-    tr.appendChild();
+    tr.appendChild(td);
 
     tableBody.appendChild(tr);
   });

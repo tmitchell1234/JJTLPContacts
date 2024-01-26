@@ -14,5 +14,5 @@ jobs:
           username: ${{secrets.SSH_USERNAME}}
           password: ${{secrets.SSH_PASSWORD}}
           port: 22
-          source: ""
-          target: "/var/www/html"
+          source: "./html"
+          target: "/var/www/"

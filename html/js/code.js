@@ -213,26 +213,32 @@ function deleteContact(i) {
 
   console.log(jsonPayload);
 
-  // let url = urlBase + "/DeleteContact." + extension;
+  let url = urlBase + "/DeleteContact." + extension;
 
-  // let xhr = new XMLHttpRequest();
-  // xhr.open("POST", url, true);
+  let xhr = new XMLHttpRequest();
+  xhr.open("POST", url, true);
 
-  // try {
-  //   xhr.onreadystatechange = function () {
-  //     if (this.readyState == 4 && this.status == 200) {
-  //       document.getElementById("contactAddResult").className +=
-  //         " label-success";
-  //       document.getElementById("contactAddResult").innerHTML =
-  //         "Contact has been deleted";
-  //     }
-  //   };
-  //   xhr.send(jsonPayload);
-  // } catch (err) {
-  //   document.getElementById("contactAddResult").className += " label-danger";
-  //   document.getElementById("contactAddResult").innerHTML = err.message;
-  // }
-
+  try {
+    xhr.onreadystatechange = function () {
+      if (this.readyState == 4) {
+        if (this.status == 200) {
+          document.getElementById("contactSearchResult").className +=
+            " label-danger";
+          document.getElementById("contactSearchResult").innerHTML =
+            "Contact has been Deleted";
+        } else {
+          err = JSON.parse(xhr.responseText).error;
+          document.getElementById("contactSearchResult").className +=
+            " label-info";
+          document.getElementById("contactSearchResult").innerHTML = err;
+        }
+      }
+    };
+    xhr.send(jsonPayload);
+  } catch (err) {
+    document.getElementById("contactSearchResult").className += " label-info";
+    document.getElementById("contactSearchResult").innerHTML = err.message;
+  }
   document.getElementById(`row ${i}`).remove();
 
   document.getElementById("contactSearchResult").className += " label-danger";

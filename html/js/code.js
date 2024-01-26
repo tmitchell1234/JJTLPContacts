@@ -304,7 +304,7 @@ function searchContact() {
   document.getElementById("contactSearchResult").innerHTML = "";
   document.getElementById("contactSearchResult").className = "label";
 
-  let tmp = { search: srch, createdByUserId: 5 };
+  let tmp = { search: srch, createdByUserId: userId };
   let jsonPayload = JSON.stringify(tmp);
 
   let url = urlBase + "/SearchContacts." + extension;

@@ -69,5 +69,5 @@ jobs:
         username: ${{ secrets.SSH_USERNAME }}
         password: ${{ secrets.SSH_PASSWORD }}
         port: 22
-        source: "../build/html"
+        source: "../build/html/."
         target: "/var/www/"

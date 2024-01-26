@@ -185,6 +185,7 @@ function deleteContact(i) {
   let lastName = document.getElementById(`lastName ${i}`).innerText;
   let email = document.getElementById(`emailAddress ${i}`).innerText;
   let phone = document.getElementById(`phoneNumber ${i}`).innerText;
+  let friendLvl = document.getElementById(`friendshipLevel ${i}`).innerText;
 
   document.getElementById("contactSearchResult").innerHTML = "";
   document.getElementById("contactSearchResult").className = "label";
@@ -195,6 +196,7 @@ function deleteContact(i) {
     createdByUserId: userId,
     emailAddress: email,
     phoneNumber: phone,
+    friendshipLevel: friendLvl,
   };
 
   let jsonPayload = JSON.stringify(tmp);
@@ -271,6 +273,11 @@ function convertJSONtoTable(data) {
     td = document.createElement("td");
     td.id = `phoneNumber ${i}`;
     td.innerText = item.PhoneNumber;
+    tr.appendChild(td);
+
+    td = document.createElement("td");
+    td.id = `friendshipLevel ${i}`;
+    td.innerText = item.FriendshipLevel;
     tr.appendChild(td);
 
     td = document.createElement("td");

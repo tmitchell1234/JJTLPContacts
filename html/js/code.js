@@ -170,6 +170,16 @@ function addContact() {
 // TODO: *** Put edit contact function
 function editContact() {}
 
+function deleteContactWrapper(id) {
+  if (
+    confirm(
+      "Are you sure you want to delete this contact? (This choice is permananent"
+    )
+  ) {
+    deleteContact(id);
+  }
+}
+
 function deleteContact(i) {
   let firstName = document.getElementById(`firstName ${i}`).innerText;
   let lastName = document.getElementById(`lastName ${i}`).innerText;
@@ -191,7 +201,7 @@ function deleteContact(i) {
 
   console.log(jsonPayload);
 
-  // let url = urlBase + "/AddContact." + extension;
+  // let url = urlBase + "/DeleteContact." + extension;
 
   // let xhr = new XMLHttpRequest();
   // xhr.open("POST", url, true);
@@ -202,7 +212,7 @@ function deleteContact(i) {
   //       document.getElementById("contactAddResult").className +=
   //         " label-success";
   //       document.getElementById("contactAddResult").innerHTML =
-  //         "Contact has been added";
+  //         "Contact has been deleted";
   //     }
   //   };
   //   xhr.send(jsonPayload);
@@ -266,8 +276,8 @@ function convertJSONtoTable(data) {
       <span class="glyphicon glyphicon-edit"></span>
     </button> 
     &nbsp;&nbsp; 
-    <button id="${i}" class="btn btn-danger" onclick="deleteContact(this.id);">
-      <span class="glyphicon glyphicon-trash></span>
+    <button id="${i}" class="btn btn-danger" onclick="deleteContactWrapper(this.id);">
+      <span class="glyphicon glyphicon-trash"></span>
     </button>`;
     tr.appendChild(td);
 

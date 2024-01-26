@@ -173,6 +173,10 @@ function editContact() {}
 function convertJSONtoTable(data) {
   let jsonData = "";
 
+  let tableBody = document.getElementById("contactsBody");
+
+  tableBody.innerHTML = "";
+
   if (Object.keys(data).length == 2) {
     jsonData = data["results"];
   } else {
@@ -180,10 +184,6 @@ function convertJSONtoTable(data) {
     document.getElementById("contactSearchResult").innerHTML =
       "No Records Found";
   }
-
-  let tableBody = document.getElementById("contactsBody");
-
-  tableBody.innerHTML = "";
 
   jsonData.forEach((item) => {
     let tr = document.createElement("tr");

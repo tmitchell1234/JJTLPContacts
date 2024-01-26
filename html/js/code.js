@@ -224,29 +224,29 @@ function deleteContact(i) {
     xhr.onreadystatechange = function () {
       if (this.readyState == 4) {
         if (this.status == 200) {
-          document.getElementById("contactSearchResult").className +=
+          document.getElementById("contactDeleteResult").className +=
             " label-danger";
-          document.getElementById("contactSearchResult").innerHTML =
+          document.getElementById("contactDeleteResult").innerHTML =
             "Contact has been Deleted";
 
           document.getElementById(`row ${i}`).remove();
 
-          document.getElementById("contactSearchResult").className +=
+          document.getElementById("contactDeleteResult").className +=
             " label-danger";
 
           searchContact();
         } else {
           err = JSON.parse(xhr.responseText).error;
-          document.getElementById("contactSearchResult").className +=
+          document.getElementById("contactDeleteResult").className +=
             " label-info";
-          document.getElementById("contactSearchResult").innerHTML = err;
+          document.getElementById("contactDeleteResult").innerHTML = err;
         }
       }
     };
     xhr.send(jsonPayload);
   } catch (err) {
-    document.getElementById("contactSearchResult").className += " label-info";
-    document.getElementById("contactSearchResult").innerHTML = err.message;
+    document.getElementById("contactDeleteResult").className += " label-info";
+    document.getElementById("contactDeleteResult").innerHTML = err.message;
   }
 }
 

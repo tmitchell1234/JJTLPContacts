@@ -56,7 +56,8 @@ a {
   background-color: #ae876d;
 }
 
-#contactSearchResult {
+#contactSearchResult,
+#contactDeleteResult {
   display: inline-block;
   margin-top: 1.6em;
 }

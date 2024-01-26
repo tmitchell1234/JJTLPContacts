@@ -171,10 +171,10 @@ function addContact() {
 function editContact() {}
 
 function deleteContact(i) {
-  let firstName = document.getElementById(`firstName ${i}`).value;
-  let lastName = document.getElementById(`lastName ${i}`).value;
-  let email = document.getElementById(`emailAddress ${i}`).value;
-  let phone = document.getElementById(`phoneNumber ${i}`).value;
+  let firstName = document.getElementById(`firstName ${i}`).innerText;
+  let lastName = document.getElementById(`lastName ${i}`).innerText;
+  let email = document.getElementById(`emailAddress ${i}`).innerText;
+  let phone = document.getElementById(`phoneNumber ${i}`).innerText;
 
   document.getElementById("contactSearchResult").innerHTML = "";
   document.getElementById("contactSearchResult").className = "label";
@@ -270,8 +270,6 @@ function convertJSONtoTable(data) {
       <span class="glyphicon glyphicon-trash onclick="deleteContact(this.id);"></span>
     </button>`;
     tr.appendChild(td);
-
-    tr.id = i;
 
     tableBody.appendChild(tr);
   }

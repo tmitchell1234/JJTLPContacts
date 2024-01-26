@@ -266,8 +266,8 @@ function convertJSONtoTable(data) {
       <span class="glyphicon glyphicon-edit"></span>
     </button> 
     &nbsp;&nbsp; 
-    <button id="${i}" class="btn btn-danger">
-      <span class="glyphicon glyphicon-trash onclick="deleteContact(this.id);"></span>
+    <button id="${i}" class="btn btn-danger" onclick="deleteContact(this.id);">
+      <span class="glyphicon glyphicon-trash></span>
     </button>`;
     tr.appendChild(td);
 

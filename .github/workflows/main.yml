@@ -19,16 +19,16 @@ jobs:
           workflows:
             - './html/**'
     # run only if 'workflows' files were changed
-    - name: workflow tests
+    - name: Edited HTML folder
       if: steps.filter.outputs.workflows == 'true'
-      run: echo "Workflow file"
+      run: echo "HTML folder"
 
     # run only if not 'workflows' files were changed
-    - name: not workflow tests
+    - name: not HTML Folder
       if: steps.filter.outputs.workflows != 'true'
-      run: echo "NOT workflow file"
+      run: echo "NOT HTML folder"
 
-  next-job:
+  upload-to-server:
     runs-on: ubuntu-latest
     # Wait from the paths-filter to be completed before starting next-job
     needs: paths-filter

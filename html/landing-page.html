@@ -225,6 +225,7 @@
                 <!-- First Name field -->
                 <label class="control-label" for="firstName">First Name</label>
                 <input
+                  value=""
                   class="form-control"
                   id="editFirstName"
                   name="firstName"
@@ -236,6 +237,7 @@
                 <!-- Last Name field -->
                 <label class="control-label" for="lastName">Last Name</label>
                 <input
+                  value=""
                   class="form-control"
                   id="editLastName"
                   name="lastName"
@@ -249,6 +251,7 @@
                   >Phone Number</label
                 >
                 <input
+                  value=""
                   class="form-control"
                   id="editPhoneNumber"
                   name="phoneNumber"
@@ -266,6 +269,7 @@
                   >Email Address</label
                 >
                 <input
+                  value=""
                   class="form-control"
                   id="editEmailAddress"
                   name="emailAddress"
@@ -279,6 +283,7 @@
                   >Friendship Level</label
                 >
                 <input
+                  value=""
                   class="form-control"
                   id="editFriendshipLevel"
                   name="friendshipLevel"
@@ -294,7 +299,7 @@
               <button
                 type="button"
                 class="btn btn-success"
-                onClick="addContact();"
+                onClick="editContact(oldData);"
               >
                 Submit
               </button>

@@ -7,6 +7,8 @@ let lastName = "";
 
 let srch = "";
 
+let oldData = {};
+
 function doLogin() {
   userId = 0;
   firstName = "";
@@ -202,7 +204,7 @@ function onClickEdit(i) {
     `createdByUserID ${i}`
   ).innerText;
 
-  let oldData = {
+  oldData = {
     firstName: firstName,
     lastName: lastName,
     emailAddress: email,
@@ -211,7 +213,7 @@ function onClickEdit(i) {
     createdByUserId: createdByUserId,
   };
 
-  editContact(oldData);
+  console.log(oldData);
 }
 
 // TODO: *** Put edit contact function
@@ -242,6 +244,8 @@ function editContact(oldData) {
   };
 
   tmp += oldData;
+
+  console.log(tmp);
 
   let jsonPayload = JSON.stringify(tmp);
 

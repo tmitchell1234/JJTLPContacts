@@ -238,9 +238,9 @@ function editContact(oldData) {
     newFirstName: firstName,
     newLastName: lastName,
     newCreatedByUserId: userId,
-    newEmailAddress: email,
+    newAddress: email,
     newFriendshipLevel: friendLvl,
-    newPhoneNumber: phone,
+    newNumber: phone,
   };
 
   let temp = Object.assign({}, tmp, oldData);

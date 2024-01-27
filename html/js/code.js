@@ -205,12 +205,12 @@ function onClickEdit(i) {
   ).innerText;
 
   oldData = {
-    firstName: firstName,
-    lastName: lastName,
-    emailAddress: email,
-    phoneNumber: phone,
-    friendshipLevel: friendLvl,
-    createdByUserId: createdByUserId,
+    firstName: firstName.value,
+    lastName: lastName.value,
+    emailAddress: email.value,
+    phoneNumber: phone.value,
+    friendshipLevel: friendLvl.value,
+    createdByUserId: createdByUserId.value,
   };
 
   console.log(oldData);

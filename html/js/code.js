@@ -210,7 +210,7 @@ function onClickEdit(i) {
     emailAddress: email.value,
     phoneNumber: phone.value,
     friendshipLevel: friendLvl.value,
-    createdByUserId: createdByUserId.value,
+    createdByUserId: createdByUserId,
   };
 
   console.log(oldData);

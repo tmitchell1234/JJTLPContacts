@@ -189,6 +189,9 @@ function addContact() {
 }
 
 function onClickEdit(i) {
+  document.getElementById("contactEditResult").innerHTML = "";
+  document.getElementById("contactEditResult").className = "label";
+
   let firstName = document.getElementById("editFirstName");
   let lastName = document.getElementById("editLastName");
   let email = document.getElementById("editEmailAddress");
@@ -216,7 +219,6 @@ function onClickEdit(i) {
   console.log(oldData);
 }
 
-// TODO: *** Put edit contact function
 function editContact(oldData) {
   let firstName = document.getElementById("editFirstName").value ?? "";
   let lastName = document.getElementById("editLastName").value ?? "";
@@ -230,9 +232,6 @@ function editContact(oldData) {
   if (!friendLvl) {
     friendLvl = 0;
   }
-
-  document.getElementById("contactEditResult").innerHTML = "";
-  document.getElementById("contactEditResult").className = "label";
 
   let tmp = {
     newFirstName: firstName,
@@ -262,6 +261,8 @@ function editContact(oldData) {
             " label-success";
           document.getElementById("contactEditResult").innerHTML =
             "Contact has been edited";
+
+          searchContact();
         } else {
           err = JSON.parse(xhr.responseText).error;
           document.getElementById("contactEditResult").className +=
@@ -437,10 +438,10 @@ function searchContact() {
   try {
     xhr.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
-        document.getElementById("contactSearchResult").className +=
-          " label-success";
-        document.getElementById("contactSearchResult").innerHTML =
-          "Contact(s) have been retrieved";
+        // document.getElementById("contactSearchResult").className +=
+        //   " label-success";
+        // document.getElementById("contactSearchResult").innerHTML =
+        //   "Contact(s) have been retrieved";
 
         let jsonObject = JSON.parse(xhr.responseText);
 

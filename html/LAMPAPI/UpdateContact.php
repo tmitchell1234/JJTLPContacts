@@ -12,7 +12,6 @@
     $newAddress = $inData["newAddress"];
     $newFirstName = $inData["newFirstName"];
     $newLastName = $inData["newLastName"];
-    $newCreatedByUserId = $inData["newCreatedByUserId"];
     $newFriendshipLevel = $inData["newFriendshipLevel"];
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
 	if ($conn->connect_error) 

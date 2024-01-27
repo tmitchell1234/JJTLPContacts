@@ -198,10 +198,24 @@ function onClickEdit(i) {
   email.value = document.getElementById(`emailAddress ${i}`).innerText;
   phone.value = document.getElementById(`phoneNumber ${i}`).innerText;
   friendLvl.value = document.getElementById(`friendshipLevel ${i}`).innerText;
+  let createdByUserId = document.getElementById(
+    `createdByUserID ${i}`
+  ).innerText;
+
+  let oldData = {
+    firstName: firstName,
+    lastName: lastName,
+    emailAddress: email,
+    phoneNumber: phone,
+    friendshipLevel: friendLvl,
+    createdByUserId: createdByUserId,
+  };
+
+  editContact(oldData);
 }
 
 // TODO: *** Put edit contact function
-function editContact() {
+function editContact(oldData) {
   let firstName = document.getElementById("editFirstName").value;
   let lastName = document.getElementById("editLastName").value;
   let email = document.getElementById("editEmailAddress").value;
@@ -219,13 +233,16 @@ function editContact() {
   document.getElementById("contactEditResult").className = "label";
 
   let tmp = {
-    firstName: firstName,
-    lastName: lastName,
-    createdByUserId: userId,
-    emailAddress: email,
-    friendshipLevel: friendLvl,
-    phoneNumber: phone,
+    newFirstName: firstName,
+    newLastName: lastName,
+    newCreatedByUserId: userId,
+    newEmailAddress: email,
+    newFriendshipLevel: friendLvl,
+    newPhoneNumber: phone,
   };
+
+  tmp += oldData;
+
   let jsonPayload = JSON.stringify(tmp);
 
   let url = urlBase + "/EditContact." + extension;
@@ -375,6 +392,12 @@ function convertJSONtoTable(data) {
     td = document.createElement("td");
     td.id = `friendshipLevel ${i}`;
     td.innerText = item.FriendshipLevel;
+    tr.appendChild(td);
+
+    td = document.createElement("td");
+    td.id = `createdByUserID ${i}`;
+    td.innerText = item.CreatedByUserID;
+    td.style.display = "none";
     tr.appendChild(td);
 
     td = document.createElement("td");

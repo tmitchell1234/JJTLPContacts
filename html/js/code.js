@@ -218,10 +218,10 @@ function onClickEdit(i) {
 
 // TODO: *** Put edit contact function
 function editContact(oldData) {
-  let firstName = document.getElementById("editFirstName").value;
-  let lastName = document.getElementById("editLastName").value;
-  let email = document.getElementById("editEmailAddress").value;
-  let phone = document.getElementById("editPhoneNumber").value;
+  let firstName = document.getElementById("editFirstName").value ?? "";
+  let lastName = document.getElementById("editLastName").value ?? "";
+  let email = document.getElementById("editEmailAddress").value ?? "";
+  let phone = document.getElementById("editPhoneNumber").value ?? "";
   let friendLvl = parseInt(
     document.getElementById("editFriendshipLevel").value,
     10

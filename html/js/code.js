@@ -199,10 +199,7 @@ function onClickEdit(i) {
   lastName.value = document.getElementById(`lastName ${i}`).innerText;
   email.value = document.getElementById(`emailAddress ${i}`).innerText;
   phone.value = document.getElementById(`phoneNumber ${i}`).innerText;
-  friendLvl.value = parseInt(
-    document.getElementById(`friendshipLevel ${i}`).innerText,
-    10
-  );
+  friendLvl.value = document.getElementById(`friendshipLevel ${i}`).innerText;
   let createdByUserId = document.getElementById(
     `createdByUserID ${i}`
   ).innerText;
@@ -212,8 +209,8 @@ function onClickEdit(i) {
     lastName: lastName.value ?? "",
     emailAddress: email.value ?? "",
     phoneNumber: phone.value ?? "",
-    friendshipLevel: friendLvl.value ?? 0,
-    createdByUserId: createdByUserId,
+    friendshipLevel: parseInt(friendLvl.value, 10) ?? 0,
+    createdByUserId: parseInt(createdByUserId, 10),
   };
 
   console.log(oldData);

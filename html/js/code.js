@@ -199,7 +199,10 @@ function onClickEdit(i) {
   lastName.value = document.getElementById(`lastName ${i}`).innerText;
   email.value = document.getElementById(`emailAddress ${i}`).innerText;
   phone.value = document.getElementById(`phoneNumber ${i}`).innerText;
-  friendLvl.value = document.getElementById(`friendshipLevel ${i}`).innerText;
+  friendLvl.value = parseInt(
+    document.getElementById(`friendshipLevel ${i}`).innerText,
+    10
+  );
   let createdByUserId = document.getElementById(
     `createdByUserID ${i}`
   ).innerText;

@@ -243,13 +243,13 @@ function editContact(oldData) {
     newPhoneNumber: phone,
   };
 
-  tmp += oldData;
+  let temp = Object.assign({}, tmp, oldData);
 
-  console.log(tmp);
+  let jsonPayload = JSON.stringify(temp);
 
-  let jsonPayload = JSON.stringify(tmp);
+  console.log(jsonPayload);
 
-  let url = urlBase + "/EditContact." + extension;
+  let url = urlBase + "/UpdateContact." + extension;
 
   let xhr = new XMLHttpRequest();
   xhr.open("POST", url, true);

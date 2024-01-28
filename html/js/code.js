@@ -147,8 +147,11 @@ function addContact() {
   let lastName = document.getElementById("lastName").value;
   let email = document.getElementById("emailAddress").value;
   let phone = document.getElementById("phoneNumber").value;
-  friendLvl =
-    parseInt(document.getElementById("friendshipLevel").value, 10) ?? 0;
+  friendLvl = parseInt(document.getElementById("friendshipLevel").value, 10);
+
+  if (!friendLvl) {
+    friendLvl = 0;
+  }
 
   document.getElementById("contactAddResult").innerHTML = "";
   document.getElementById("contactAddResult").className = "label";

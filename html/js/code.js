@@ -124,6 +124,9 @@ $("#addContacts").on("hidden.bs.modal", function (e) {
     .find("input[type=checkbox], input[type=radio]")
     .prop("checked", "")
     .end();
+
+  document.getElementById("addForm").style.display = "block";
+  document.getElementById("addSubmitButton").style.display = "inline-block";
 });
 
 $("#editContacts").on("hidden.bs.modal", function (e) {
@@ -134,6 +137,9 @@ $("#editContacts").on("hidden.bs.modal", function (e) {
     .find("input[type=checkbox], input[type=radio]")
     .prop("checked", "")
     .end();
+
+  document.getElementById("editForm").style.display = "block";
+  document.getElementById("editSubmitButton").style.display = "inline-block";
 });
 
 function addContact() {
@@ -141,11 +147,8 @@ function addContact() {
   let lastName = document.getElementById("lastName").value;
   let email = document.getElementById("emailAddress").value;
   let phone = document.getElementById("phoneNumber").value;
-  friendLvl = parseInt(document.getElementById("friendshipLevel").value, 10);
-
-  if (!friendLvl) {
-    friendLvl = 0;
-  }
+  friendLvl =
+    parseInt(document.getElementById("friendshipLevel").value, 10) ?? 0;
 
   document.getElementById("contactAddResult").innerHTML = "";
   document.getElementById("contactAddResult").className = "label";
@@ -169,6 +172,9 @@ function addContact() {
     xhr.onreadystatechange = function () {
       if (this.readyState == 4) {
         if (this.status == 200) {
+          document.getElementById("addForm").style.display = "none";
+          document.getElementById("addSubmitButton").style.display = "none";
+
           document.getElementById("contactAddResult").className +=
             " label-success";
           document.getElementById("contactAddResult").innerHTML =
@@ -257,6 +263,9 @@ function editContact(oldData) {
     xhr.onreadystatechange = function () {
       if (this.readyState == 4) {
         if (this.status == 200) {
+          document.getElementById("addForm").style.display = "none";
+          document.getElementById("addSubmitButton").style.display = "none";
+
           document.getElementById("contactEditResult").className +=
             " label-success";
           document.getElementById("contactEditResult").innerHTML =

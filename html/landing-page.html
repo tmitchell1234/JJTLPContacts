@@ -122,9 +122,9 @@
             </button>
             <h4 class="modal-title">Add Contact Info</h4>
           </div>
-          <form>
-            <div id="contactModal" class="modal-body">
-              <div id="contactAddResult" class="label"></div>
+          <div id="contactModal" class="modal-body">
+            <div id="contactAddResult" class="label"></div>
+            <div id="addForm">
               <div class="form-group">
                 <!-- First Name field -->
                 <label class="control-label" for="firstName">First Name</label>
@@ -196,6 +196,7 @@
                 Close
               </button>
               <button
+                id="addSubmitButton"
                 type="button"
                 class="btn btn-success"
                 onClick="addContact();"
@@ -203,7 +204,7 @@
                 Submit
               </button>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>
@@ -220,74 +221,78 @@
           <form>
             <div id="contactModal" class="modal-body">
               <div id="contactEditResult" class="label"></div>
-              <div class="form-group">
-                <!-- First Name field -->
-                <label class="control-label" for="firstName">First Name</label>
-                <input
-                  value=""
-                  class="form-control"
-                  id="editFirstName"
-                  name="firstName"
-                  type="text"
-                />
-              </div>
+              <div id="editForm">
+                <div class="form-group">
+                  <!-- First Name field -->
+                  <label class="control-label" for="firstName"
+                    >First Name</label
+                  >
+                  <input
+                    value=""
+                    class="form-control"
+                    id="editFirstName"
+                    name="firstName"
+                    type="text"
+                  />
+                </div>
 
-              <div class="form-group">
-                <!-- Last Name field -->
-                <label class="control-label" for="lastName">Last Name</label>
-                <input
-                  value=""
-                  class="form-control"
-                  id="editLastName"
-                  name="lastName"
-                  type="text"
-                />
-              </div>
+                <div class="form-group">
+                  <!-- Last Name field -->
+                  <label class="control-label" for="lastName">Last Name</label>
+                  <input
+                    value=""
+                    class="form-control"
+                    id="editLastName"
+                    name="lastName"
+                    type="text"
+                  />
+                </div>
 
-              <div class="form-group">
-                <!-- Phone Number field  -->
-                <label class="control-label" for="phoneNumber"
-                  >Phone Number</label
-                >
-                <input
-                  value=""
-                  class="form-control"
-                  id="editPhoneNumber"
-                  name="phoneNumber"
-                  type="tel"
-                  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                />
-                <span id="phoneFormat" class="help-block"
-                  >Follow this format: 123-456-7890</span
-                >
-              </div>
+                <div class="form-group">
+                  <!-- Phone Number field  -->
+                  <label class="control-label" for="phoneNumber"
+                    >Phone Number</label
+                  >
+                  <input
+                    value=""
+                    class="form-control"
+                    id="editPhoneNumber"
+                    name="phoneNumber"
+                    type="tel"
+                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                  />
+                  <span id="phoneFormat" class="help-block"
+                    >Follow this format: 123-456-7890</span
+                  >
+                </div>
 
-              <div class="form-group">
-                <!-- Email Address field -->
-                <label class="control-label" for="emailAddress"
-                  >Email Address</label
-                >
-                <input
-                  value=""
-                  class="form-control"
-                  id="editEmailAddress"
-                  name="emailAddress"
-                  type="email"
-                />
-              </div>
+                <div class="form-group">
+                  <!-- Email Address field -->
+                  <label class="control-label" for="emailAddress"
+                    >Email Address</label
+                  >
+                  <input
+                    value=""
+                    class="form-control"
+                    id="editEmailAddress"
+                    name="emailAddress"
+                    type="email"
+                  />
+                </div>
 
-              <div class="form-group">
-                <!-- Friendship Level field -->
-                <label class="control-label" for="friendshipLevel"
-                  >Friendship Level</label
-                >
-                <input
-                  value=""
-                  class="form-control"
-                  id="editFriendshipLevel"
-                  name="friendshipLevel"
-                  type="number"
-                />
+                <div class="form-group">
+                  <!-- Friendship Level field -->
+                  <label class="control-label" for="friendshipLevel"
+                    >Friendship Level</label
+                  >
+                  <input
+                    value=""
+                    class="form-control"
+                    id="editFriendshipLevel"
+                    name="friendshipLevel"
+                    type="number"
+                  />
+                </div>
               </div>
             </div>
 
@@ -296,6 +301,7 @@
                 Close
               </button>
               <button
+                id="editSubmitButton"
                 type="button"
                 class="btn btn-success"
                 onClick="editContact(oldData);"

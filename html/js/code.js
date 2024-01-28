@@ -127,6 +127,8 @@ $("#addContacts").on("hidden.bs.modal", function (e) {
 
   document.getElementById("addForm").style.display = "block";
   document.getElementById("addSubmitButton").style.display = "inline-block";
+  document.getElementById("contactAddResult").innerHTML = "";
+  document.getElementById("contactAddResult").className = "label";
 });
 
 $("#editContacts").on("hidden.bs.modal", function (e) {

@@ -268,8 +268,8 @@ function editContact(oldData) {
     xhr.onreadystatechange = function () {
       if (this.readyState == 4) {
         if (this.status == 200) {
-          document.getElementById("addForm").style.display = "none";
-          document.getElementById("addSubmitButton").style.display = "none";
+          document.getElementById("editForm").style.display = "none";
+          document.getElementById("editSubmitButton").style.display = "none";
 
           document.getElementById("contactEditResult").className +=
             " label-success";

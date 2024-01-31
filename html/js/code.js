@@ -168,6 +168,8 @@ function addContact() {
   };
   let jsonPayload = JSON.stringify(tmp);
 
+  alert(jsonPayload);
+
   let url = urlBase + "/AddContact." + extension;
 
   let xhr = new XMLHttpRequest();

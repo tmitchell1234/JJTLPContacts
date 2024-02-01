@@ -10,12 +10,13 @@ let srch = "";
 let oldData = {};
 
 function doLogin() {
+
   userId = 0;
   firstName = "";
   lastName = "";
 
-  let login = document.getElementById("loginName").ariaValueMax;
-  let password = document.getElementById("loginPassword");
+  let login = document.getElementById("username").value;
+  let password = document.getElementById("password").value;
 
   var hash = md5(password);
 
@@ -31,6 +32,7 @@ function doLogin() {
   let url = urlBase + "/Login." + extension;
 
   let xhr = new XMLHttpRequest();
+
   xhr.open("POST", url, true);
 
   xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
@@ -42,28 +44,36 @@ function doLogin() {
         userId = jsonObject.id;
 
         if (userId < 1) {
-          document.getElementById("loginResult").innerHTML =
-            "User/Password combination incorrect";
+          document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
           return;
         }
+        else {
+          firstName = jsonObject.firstName;
+          lastName = jsonObject.lastName;
+          saveCookie();
+          window.location.href = "./landing-page.html";
+        }
       }
-
-      firstName = jsonObject.firstName;
-      lastName = jsonObject.lastName;
-
-      saveCookie();
-
-      window.location.href = "color.html";
     };
 
     xhr.send(jsonPayload);
+
   } catch (err) {
     document.getElementById("loginResult").innerHTML = err.message;
   }
 }
 
 // TODO: *** Put Registration Function Here
-function doSignUp() {}
+function doSignUp() {
+  userId = 0;
+  firstName = "";
+  lastName = "";
+
+  let login = document.getElementById("newUsername").value;
+  let password = document.getElementById("newPassword").value;
+
+  alert(login + ': ' + password);
+}
 
 function saveCookie() {
   let minutes = 20;

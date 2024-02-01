@@ -94,9 +94,14 @@
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required>
 
-        <button type="button" onclick="login()">Login</button>
+        
+
+        <button type="button" onclick="doLogin()">Login</button>
 
         <br>
+
+        <div id="loginResult">default1</div>
+
         <p class="toggle-btn" onclick="toggleForm('signup')">Don't have an account? Sign up!</p>
     </form>
 
@@ -108,11 +113,12 @@
         <label for="newPassword">Password:</label>
         <input type="password" id="newPassword" name="newPassword" required>
 
-        <button type="button" onclick="signup()">Sign Up</button>
+        <button type="button" onclick="doSignUp()">Sign Up</button>
 
         <br>
         <p class="toggle-btn" onclick="toggleForm('login')">Already have an account? Login!</p>
     </form>
+
 </div>
 
 <script>
@@ -125,21 +131,13 @@
             document.getElementById('loginForm').style.display = 'block';
         }
     }
-
-    function login() {
-        // Add your login logic here
-        alert('Login button clicked!');
-    }
-
-    function signup() {
-        // Add your signup logic here
-        alert('Signup button clicked!');
-    }
 </script>
 
 	<!-- Bootstrap stuff don't touch -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/code.js"></script>
+    <script src="js/md5.js"></script>
 </body>
 
 </html>

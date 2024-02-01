@@ -27,7 +27,7 @@ function doLogin() {
 
   let jsonPayload = JSON.stringify(tmp);
 
-  alert(jsonPayload);
+  //alert(jsonPayload);
 
   let url = urlBase + "/Login." + extension;
 

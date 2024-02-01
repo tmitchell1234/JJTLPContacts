@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <!-- Default Browser stuff -->
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -11,22 +10,28 @@
     <title>ForestFolio Login</title>
 
     <!-- Bootstrap stuff don't touch -->
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link
+      href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
 
     <!-- Custom CSS Stuff -->
     <link href="css/custom.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-</head>
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
 
-<style>
-
+  <style>
     .login-container {
-        background-color: #52734d80;
-        padding: 20px;
-        border-radius: 8px;
-        width: 300px;
-        text-align: center;
-        margin: 10vh auto;
+      background-color: #52734d80;
+      padding: 20px;
+      border-radius: 8px;
+      width: 300px;
+      text-align: center;
+      margin: 10vh auto;
     }
 
     input {
@@ -52,49 +57,53 @@
     }
   </style>
 
-<body>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-inverse navbar-static-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button
+            type="button"
+            class="navbar-toggle collapsed"
+            data-toggle="collapse"
+            data-target="#navbar-content"
+            aria-expanded="false"
+          >
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">&#x1F332; ForestFolio</a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-content">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="login.html">Login/Sign-up</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-	<!-- Navbar -->
-	<nav class="navbar navbar-inverse navbar-static-top">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-					data-target="#navbar-content" aria-expanded="false">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="index.html">&#x1F332; ForestFolio</a>
-			</div>
-			<div class="collapse navbar-collapse" id="navbar-content">
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="login.html">Login/Sign-up</a></li>
-					<li><a href="about.html">About</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-
-	<!-- Jumbotron -->
-	<div class="jumbotron">
-		<div class="container">
-			<h1>&#x1F332; ForestFolio</h1>
-			<p>Make Connections. Grow your forest.</p>
-		</div>
-	</div>
+    <!-- Jumbotron -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1>&#x1F332; ForestFolio</h1>
+        <p>Make Connections. Grow your forest.</p>
+      </div>
+    </div>
 
     <!-- Login -->
-<div class="login-container">
-    <form id="loginForm">
+    <div class="login-container">
+      <form id="loginForm">
         <h2>Login</h2>
         <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
+        <input type="text" id="username" name="username" required />
 
         <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
+        <input type="password" id="password" name="password" required />
 
-        
+
 
         <button type="button" onclick="doLogin()">Login</button>
 
@@ -105,13 +114,13 @@
         <p class="toggle-btn" onclick="toggleForm('signup')">Don't have an account? Sign up!</p>
     </form>
 
-    <form id="signupForm" style="display: none;">
+      <form id="signupForm" style="display: none">
         <h2>Sign Up</h2>
         <label for="newUsername">Username:</label>
-        <input type="text" id="newUsername" name="newUsername" required>
+        <input type="text" id="newUsername" name="newUsername" required />
 
         <label for="newPassword">Password:</label>
-        <input type="password" id="newPassword" name="newPassword" required>
+        <input type="password" id="newPassword" name="newPassword" required />
 
         <button type="button" onclick="doSignUp()">Sign Up</button>
 
@@ -121,14 +130,14 @@
 
 </div>
 
-<script>
-    function toggleForm(formToShow) {
-        if (formToShow === 'signup') {
-            document.getElementById('loginForm').style.display = 'none';
-            document.getElementById('signupForm').style.display = 'block';
+    <script>
+      function toggleForm(formToShow) {
+        if (formToShow === "signup") {
+          document.getElementById("loginForm").style.display = "none";
+          document.getElementById("signupForm").style.display = "block";
         } else {
-            document.getElementById('signupForm').style.display = 'none';
-            document.getElementById('loginForm').style.display = 'block';
+          document.getElementById("signupForm").style.display = "none";
+          document.getElementById("loginForm").style.display = "block";
         }
     }
 </script>

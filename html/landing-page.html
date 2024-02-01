@@ -65,6 +65,7 @@
               >
                 <div class="input-group">
                   <input
+                    onInput="searchContact()"
                     id="searchText"
                     type="text"
                     class="form-control"
@@ -124,89 +125,97 @@
             </button>
             <h4 class="modal-title">Add Contact Info</h4>
           </div>
-          <div id="contactModal" class="modal-body">
-            <div id="contactAddResult" class="label"></div>
-            <div id="addForm">
-              <div class="form-group">
-                <!-- First Name field -->
-                <label class="control-label" for="firstName">First Name</label>
-                <input
-                  class="form-control"
-                  id="firstName"
-                  name="firstName"
-                  type="text"
-                />
+          <form action="" onsubmit="addContact();return false;">
+            <div id="contactModal" class="modal-body">
+              <div id="contactAddResult" class="label"></div>
+              <div id="addForm">
+                <div class="form-group">
+                  <!-- First Name field -->
+                  <label class="control-label" for="firstName"
+                    >First Name</label
+                  >
+                  <input
+                    class="form-control"
+                    id="firstName"
+                    name="firstName"
+                    type="text"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <!-- Last Name field -->
+                  <label class="control-label" for="lastName">Last Name</label>
+                  <input
+                    class="form-control"
+                    id="lastName"
+                    name="lastName"
+                    type="text"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <!-- Phone Number field  -->
+                  <label class="control-label" for="phoneNumber"
+                    >Phone Number</label
+                  >
+                  <input
+                    class="form-control"
+                    id="phoneNumber"
+                    name="phoneNumber"
+                    type="tel"
+                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                  />
+                  <span id="phoneFormat" class="help-block"
+                    >Follow this format: 123-456-7890</span
+                  >
+                </div>
+
+                <div class="form-group">
+                  <!-- Email Address field -->
+                  <label class="control-label" for="emailAddress"
+                    >Email Address</label
+                  >
+                  <input
+                    class="form-control"
+                    id="emailAddress"
+                    name="emailAddress"
+                    type="email"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <!-- Friendship Level field -->
+                  <label class="control-label" for="friendshipLevel"
+                    >Friendship Level</label
+                  >
+                  <input
+                    class="form-control"
+                    id="friendshipLevel"
+                    name="friendshipLevel"
+                    type="number"
+                  />
+                </div>
               </div>
 
-              <div class="form-group">
-                <!-- Last Name field -->
-                <label class="control-label" for="lastName">Last Name</label>
-                <input
-                  class="form-control"
-                  id="lastName"
-                  name="lastName"
-                  type="text"
-                />
-              </div>
-
-              <div class="form-group">
-                <!-- Phone Number field  -->
-                <label class="control-label" for="phoneNumber"
-                  >Phone Number</label
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  data-dismiss="modal"
                 >
-                <input
-                  class="form-control"
-                  id="phoneNumber"
-                  name="phoneNumber"
-                  type="tel"
-                  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                />
-                <span id="phoneFormat" class="help-block"
-                  >Follow this format: 123-456-7890</span
+                  Close
+                </button>
+                <button
+                  type="submit"
+                  id="addSubmitButton"
+                  type="button"
+                  class="btn btn-success"
                 >
-              </div>
-
-              <div class="form-group">
-                <!-- Email Address field -->
-                <label class="control-label" for="emailAddress"
-                  >Email Address</label
-                >
-                <input
-                  class="form-control"
-                  id="emailAddress"
-                  name="emailAddress"
-                  type="email"
-                />
-              </div>
-
-              <div class="form-group">
-                <!-- Friendship Level field -->
-                <label class="control-label" for="friendshipLevel"
-                  >Friendship Level</label
-                >
-                <input
-                  class="form-control"
-                  id="friendshipLevel"
-                  name="friendshipLevel"
-                  type="number"
-                />
+                  Submit
+                </button>
               </div>
             </div>
-
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">
-                Close
-              </button>
-              <button
-                id="addSubmitButton"
-                type="button"
-                class="btn btn-success"
-                onClick="addContact();"
-              >
-                Submit
-              </button>
-            </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>

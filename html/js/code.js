@@ -49,15 +49,10 @@ function doLogin() {
           return;
         }
         else {
-          console.log("1");
           firstName = jsonObject.firstName;
-          console.log("2");
           lastName = jsonObject.lastName;
-          console.log("3");
           saveCookie();
-          console.log("4");
           window.location.href = "./landing-page.html";
-          console.log("5");
         }
       }
     };
@@ -94,7 +89,7 @@ function saveCookie() {
     ",userId=" +
     userId +
     ";expires=" +
-    date.toGMTSTRing();
+    date.toGMTString();
 }
 
 function readCookie() {

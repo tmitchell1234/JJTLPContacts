@@ -51,6 +51,8 @@ function doLogin() {
         else {
           firstName = jsonObject.firstName;
           lastName = jsonObject.lastName;
+          console.log(firstName);
+          console.log(lastName);
           saveCookie();
           window.location.href = "./landing-page.html";
         }

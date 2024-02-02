@@ -51,10 +51,13 @@ function doLogin() {
         else {
           console.log("1");
           firstName = jsonObject.firstName;
-          lastName = jsonObject.lastName;
-          saveCookie();
-          window.location.href = "./landing-page.html";
           console.log("2");
+          lastName = jsonObject.lastName;
+          console.log("3");
+          saveCookie();
+          console.log("4");
+          window.location.href = "./landing-page.html";
+          console.log("5");
         }
       }
     };

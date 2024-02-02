@@ -10,7 +10,6 @@ let srch = "";
 let oldData = {};
 
 function doLogin() {
-
   userId = 0;
   firstName = "";
   lastName = "";
@@ -45,22 +44,21 @@ function doLogin() {
         console.log("ID: " + userId);
 
         if (userId < 1) {
-          document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
+          document.getElementById("loginResult").innerHTML =
+            "User/Password combination incorrect";
           return;
-        }
-        else {
+        } else {
           firstName = jsonObject.firstName;
           lastName = jsonObject.lastName;
           console.log(firstName);
           console.log(lastName);
           saveCookie();
-          window.location.href = "./landing-page.html";
+          window.location.href = "./landing-page.htsml";
         }
       }
     };
 
     xhr.send(jsonPayload);
-
   } catch (err) {
     document.getElementById("loginResult").innerHTML = err.message;
   }
@@ -75,7 +73,7 @@ function doSignUp() {
   let login = document.getElementById("newUsername").value;
   let password = document.getElementById("newPassword").value;
 
-  alert(login + ': ' + password);
+  alert(login + ": " + password);
 }
 
 function saveCookie() {

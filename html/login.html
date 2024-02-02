@@ -103,16 +103,16 @@
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required />
 
-
-
         <button type="button" onclick="doLogin()">Login</button>
 
-        <br>
+        <br />
 
         <div id="loginResult">default1</div>
 
-        <p class="toggle-btn" onclick="toggleForm('signup')">Don't have an account? Sign up!</p>
-    </form>
+        <p class="toggle-btn" onclick="toggleForm('signup')">
+          Don't have an account? Sign up!
+        </p>
+      </form>
 
       <form id="signupForm" style="display: none">
         <h2>Sign Up</h2>
@@ -124,11 +124,12 @@
 
         <button type="button" onclick="doSignUp()">Sign Up</button>
 
-        <br>
-        <p class="toggle-btn" onclick="toggleForm('login')">Already have an account? Login!</p>
-    </form>
-
-</div>
+        <br />
+        <p class="toggle-btn" onclick="toggleForm('login')">
+          Already have an account? Login!
+        </p>
+      </form>
+    </div>
 
     <script>
       function toggleForm(formToShow) {
@@ -139,14 +140,13 @@
           document.getElementById("signupForm").style.display = "none";
           document.getElementById("loginForm").style.display = "block";
         }
-    }
-</script>
+      }
+    </script>
 
-	<!-- Bootstrap stuff don't touch -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Bootstrap stuff don't touch -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="js/code.js"></script>
     <script src="js/md5.js"></script>
-</body>
-
+  </body>
 </html>

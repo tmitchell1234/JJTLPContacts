@@ -53,7 +53,7 @@ function doLogin() {
           console.log(firstName);
           console.log(lastName);
           saveCookie();
-          window.location.href = "./landing-page.htsml";
+          window.location.href = "./landing-page.html?#";
         }
       }
     };

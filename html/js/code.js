@@ -42,17 +42,19 @@ function doLogin() {
         let jsonObject = JSON.parse(xhr.responseText);
         userId = jsonObject.id;
 
-        console.log(userId);
+        console.log("ID: " + userId);
 
         if (userId < 1) {
           document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
           return;
         }
         else {
+          console.log("1");
           firstName = jsonObject.firstName;
           lastName = jsonObject.lastName;
           saveCookie();
           window.location.href = "./landing-page.html";
+          console.log("2");
         }
       }
     };

@@ -75,7 +75,7 @@ function doSignUp() {
 
   let jsonPayload = JSON.stringify(tmp);
 
-  let url = urlBase + "/Signup." + extension;
+  let url = urlBase + "/SignUp." + extension;
 
   let xhr = new XMLHttpRequest();
 
@@ -101,7 +101,7 @@ function doSignUp() {
         }
       }
     };
-    
+
     xhr.send(jsonPayload);
   } catch (err) {
     document.getElementById("signupResult").innerHTML = err.message;

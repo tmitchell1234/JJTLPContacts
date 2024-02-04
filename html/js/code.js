@@ -236,7 +236,7 @@ function addContact() {
   let tmp = {
     firstName: firstName.trim(),
     lastName: lastName.trim(),
-    createdByUserId: userId.trim(),
+    createdByUserId: userId,
     emailAddress: email.trim(),
     phoneNumber: phone.trim(),
     friendshipLevel: friendLvl,
@@ -324,7 +324,7 @@ function editContact(oldData) {
   let tmp = {
     newFirstName: firstName.trim(),
     newLastName: lastName.trim(),
-    newCreatedByUserId: userId.trim(),
+    newCreatedByUserId: userId,
     newAddress: email.trim(),
     newFriendshipLevel: friendLvl,
     newNumber: phone.trim(),
@@ -395,7 +395,7 @@ function deleteContact(i) {
   let tmp = {
     firstName: firstName.trim(),
     lastName: lastName.trim(),
-    createdByUserId: userId.trim(),
+    createdByUserId: userId,
     emailAddress: email.trim(),
     phoneNumber: phone.trim(),
     friendshipLevel: friendLvl,

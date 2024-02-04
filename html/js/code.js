@@ -28,6 +28,9 @@ function doLogin() {
   let url = urlBase + "/Login." + extension;
 
   let xhr = new XMLHttpRequest();
+  xhr.onerror = function () {
+    console.error("Request failed");
+  };
 
   xhr.open("POST", url, true);
 
@@ -57,11 +60,6 @@ function doLogin() {
     document.getElementById("loginResult").innerHTML = err.message;
   }
 }
-
-xhr.onerror = function () {
-  console.error("Request failed");
-};
-
 
 // TODO: *** Put Registration Function Here
 function doSignUp() {

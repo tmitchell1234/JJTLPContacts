@@ -18,6 +18,8 @@ function doLogin() {
   let password = document.getElementById("password").value;
 
   document.getElementById("loginResult").innerHTML = "";
+  document.getElementById("username").style.color = "inherit";
+  document.getElementById("password").style.color = "inherit";
 
   if(login == "" && password != "") {
     document.getElementById("loginResult").innerHTML = "Error: username field is empty";
@@ -92,6 +94,8 @@ function doSignUp() {
   let newPassword = document.getElementById("newPassword").value;
 
   document.getElementById("signupResult").innerHTML = "";
+  document.getElementById("newUsername").style.color = "inherit";
+  document.getElementById("newPassword").style.color = "inherit";
 
   if(newLogin == "" && newPassword != "") {
     document.getElementById("signupResult").innerHTML = "Error: username field is empty";

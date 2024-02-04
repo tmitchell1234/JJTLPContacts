@@ -42,8 +42,6 @@ function doLogin() {
         let jsonObject = JSON.parse(xhr.responseText);
         userId = jsonObject.id;
 
-        console.log("ID: " + userId);
-
         if (userId < 1) {
           document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
           return;
@@ -51,8 +49,6 @@ function doLogin() {
         else {
           firstName = jsonObject.firstName;
           lastName = jsonObject.lastName;
-          console.log(firstName);
-          console.log(lastName);
           saveCookie();
           window.location.href = "./landing-page.html";
         }

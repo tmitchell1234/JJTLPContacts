@@ -30,10 +30,18 @@
         	$stmt->execute();
         	http_response_code(200);
         	returnWithSuccess();
+			updateFriendshipLevel($conn, $firstName, $lastName, $phoneNumber, $emailAddress);
         	$stmt->close();
 			$conn->close();
 		}
 		
+	}
+
+	function updateFriendshipLevel($conn, $firstName, $lastName, $phoneNumber, $emailAddress)
+	{
+		$stmt = $conn->prepare("UPDATE Contacts SET FriendShipLevel=sum(if(FirstName=? AND LastName=? AND PhoneNumber=? AND EmailAddress=?, 1, 0)) group by CreatedByUserID");
+		$stmt->bind_param("", $firstName, $lastName, $phoneNumber, $emailAddress);
+		$stmt->execute();
 	}
 
 	function getRequestInfo()

@@ -98,11 +98,15 @@ function doSignUp() {
 
     xhr.onreadystatechange = function () {
 
+      console.log("Ready State 2: " + xhr.readyState + ", Status: " + xhr.status);
+
       console.log("Response Text: " + xhr.responseText);
 
       if (this.readyState == 4 && this.status == 200) {
 
         console.log(2);
+
+        console.log("(xhr.responseText: " + xhr.responseText);
 
         let jsonObject = JSON.parse(xhr.responseText);
 

@@ -20,21 +20,23 @@ function doLogin() {
   document.getElementById("loginResult").innerHTML = "";
   document.getElementById("username").style.color = "inherit";
   document.getElementById("password").style.color = "inherit";
+  document.getElementById("username").placeholder = "Username"
+  document.getElementById("password").placeholder = "Password";
 
   if(login == "" && password != "") {
-    document.getElementById("loginResult").innerHTML = "Error: username field is empty";
+    document.getElementById("loginResult").innerHTML = "Username field is empty *";
     document.getElementById("username").style.color = "red";
     document.getElementById("username").placeholder = "Username *"
     return;
   }
   else if(password == "" && login != "") {
-    document.getElementById("loginResult").innerHTML = "Error: password field is empty";
+    document.getElementById("loginResult").innerHTML = "Password field is empty *";
     document.getElementById("password").style.color = "red";
     document.getElementById("password").placeholder = "Password *";
     return;
   }
   else if(login == "" && password == "") {
-    document.getElementById("loginResult").innerHTML = "Error: username and password fields are empty";
+    document.getElementById("loginResult").innerHTML = "Username and password fields are empty *";
     document.getElementById("username").style.color = "red";
     document.getElementById("username").placeholder = "Username *"
     document.getElementById("password").style.color = "red";
@@ -96,21 +98,23 @@ function doSignUp() {
   document.getElementById("signupResult").innerHTML = "";
   document.getElementById("newUsername").style.color = "inherit";
   document.getElementById("newPassword").style.color = "inherit";
+  document.getElementById("newUsername").placeholder = "Username"
+  document.getElementById("newPassword").placeholder = "Password";
 
   if(newLogin == "" && newPassword != "") {
-    document.getElementById("signupResult").innerHTML = "Error: username field is empty";
+    document.getElementById("signupResult").innerHTML = "Username field is empty *";
     document.getElementById("newUsername").style.color = "red";
     document.getElementById("newUsername").placeholder = "Username *"
     return;
   }
   else if(newPassword == "" && newLogin != "") {
-    document.getElementById("signupResult").innerHTML = "Error: password field is empty";
+    document.getElementById("signupResult").innerHTML = "Password field is empty *";
     document.getElementById("newPassword").style.color = "red";
     document.getElementById("newPassword").placeholder = "Password *";
     return;
   }
   else if(newPassword == "" && newLogin == "") {
-    document.getElementById("signupResult").innerHTML = "Error: username and password fields are empty";
+    document.getElementById("signupResult").innerHTML = "Username and password fields are empty *";
     document.getElementById("newUsername").style.color = "red";
     document.getElementById("newUsername").placeholder = "Username *"
     document.getElementById("newPassword").style.color = "red";

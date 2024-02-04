@@ -90,7 +90,7 @@ function doSignUp() {
         userId = jsonObject.id;
 
         if (userId < 1) {
-          document.getElementById("loginResult").innerHTML =
+          document.getElementById("signupResult").innerHTML =
             "User/Password combination incorrect";
           return;
         } else {
@@ -101,7 +101,7 @@ function doSignUp() {
         }
       }
     };
-
+    
     xhr.send(jsonPayload);
   } catch (err) {
     document.getElementById("signupResult").innerHTML = err.message;

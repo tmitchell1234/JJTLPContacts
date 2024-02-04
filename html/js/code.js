@@ -58,6 +58,11 @@ function doLogin() {
   }
 }
 
+xhr.onerror = function () {
+  console.error("Request failed");
+};
+
+
 // TODO: *** Put Registration Function Here
 function doSignUp() {
   userId = 0;
@@ -87,8 +92,16 @@ function doSignUp() {
 
   console.log(1);
 
+  console.log("Ready State: " + xhr.readyState + ", Status: " + xhr.status);
+
   try {
+
+    console.log("Ready State: " + xhr.readyState + ", Status: " + xhr.status);
+
     xhr.onreadystatechange = function () {
+
+      console.log("Response Text: " + xhr.responseText);
+
       if (this.readyState == 4 && this.status == 200) {
 
         console.log(2);

@@ -21,7 +21,7 @@ function doLogin() {
 
   document.getElementById("loginResult").innerHTML = "";
 
-  var tmp = { login: login, password: hash };
+  var tmp = { login: login, password: hash , firstName: "", lastName: ""};
 
   let jsonPayload = JSON.stringify(tmp);
 

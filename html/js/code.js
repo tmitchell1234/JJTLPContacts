@@ -94,52 +94,31 @@ function doSignUp() {
 
   try {
 
-    console.log("Ready State: " + xhr.readyState + ", Status: " + xhr.status);
-
+    //Detects changes in the processing state of xhr
     xhr.onreadystatechange = function () {
 
-      console.log("Ready State 2: " + xhr.readyState + ", Status: " + xhr.status);
+      console.log("Ready State: " + this.readyState + ", Status: " + this.status);
+      console.log("Response Text: " + this.responseText);
 
-      console.log("Response Text: " + xhr.responseText);
+      //xhr request finished processing
+      if (this.readyState == 4) {
 
-      if (this.readyState == 4 && this.status == 200) {
+        console.log("xhr processed successfully");
 
-        console.log(2);
-
-        console.log("(xhr.responseText: " + xhr.responseText);
-
-        let jsonObject = JSON.parse(xhr.responseText);
-
-        console.log(3);
-
-        userId = jsonObject.id;
-
-        console.log(4);
-
-        if (userId < 1) {
-
-          console.log(5);
-
-          document.getElementById("signupResult").innerHTML =
-            "User/Password combination incorrect";
+        if (this.status == 409) {
+          console.log("User taken");
+          document.getElementById("signupResult").innerHTML = "Username is already taken";
           return;
 
-        } else {
-
-          console.log(6);
+        } else if(this.status == 200) {
+          console.log("Adding user");
 
           firstName = jsonObject.firstName;
           lastName = jsonObject.lastName;
 
-          console.log(7);
-
           saveCookie();
 
-          console.log(8);
-
           window.location.href = "./landing-page.html?#";
-
-          console.log(9);
         }
       }
     };

@@ -113,9 +113,6 @@ function doSignUp() {
         } else if(this.status == 200) {
           console.log("Adding user");
 
-          firstName = jsonObject.firstName;
-          lastName = jsonObject.lastName;
-
           saveCookie();
 
           window.location.href = "./landing-page.html?#";

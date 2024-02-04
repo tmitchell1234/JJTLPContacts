@@ -82,6 +82,8 @@ function doSignUp() {
 
   let url = urlBase + "/SignUp." + extension;
 
+  console.log("url: " + url);
+
   let xhr = new XMLHttpRequest();
 
   xhr.open("POST", url, true);
@@ -89,8 +91,6 @@ function doSignUp() {
   xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 
   console.log(1);
-
-  console.log("Ready State: " + xhr.readyState + ", Status: " + xhr.status);
 
   try {
 

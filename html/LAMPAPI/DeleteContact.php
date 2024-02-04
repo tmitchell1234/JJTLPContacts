@@ -20,7 +20,7 @@
 
         if ($result->fetch_assoc()){
             $stmt = $conn->prepare("DELETE from Contacts WHERE FirstName=? AND LastName=? AND CreatedByUserID=? AND PhoneNumber=? AND EmailAddress=?");
-            $stmt->bind_param("ssissi", $firstName, $lastName, $createdByUserId, $phoneNumber, $emailAddress);
+            $stmt->bind_param("ssiss", $firstName, $lastName, $createdByUserId, $phoneNumber, $emailAddress);
             $stmt->execute();
             http_response_code(200);
             updateFriendshipLevel($conn, $firstName, $lastName, $phoneNumber, $emailAddress);

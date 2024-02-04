@@ -22,6 +22,7 @@
 
         if ($result->fetch_assoc()){
             http_response_code(409);
+			updateFriendshipLevel($conn, $firstName, $lastName, $phoneNumber, $emailAddress);
             returnWithError("Contact is already created");
         }
 		else{
@@ -39,7 +40,7 @@
 
 	function updateFriendshipLevel($conn, $firstName, $lastName, $phoneNumber, $emailAddress)
 	{
-		$stmt = $conn->prepare("UPDATE Contacts SET FriendShipLevel=sum(if(FirstName=? AND LastName=? AND PhoneNumber=? AND EmailAddress=?, 1, 0)) group by CreatedByUserID");
+		$stmt = $conn->prepare("UPDATE Contacts SET FriendShipLevel=(sum(if(FirstName=? AND LastName=? AND PhoneNumber=? AND EmailAddress=?, 1, 0))) group by CreatedByUserID");
 		$stmt->bind_param("", $firstName, $lastName, $phoneNumber, $emailAddress);
 		$stmt->execute();
 	}

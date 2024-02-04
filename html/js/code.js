@@ -70,6 +70,19 @@ function doSignUp() {
   let newLogin = document.getElementById("newUsername").value;
   let newPassword = document.getElementById("newPassword").value;
 
+  if(newLogin == "") {
+    document.getElementById("signupResult").innerHTML = "Error: username field is empty";
+    document.getElementById("newUsername").style.color = "red";
+    document.getElementById("newUsername").placeholder = "Username *"
+    return;
+  }
+  else if(newPassword == "") {
+    document.getElementById("signupResult").innerHTML = "Error: password field is empty";
+    document.getElementById("newPassword").style.color = "red";
+    document.getElementById("newPassword").placeholder = "Password *";
+    return;
+  }
+
   var newHash = md5(newPassword);
 
   document.getElementById("signupResult").innerHTML = "";
@@ -107,7 +120,8 @@ function doSignUp() {
 
         if (this.status == 409) {
           console.log("User taken");
-          document.getElementById("signupResult").innerHTML = "Username is already taken";
+          document.getElementById("signupResult").innerHTML = "Error: username is already taken";
+          document.getElementById("SignupResult").color = "red";
           return;
 
         } else if(this.status == 200) {

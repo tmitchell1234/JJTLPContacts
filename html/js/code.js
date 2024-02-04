@@ -64,10 +64,48 @@ function doSignUp() {
   firstName = "";
   lastName = "";
 
-  let login = document.getElementById("newUsername").value;
-  let password = document.getElementById("newPassword").value;
+  let newLogin = document.getElementById("newUsername").value;
+  let newPassword = document.getElementById("newPassword").value;
 
-  alert(login + ": " + password);
+  var newHash = md5(newPassword);
+
+  document.getElementById("signupResult").innerHTML = "";
+
+  var tmp = { login: newLogin, password: newHash };
+
+  let jsonPayload = JSON.stringify(tmp);
+
+  let url = urlBase + "/Signup." + extension;
+
+  let xhr = new XMLHttpRequest();
+
+  xhr.open("POST", url, true);
+
+  xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+  try {
+    xhr.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        let jsonObject = JSON.parse(xhr.responseText);
+        userId = jsonObject.id;
+
+        if (userId < 1) {
+          document.getElementById("loginResult").innerHTML =
+            "User/Password combination incorrect";
+          return;
+        } else {
+          firstName = jsonObject.firstName;
+          lastName = jsonObject.lastName;
+          saveCookie();
+          window.location.href = "./landing-page.html?#";
+        }
+      }
+    };
+
+    xhr.send(jsonPayload);
+  } catch (err) {
+    document.getElementById("signupResult").innerHTML = err.message;
+  }
 }
 
 function saveCookie() {

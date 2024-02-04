@@ -85,21 +85,46 @@ function doSignUp() {
 
   xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 
+  console.log(1);
+
   try {
     xhr.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
+
+        console.log(2);
+
         let jsonObject = JSON.parse(xhr.responseText);
+
+        console.log(3);
+
         userId = jsonObject.id;
 
+        console.log(4);
+
         if (userId < 1) {
+
+          console.log(5);
+
           document.getElementById("signupResult").innerHTML =
             "User/Password combination incorrect";
           return;
+
         } else {
+
+          console.log(6);
+
           firstName = jsonObject.firstName;
           lastName = jsonObject.lastName;
+
+          console.log(7);
+
           saveCookie();
+
+          console.log(8);
+
           window.location.href = "./landing-page.html?#";
+
+          console.log(9);
         }
       }
     };

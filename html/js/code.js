@@ -75,6 +75,8 @@ function doSignUp() {
 
   let jsonPayload = JSON.stringify(tmp);
 
+  alert(jsonPayload);
+
   let url = urlBase + "/SignUp." + extension;
 
   let xhr = new XMLHttpRequest();

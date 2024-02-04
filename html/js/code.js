@@ -25,8 +25,6 @@ function doLogin() {
 
   let jsonPayload = JSON.stringify(tmp);
 
-  //alert(jsonPayload);
-
   let url = urlBase + "/Login." + extension;
 
   let xhr = new XMLHttpRequest();

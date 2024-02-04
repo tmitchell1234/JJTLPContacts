@@ -6,7 +6,6 @@
     $firstName = $inData["firstName"];
     $lastName = $inData["lastName"];
     $createdByUserId = $inData["createdByUserId"];
-    $friendshipLevel = $inData["friendshipLevel"];
 
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
 	if ($conn->connect_error) 
@@ -15,8 +14,8 @@
 	} 
 	else
 	{
-        $stmt = $conn->prepare("SELECT * FROM Contacts WHERE FirstName=? AND LastName=? AND CreatedByUserID=? AND PhoneNumber=? AND EmailAddress=? AND FriendshipLevel=?");
-        $stmt->bind_param("ssissi", $firstName, $lastName, $createdByUserId, $phoneNumber, $emailAddress, $friendshipLevel);
+        $stmt = $conn->prepare("SELECT * FROM Contacts WHERE FirstName=? AND LastName=? AND CreatedByUserID=? AND PhoneNumber=? AND EmailAddress=?");
+        $stmt->bind_param("ssiss", $firstName, $lastName, $createdByUserId, $phoneNumber, $emailAddress);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -26,8 +25,8 @@
             returnWithError("Contact is already created");
         }
 		else{
-			$stmt = $conn->prepare("INSERT into Contacts (FirstName, LastName, CreatedByUserID, PhoneNumber, EmailAddress, FriendshipLevel) VALUES(?,?,?,?,?,?)");
-        	$stmt->bind_param("ssissi", $firstName, $lastName, $createdByUserId, $phoneNumber, $emailAddress, $friendshipLevel);
+			$stmt = $conn->prepare("INSERT into Contacts (FirstName, LastName, CreatedByUserID, PhoneNumber, EmailAddress) VALUES(?,?,?,?,?)");
+        	$stmt->bind_param("ssiss", $firstName, $lastName, $createdByUserId, $phoneNumber, $emailAddress);
         	$stmt->execute();
         	http_response_code(200);
         	returnWithSuccess();

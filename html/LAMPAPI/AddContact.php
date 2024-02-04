@@ -22,6 +22,7 @@
 
         if ($result->fetch_assoc()){
             http_response_code(409);
+			updateFriendshipLevel($conn, $firstName, $lastName, $phoneNumber, $emailAddress);
             returnWithError("Contact is already created");
         }
 		else{

@@ -53,9 +53,6 @@ function doLogin() {
   let url = urlBase + "/Login." + extension;
 
   let xhr = new XMLHttpRequest();
-  xhr.onerror = function () {
-    console.error("Request failed");
-  };
 
   xhr.open("POST", url, true);
 
@@ -128,11 +125,9 @@ function doSignUp() {
 
   let jsonPayload = JSON.stringify(tmp);
 
-  alert(jsonPayload);
-
   let url = urlBase + "/SignUp." + extension;
 
-  console.log("url: " + url);
+  //console.log("URL: " + url);
 
   let xhr = new XMLHttpRequest();
 
@@ -140,15 +135,13 @@ function doSignUp() {
 
   xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 
-  console.log(1);
-
   try {
 
     //Detects changes in the processing state of xhr
     xhr.onreadystatechange = function () {
 
-      console.log("Ready State: " + this.readyState + ", Status: " + this.status);
-      console.log("Response Text: " + this.responseText);
+      //console.log("Ready State: " + this.readyState + ", Status: " + this.status);
+      //console.log("Response Text: " + this.responseText);
 
       //xhr request finished processing
       if (this.readyState == 4) {
@@ -156,13 +149,13 @@ function doSignUp() {
         console.log("xhr processed successfully");
 
         if (this.status == 409) {
-          console.log("User taken");
+          //console.log("User taken");
           document.getElementById("signupResult").innerHTML = "Error: username is already taken";
           document.getElementById("SignupResult").color = "red";
           return;
 
         } else if(this.status == 200) {
-          console.log("Adding user");
+          //console.log("Adding user");
 
           saveCookie();
 

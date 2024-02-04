@@ -17,9 +17,30 @@ function doLogin() {
   let login = document.getElementById("username").value;
   let password = document.getElementById("password").value;
 
-  var hash = md5(password);
-
   document.getElementById("loginResult").innerHTML = "";
+
+  if(login == "" && password != "") {
+    document.getElementById("loginResult").innerHTML = "Error: username field is empty";
+    document.getElementById("username").style.color = "red";
+    document.getElementById("username").placeholder = "Username *"
+    return;
+  }
+  else if(password == "" && login != "") {
+    document.getElementById("loginResult").innerHTML = "Error: password field is empty";
+    document.getElementById("password").style.color = "red";
+    document.getElementById("password").placeholder = "Password *";
+    return;
+  }
+  else if(login == "" && password == "") {
+    document.getElementById("loginResult").innerHTML = "Error: username and password fields are empty";
+    document.getElementById("username").style.color = "red";
+    document.getElementById("username").placeholder = "Username *"
+    document.getElementById("password").style.color = "red";
+    document.getElementById("password").placeholder = "Password *";
+    return;
+  }
+
+  var hash = md5(password);
 
   var tmp = { login: login, password: hash};
 
@@ -70,22 +91,30 @@ function doSignUp() {
   let newLogin = document.getElementById("newUsername").value;
   let newPassword = document.getElementById("newPassword").value;
 
-  if(newLogin == "") {
+  document.getElementById("signupResult").innerHTML = "";
+
+  if(newLogin == "" && newPassword != "") {
     document.getElementById("signupResult").innerHTML = "Error: username field is empty";
     document.getElementById("newUsername").style.color = "red";
     document.getElementById("newUsername").placeholder = "Username *"
     return;
   }
-  else if(newPassword == "") {
+  else if(newPassword == "" && newLogin != "") {
     document.getElementById("signupResult").innerHTML = "Error: password field is empty";
+    document.getElementById("newPassword").style.color = "red";
+    document.getElementById("newPassword").placeholder = "Password *";
+    return;
+  }
+  else if(newPassword == "" && newLogin == "") {
+    document.getElementById("signupResult").innerHTML = "Error: username and password fields are empty";
+    document.getElementById("newUsername").style.color = "red";
+    document.getElementById("newUsername").placeholder = "Username *"
     document.getElementById("newPassword").style.color = "red";
     document.getElementById("newPassword").placeholder = "Password *";
     return;
   }
 
   var newHash = md5(newPassword);
-
-  document.getElementById("signupResult").innerHTML = "";
 
   var tmp = { login: newLogin, password: newHash , firstName: firstName, lastName: lastName };
 

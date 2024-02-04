@@ -9,6 +9,12 @@ let srch = "";
 
 let oldData = {};
 
+var form = document.getElementById("addForm");
+function handleForm(event) {
+  event.preventDefault();
+}
+form.addEventListener("submit", handleForm);
+
 function doLogin() {
   userId = 0;
   firstName = "";

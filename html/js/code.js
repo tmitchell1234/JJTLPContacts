@@ -21,7 +21,7 @@ function doLogin() {
 
   document.getElementById("loginResult").innerHTML = "";
 
-  var tmp = { login: login, password: hash , firstName: firstName, lastName: lastName};
+  var tmp = { login: login, password: hash};
 
   let jsonPayload = JSON.stringify(tmp);
 
@@ -74,7 +74,7 @@ function doSignUp() {
 
   document.getElementById("signupResult").innerHTML = "";
 
-  var tmp = { login: newLogin, password: newHash };
+  var tmp = { login: newLogin, password: newHash , firstName: firstName, lastName: lastName };
 
   let jsonPayload = JSON.stringify(tmp);
 

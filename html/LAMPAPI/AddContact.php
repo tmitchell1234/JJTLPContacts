@@ -40,9 +40,16 @@
 
 	function updateFriendshipLevel($conn, $firstName, $lastName, $phoneNumber, $emailAddress)
 	{
-		$stmt = $conn->prepare("UPDATE Contacts SET FriendShipLevel=(sum(if(FirstName=? AND LastName=? AND PhoneNumber=? AND EmailAddress=?, 1, 0))) group by CreatedByUserID");
-		$stmt->bind_param("", $firstName, $lastName, $phoneNumber, $emailAddress);
+		$stmt = $conn->prepare("SELECT count(*) as NewLevel FROM Contacts WHERE FirstName=? AND LastName=? AND PhoneNumber=? AND EmailAddress=?");
+		$stmt->bind_param("ssss", $firstName, $lastName, $phoneNumber, $emailAddress);
 		$stmt->execute();
+		$result = $stmt->get_result();
+
+		if ($row = $result->fetch_assoc()){
+			$stmt = $conn->prepare("UPDATE Contacts SET FriendshipLevel=? WHERE FirstName=? AND LastName=? AND PhoneNumber=? AND EmailAddress=?");
+			$stmt->bind_param("issss", $row['NewLevel'], $firstName, $lastName, $phoneNumber, $emailAddress);
+			$stmt->execute();
+		}
 	}
 
 	function getRequestInfo()

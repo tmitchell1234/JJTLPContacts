@@ -53,6 +53,9 @@ function doLogin() {
   let url = urlBase + "/Login." + extension;
 
   let xhr = new XMLHttpRequest();
+  xhr.onerror = function () {
+    console.error("Request failed");
+  };
 
   xhr.open("POST", url, true);
 
@@ -125,9 +128,11 @@ function doSignUp() {
 
   let jsonPayload = JSON.stringify(tmp);
 
+  alert(jsonPayload);
+
   let url = urlBase + "/SignUp." + extension;
 
-  //console.log("URL: " + url);
+  console.log("url: " + url);
 
   let xhr = new XMLHttpRequest();
 
@@ -135,31 +140,44 @@ function doSignUp() {
 
   xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 
+  console.log(1);
+
   try {
+    console.log("Ready State: " + xhr.readyState + ", Status: " + xhr.status);
 
-    //Detects changes in the processing state of xhr
     xhr.onreadystatechange = function () {
+      console.log("Response Text: " + xhr.responseText);
 
-      //console.log("Ready State: " + this.readyState + ", Status: " + this.status);
-      //console.log("Response Text: " + this.responseText);
+      if (this.readyState == 4 && this.status == 200) {
+        console.log(2);
 
-      //xhr request finished processing
-      if (this.readyState == 4) {
+        let jsonObject = JSON.parse(xhr.responseText);
 
-        console.log("xhr processed successfully");
+        console.log(3);
 
-        if (this.status == 409) {
-          //console.log("User taken");
-          document.getElementById("signupResult").innerHTML = "Error: username is already taken";
-          document.getElementById("SignupResult").color = "red";
+        userId = jsonObject.id;
+
+        console.log(4);
+
+        if (userId < 1) {
+          console.log(5);
+
+          document.getElementById("signupResult").innerHTML =
+            "User/Password combination incorrect";
           return;
+        } else {
+          console.log(6);
 
         } else if (this.status == 200) {
           //console.log("Adding user");
 
           saveCookie();
 
+          console.log(8);
+
           window.location.href = "./landing-page.html?#";
+
+          console.log(9);
         }
       }
     };
@@ -264,12 +282,12 @@ function addContact() {
   document.getElementById("contactAddResult").className = "label";
 
   let tmp = {
-    firstName: firstName,
-    lastName: lastName,
+    firstName: firstName.trim(),
+    lastName: lastName.trim(),
     createdByUserId: userId,
-    emailAddress: email,
+    emailAddress: email.trim(),
+    phoneNumber: phone.trim(),
     friendshipLevel: friendLvl,
-    phoneNumber: phone,
   };
   let jsonPayload = JSON.stringify(tmp);
 
@@ -326,10 +344,10 @@ function onClickEdit(i) {
   ).innerText;
 
   oldData = {
-    firstName: firstName.value ?? "",
-    lastName: lastName.value ?? "",
-    emailAddress: email.value ?? "",
-    phoneNumber: phone.value ?? "",
+    firstName: firstName.value.trim() ?? "",
+    lastName: lastName.value.trim() ?? "",
+    emailAddress: email.value.trim() ?? "",
+    phoneNumber: phone.value.trim() ?? "",
     friendshipLevel: parseInt(friendLvl.value, 10) ?? 0,
     createdByUserId: parseInt(createdByUserId, 10),
   };
@@ -352,12 +370,12 @@ function editContact(oldData) {
   }
 
   let tmp = {
-    newFirstName: firstName,
-    newLastName: lastName,
+    newFirstName: firstName.trim(),
+    newLastName: lastName.trim(),
     newCreatedByUserId: userId,
-    newAddress: email,
+    newAddress: email.trim(),
     newFriendshipLevel: friendLvl,
-    newNumber: phone,
+    newNumber: phone.trim(),
   };
 
   let temp = Object.assign({}, tmp, oldData);
@@ -423,11 +441,11 @@ function deleteContact(i) {
   document.getElementById("contactSearchResult").className = "label";
 
   let tmp = {
-    firstName: firstName,
-    lastName: lastName,
+    firstName: firstName.trim(),
+    lastName: lastName.trim(),
     createdByUserId: userId,
-    emailAddress: email,
-    phoneNumber: phone,
+    emailAddress: email.trim(),
+    phoneNumber: phone.trim(),
     friendshipLevel: friendLvl,
   };
 
@@ -531,8 +549,8 @@ function convertJSONtoTable(data) {
     <button id="${i}" class="btn btn-info" data-toggle="modal"
     data-target="#editContacts" onclick="onClickEdit(this.id);">
       <span class="glyphicon glyphicon-edit"></span>
-    </button> 
-    &nbsp;&nbsp; 
+    </button>
+    &nbsp;&nbsp;
     <button id="${i}" class="btn btn-danger" onclick="deleteContactWrapper(this.id);">
       <span class="glyphicon glyphicon-trash"></span>
     </button>`;

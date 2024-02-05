@@ -23,19 +23,19 @@ function doLogin() {
   document.getElementById("username").placeholder = "Username"
   document.getElementById("password").placeholder = "Password";
 
-  if(login == "" && password != "") {
+  if (login == "" && password != "") {
     document.getElementById("loginResult").innerHTML = "Username field is empty *";
     document.getElementById("username").style.color = "red";
     document.getElementById("username").placeholder = "Username *"
     return;
   }
-  else if(password == "" && login != "") {
+  else if (password == "" && login != "") {
     document.getElementById("loginResult").innerHTML = "Password field is empty *";
     document.getElementById("password").style.color = "red";
     document.getElementById("password").placeholder = "Password *";
     return;
   }
-  else if(login == "" && password == "") {
+  else if (login == "" && password == "") {
     document.getElementById("loginResult").innerHTML = "Username and password fields are empty *";
     document.getElementById("username").style.color = "red";
     document.getElementById("username").placeholder = "Username *"
@@ -46,7 +46,7 @@ function doLogin() {
 
   var hash = md5(password);
 
-  var tmp = { login: login, password: hash};
+  var tmp = { login: login, password: hash };
 
   let jsonPayload = JSON.stringify(tmp);
 
@@ -98,19 +98,19 @@ function doSignUp() {
   document.getElementById("newUsername").placeholder = "Username"
   document.getElementById("newPassword").placeholder = "Password";
 
-  if(newLogin == "" && newPassword != "") {
+  if (newLogin == "" && newPassword != "") {
     document.getElementById("signupResult").innerHTML = "Username field is empty *";
     document.getElementById("newUsername").style.color = "red";
     document.getElementById("newUsername").placeholder = "Username *"
     return;
   }
-  else if(newPassword == "" && newLogin != "") {
+  else if (newPassword == "" && newLogin != "") {
     document.getElementById("signupResult").innerHTML = "Password field is empty *";
     document.getElementById("newPassword").style.color = "red";
     document.getElementById("newPassword").placeholder = "Password *";
     return;
   }
-  else if(newPassword == "" && newLogin == "") {
+  else if (newPassword == "" && newLogin == "") {
     document.getElementById("signupResult").innerHTML = "Username and password fields are empty *";
     document.getElementById("newUsername").style.color = "red";
     document.getElementById("newUsername").placeholder = "Username *"
@@ -121,7 +121,7 @@ function doSignUp() {
 
   var newHash = md5(newPassword);
 
-  var tmp = { login: newLogin, password: newHash , firstName: firstName, lastName: lastName };
+  var tmp = { login: newLogin, password: newHash, firstName: firstName, lastName: lastName };
 
   let jsonPayload = JSON.stringify(tmp);
 
@@ -154,7 +154,7 @@ function doSignUp() {
           document.getElementById("SignupResult").color = "red";
           return;
 
-        } else if(this.status == 200) {
+        } else if (this.status == 200) {
           //console.log("Adding user");
 
           saveCookie();

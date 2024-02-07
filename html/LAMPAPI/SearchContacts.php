@@ -32,11 +32,11 @@
 		$result = $stmt->get_result();
 
 		$pageSize = 15;
-		$rowsToGrab = $pageSize * $pageNumber;
+		$rowsToGrab = $pageSize * ($pageNumber - 1);
 		$rowNumber = 1;
 		while($row = $result->fetch_assoc())
 		{
-			if(($rowsToGrab < $rowNumber && $rowNumber) <= ($rowsToGrab + $pageSize)){
+			if(($rowsToGrab < $rowNumber) && ($rowNumber <= ($rowsToGrab + $pageSize))){
 				if( $searchCount > 0 )
 				{
 					$searchResults .= ",";
@@ -54,7 +54,7 @@
 		}
 		else
 		{
-			$amountOfContacts = $stmt->num_rows;
+			$amountOfContacts = $result->num_rows;
 			$searchResults = '{"AmountOfContacts" : "' . $amountOfContacts. '"},' . $searchResults;
 			//returnwithInfo($amountOfContacts);
 			returnWithInfo($searchResults);

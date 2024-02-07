@@ -173,3 +173,13 @@ a {
   align-content: center;
   padding: 20px;
 }
+
+thead,
+tbody {
+  display: block;
+}
+
+tbody {
+  overflow-y: auto; /* Trigger vertical scroll    */
+  overflow-x: hidden; /* Hide the horizontal scroll */
+}

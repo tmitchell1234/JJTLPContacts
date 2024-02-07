@@ -9,6 +9,12 @@ let srch = "";
 
 let oldData = {};
 
+$(document).ready(function () {
+  $("#sidebarCollapse").on("click", function () {
+    $("#sidebar").toggleClass("active");
+  });
+});
+
 function doLogin() {
   userId = 0;
   firstName = "";
@@ -20,25 +26,26 @@ function doLogin() {
   document.getElementById("loginResult").innerHTML = "";
   document.getElementById("username").style.color = "inherit";
   document.getElementById("password").style.color = "inherit";
-  document.getElementById("username").placeholder = "Username"
+  document.getElementById("username").placeholder = "Username";
   document.getElementById("password").placeholder = "Password";
 
   if (login == "" && password != "") {
-    document.getElementById("loginResult").innerHTML = "Username field is empty *";
+    document.getElementById("loginResult").innerHTML =
+      "Username field is empty *";
     document.getElementById("username").style.color = "red";
-    document.getElementById("username").placeholder = "Username *"
+    document.getElementById("username").placeholder = "Username *";
     return;
-  }
-  else if (password == "" && login != "") {
-    document.getElementById("loginResult").innerHTML = "Password field is empty *";
+  } else if (password == "" && login != "") {
+    document.getElementById("loginResult").innerHTML =
+      "Password field is empty *";
     document.getElementById("password").style.color = "red";
     document.getElementById("password").placeholder = "Password *";
     return;
-  }
-  else if (login == "" && password == "") {
-    document.getElementById("loginResult").innerHTML = "Username and password fields are empty *";
+  } else if (login == "" && password == "") {
+    document.getElementById("loginResult").innerHTML =
+      "Username and password fields are empty *";
     document.getElementById("username").style.color = "red";
-    document.getElementById("username").placeholder = "Username *"
+    document.getElementById("username").placeholder = "Username *";
     document.getElementById("password").style.color = "red";
     document.getElementById("password").placeholder = "Password *";
     return;
@@ -95,25 +102,26 @@ function doSignUp() {
   document.getElementById("signupResult").innerHTML = "";
   document.getElementById("newUsername").style.color = "inherit";
   document.getElementById("newPassword").style.color = "inherit";
-  document.getElementById("newUsername").placeholder = "Username"
+  document.getElementById("newUsername").placeholder = "Username";
   document.getElementById("newPassword").placeholder = "Password";
 
   if (newLogin == "" && newPassword != "") {
-    document.getElementById("signupResult").innerHTML = "Username field is empty *";
+    document.getElementById("signupResult").innerHTML =
+      "Username field is empty *";
     document.getElementById("newUsername").style.color = "red";
-    document.getElementById("newUsername").placeholder = "Username *"
+    document.getElementById("newUsername").placeholder = "Username *";
     return;
-  }
-  else if (newPassword == "" && newLogin != "") {
-    document.getElementById("signupResult").innerHTML = "Password field is empty *";
+  } else if (newPassword == "" && newLogin != "") {
+    document.getElementById("signupResult").innerHTML =
+      "Password field is empty *";
     document.getElementById("newPassword").style.color = "red";
     document.getElementById("newPassword").placeholder = "Password *";
     return;
-  }
-  else if (newPassword == "" && newLogin == "") {
-    document.getElementById("signupResult").innerHTML = "Username and password fields are empty *";
+  } else if (newPassword == "" && newLogin == "") {
+    document.getElementById("signupResult").innerHTML =
+      "Username and password fields are empty *";
     document.getElementById("newUsername").style.color = "red";
-    document.getElementById("newUsername").placeholder = "Username *"
+    document.getElementById("newUsername").placeholder = "Username *";
     document.getElementById("newPassword").style.color = "red";
     document.getElementById("newPassword").placeholder = "Password *";
     return;
@@ -121,7 +129,12 @@ function doSignUp() {
 
   var newHash = md5(newPassword);
 
-  var tmp = { login: newLogin, password: newHash, firstName: firstName, lastName: lastName };
+  var tmp = {
+    login: newLogin,
+    password: newHash,
+    firstName: firstName,
+    lastName: lastName,
+  };
 
   let jsonPayload = JSON.stringify(tmp);
 
@@ -136,24 +149,21 @@ function doSignUp() {
   xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 
   try {
-
     //Detects changes in the processing state of xhr
     xhr.onreadystatechange = function () {
-
       //console.log("Ready State: " + this.readyState + ", Status: " + this.status);
       //console.log("Response Text: " + this.responseText);
 
       //xhr request finished processing
       if (this.readyState == 4) {
-
         console.log("xhr processed successfully");
 
         if (this.status == 409) {
           //console.log("User taken");
-          document.getElementById("signupResult").innerHTML = "Error: username is already taken";
+          document.getElementById("signupResult").innerHTML =
+            "Error: username is already taken";
           document.getElementById("SignupResult").color = "red";
           return;
-
         } else if (this.status == 200) {
           //console.log("Adding user");
 
@@ -187,7 +197,7 @@ function saveCookie() {
 }
 
 function readCookie() {
-  userId = -1;
+  userId = 1;
   let data = document.cookie;
   let splits = data.split(",");
 
@@ -254,11 +264,6 @@ function addContact() {
   let lastName = document.getElementById("lastName").value;
   let email = document.getElementById("emailAddress").value;
   let phone = document.getElementById("phoneNumber").value;
-  friendLvl = parseInt(document.getElementById("friendshipLevel").value, 10);
-
-  if (!friendLvl) {
-    friendLvl = 0;
-  }
 
   document.getElementById("contactAddResult").innerHTML = "";
   document.getElementById("contactAddResult").className = "label";
@@ -268,7 +273,6 @@ function addContact() {
     lastName: lastName,
     createdByUserId: userId,
     emailAddress: email,
-    friendshipLevel: friendLvl,
     phoneNumber: phone,
   };
   let jsonPayload = JSON.stringify(tmp);
@@ -314,13 +318,11 @@ function onClickEdit(i) {
   let lastName = document.getElementById("editLastName");
   let email = document.getElementById("editEmailAddress");
   let phone = document.getElementById("editPhoneNumber");
-  let friendLvl = document.getElementById("editFriendshipLevel");
 
   firstName.value = document.getElementById(`firstName ${i}`).innerText;
   lastName.value = document.getElementById(`lastName ${i}`).innerText;
   email.value = document.getElementById(`emailAddress ${i}`).innerText;
   phone.value = document.getElementById(`phoneNumber ${i}`).innerText;
-  friendLvl.value = document.getElementById(`friendshipLevel ${i}`).innerText;
   let createdByUserId = document.getElementById(
     `createdByUserID ${i}`
   ).innerText;
@@ -330,7 +332,6 @@ function onClickEdit(i) {
     lastName: lastName.value ?? "",
     emailAddress: email.value ?? "",
     phoneNumber: phone.value ?? "",
-    friendshipLevel: parseInt(friendLvl.value, 10) ?? 0,
     createdByUserId: parseInt(createdByUserId, 10),
   };
 
@@ -342,21 +343,12 @@ function editContact(oldData) {
   let lastName = document.getElementById("editLastName").value ?? "";
   let email = document.getElementById("editEmailAddress").value ?? "";
   let phone = document.getElementById("editPhoneNumber").value ?? "";
-  let friendLvl = parseInt(
-    document.getElementById("editFriendshipLevel").value,
-    10
-  );
-
-  if (!friendLvl) {
-    friendLvl = 0;
-  }
 
   let tmp = {
     newFirstName: firstName,
     newLastName: lastName,
     newCreatedByUserId: userId,
     newAddress: email,
-    newFriendshipLevel: friendLvl,
     newNumber: phone,
   };
 
@@ -414,10 +406,6 @@ function deleteContact(i) {
   let lastName = document.getElementById(`lastName ${i}`).innerText;
   let email = document.getElementById(`emailAddress ${i}`).innerText;
   let phone = document.getElementById(`phoneNumber ${i}`).innerText;
-  let friendLvl = parseInt(
-    document.getElementById(`friendshipLevel ${i}`).innerText,
-    10
-  );
 
   document.getElementById("contactSearchResult").innerHTML = "";
   document.getElementById("contactSearchResult").className = "label";
@@ -428,7 +416,6 @@ function deleteContact(i) {
     createdByUserId: userId,
     emailAddress: email,
     phoneNumber: phone,
-    friendshipLevel: friendLvl,
   };
 
   let jsonPayload = JSON.stringify(tmp);
@@ -491,9 +478,9 @@ function convertJSONtoTable(data) {
     let tr = document.createElement("tr");
     tr.id = `row ${i}`;
 
-    let td = document.createElement("td");
-    td.innerText = i + 1;
-    tr.appendChild(td);
+    // let td = document.createElement("td");
+    // td.innerText = i + 1;
+    // tr.appendChild(td);
 
     td = document.createElement("td");
     td.id = `firstName ${i}`;

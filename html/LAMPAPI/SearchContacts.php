@@ -17,7 +17,7 @@
 	{
 		$searchList = explode(" ", $search);
 		foreach ($searchList as $name){
-			$statement .= "(FirstName LIKE '%" . $name . "%' OR LastName LIKE '%" . $name . "%') AND ";
+			$statement .= "(FirstName LIKE '%" . $name . "%' OR LastName LIKE '%" . $name . "% OR EmailAddress LIKE '%" . $name . "% OR PhoneNumber LIKE '%" . $name . "%') AND ";
 		}
 		$statement = substr($statement,0,-4);
 		$statement .= ") AND CreatedByUserID= " . $inData["createdByUserId"];

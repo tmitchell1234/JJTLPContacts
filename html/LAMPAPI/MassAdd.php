@@ -15,14 +15,15 @@
 	} 
 	else
 	{
-        for ($i = 0; $i < $insertionAmount; $i++){
-            if($i != 0){
-				$newlastName = $lastName . i;
+        $newLastName = $lastName;
+		for ($i = 0; $i < $insertionAmount; $i++){
+			if($i != 0){
+				$newLastName = $lastName . strval( $i );
 			}else{
-				$newfirstName = $lastName;
+				$newLastName = $lastName;
 			}
             $stmt = $conn->prepare("SELECT * FROM Contacts WHERE FirstName=? AND LastName=? AND CreatedByUserID=? AND PhoneNumber=? AND EmailAddress=?");
-            $stmt->bind_param("ssiss", $firstName, $newlastName, $createdByUserId, $phoneNumber, $emailAddress);
+            $stmt->bind_param("ssiss", $firstName, $newLastName, $createdByUserId, $phoneNumber, $emailAddress);
             $stmt->execute();
             $result = $stmt->get_result();
 
@@ -31,12 +32,14 @@
                 //returnWithError("Contact is already created");
             }
             else{
-                $stmt = $conn->prepare("INSERT into Contacts (FirstName, LastName, CreatedByUserID, PhoneNumber, EmailAddress) VALUES(?,?,?,?,?)");
-                $stmt->bind_param("ssiss", $firstName, $newlastName, $createdByUserId, $phoneNumber, $emailAddress);
+				
+				$stmt = $conn->prepare("INSERT into Contacts (FirstName, LastName, CreatedByUserID, PhoneNumber, EmailAddress) VALUES(?,?,?,?,?)");
+                $stmt->bind_param("ssiss", $firstName, $newLastName, $createdByUserId, $phoneNumber, $emailAddress);
                 $stmt->execute();
+				sendResultInfoAsJson("oop");
             }
 
-        	updateFriendshipLevel($conn, $firstName, $newlastName, $phoneNumber, $emailAddress);
+        	updateFriendshipLevel($conn, $firstName, $newLastName, $phoneNumber, $emailAddress);
         }
         
         returnWithSuccess();

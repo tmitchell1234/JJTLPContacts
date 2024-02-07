@@ -15,7 +15,6 @@
 	}
 	else
 	{
-		
 		$searchList = explode(" ", $search);
 		foreach ($searchList as $name){
 			$statement .= "(FirstName LIKE '%" . $name . "%' OR LastName LIKE '%" . $name . "%') AND ";
@@ -38,7 +37,7 @@
 		$rowNumber = 1;
 		while($row = $result->fetch_assoc())
 		{
-			if($rowsToGrab < $rowNumber && $rowNumber <= ($rowsToGrab + $pageSize)){
+			if(($rowsToGrab < $rowNumber) && ($rowNumber <= ($rowsToGrab + $pageSize))){
 				if( $searchCount > 0 )
 				{
 					$searchResults .= ",";

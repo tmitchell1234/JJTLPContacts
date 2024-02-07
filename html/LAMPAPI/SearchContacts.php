@@ -15,6 +15,7 @@
 	}
 	else
 	{
+		
 		$searchList = explode(" ", $search);
 		foreach ($searchList as $name){
 			$statement .= "(FirstName LIKE '%" . $name . "%' OR LastName LIKE '%" . $name . "%') AND ";
@@ -32,11 +33,12 @@
 		$result = $stmt->get_result();
 
 		$pageNumber-=1;
-		$rowsToGrab = 15 * $pageNumber;
+		$pageSize = 15;
+		$rowsToGrab = $pageSize * $pageNumber;
 		$rowNumber = 1;
 		while($row = $result->fetch_assoc())
 		{
-			if($rowsToGrab < $rowNumber && $rowNumber <= ($rowsToGrab + 15)){
+			if($rowsToGrab < $rowNumber && $rowNumber <= ($rowsToGrab + $pageSize)){
 				if( $searchCount > 0 )
 				{
 					$searchResults .= ",";
@@ -54,7 +56,10 @@
 		}
 		else
 		{
-			returnWithInfo( $searchResults );
+			$amountOfContacts = $stmt->num_rows;
+			returnwithInfo($amountOfContacts);
+			returnWithInfo($searchResults);
+			
 		}
 
 		$stmt->close();

@@ -4,7 +4,7 @@
 	$searchResults = "";
 	$searchCount = 0;
 	$search = "" . $inData["search"];
-	$searchPage = $inData["pageNumber"];
+	$pageNumber = $inData["pageNumber"];
 	$statement = "SELECT * FROM Contacts WHERE (";
 		
 
@@ -31,13 +31,12 @@
 
 		$result = $stmt->get_result();
 
-		$pageNumber-=1;
 		$pageSize = 15;
 		$rowsToGrab = $pageSize * $pageNumber;
 		$rowNumber = 1;
 		while($row = $result->fetch_assoc())
 		{
-			if(($rowsToGrab < $rowNumber) && ($rowNumber <= ($rowsToGrab + $pageSize))){
+			if(($rowsToGrab < $rowNumber && $rowNumber) <= ($rowsToGrab + $pageSize)){
 				if( $searchCount > 0 )
 				{
 					$searchResults .= ",";

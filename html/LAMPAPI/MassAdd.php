@@ -18,7 +18,7 @@
         $newLastName = $lastName;
 		for ($i = 0; $i < $insertionAmount; $i++){
 			if($i != 0){
-				$newLastName = $lastName . strval( $i );
+				$newLastName = $lastName . " " . strval( $i );
 			}else{
 				$newLastName = $lastName;
 			}

@@ -1,7 +1,7 @@
 /* Use this sheet to add page customization to Bootstrap components */
 
 body {
-  background: #feffde;
+  background: #efead8;
   font-family: "Montserrat", sans-serif;
 }
 
@@ -75,4 +75,101 @@ a {
 .btn-primary:hover {
   background-color: #f0e2d0;
   border-color: white;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: stretch;
+}
+
+#sidebar {
+  width: 250px;
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 999;
+  background: #52734d;
+  color: #fff;
+  transition: all 0.3s;
+}
+
+.wrapper {
+  display: flex;
+  align-items: stretch;
+}
+
+#sidebar {
+  min-width: 250px;
+  max-width: 250px;
+  background-color: #436850;
+}
+
+#sidebar.active {
+  margin-left: -250px;
+}
+
+#sidebarCollapse {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  #sidebar {
+    margin-left: -250px;
+  }
+  #sidebar.active {
+    margin-left: 0;
+  }
+  #sidebarCollapse {
+    display: inline-block;
+  }
+
+  #addContactButton {
+    margin-left: 20px;
+  }
+}
+
+#content {
+  width: 100%;
+  min-height: 100vh;
+  transition: all 0.3s;
+}
+
+#contacts {
+  border-radius: 15px;
+  border-width: 3px;
+  border-color: #789461;
+  border-style: solid;
+  margin: 20px;
+  background-color: #789461;
+  color: white;
+  min-height: 75%;
+}
+
+.navbar-input-group {
+  font-size: 0px; /*removes whitespace between button and input*/
+}
+
+.navbar-input-group input {
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+.navbar-input-group .btn {
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-left: 0px;
+}
+
+.input-group {
+  margin: 25px;
+}
+
+.sidebarContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
+  padding: 20px;
 }

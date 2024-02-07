@@ -23,96 +23,108 @@
   </head>
 
   <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-inverse navbar-static-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="index.html">&#x1F332; ForestFolio</a>
-          <button
-            type="button"
-            class="btn btn-primary navbar-btn navbar-left"
-            data-toggle="modal"
-            data-target="#addContacts"
+    <div class="wrapper">
+      <!-- Sidebar -->
+      <nav id="sidebar">
+        <div class="container-fluid sidebarContent">
+          <a
+            style="width: 100%"
+            class="sidebar-header text-center"
+            href="index.html"
+            ><h3>&#x1F332; ForestFolio</h3></a
           >
-            <span class="glyphicon glyphicon-plus"></span> Add Contact
-          </button>
+          <hr style="border: 0.5px solid white; width: 100%" />
+          <p>Hi, <span id="userName">Bob</span></p>
           <button
-            id="navButton"
-            type="button"
-            class="navbar-toggle navButton"
-            data-toggle="collapse"
-            data-target="#navbar-collapsible"
+            style="position: absolute; bottom: 25px; left: 25px; width: 80%"
+            class="btn btn-danger"
+            onclick="doLogout()"
           >
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
+            <span>Log Out</span>
           </button>
         </div>
-
-        <!-- Collapsable portion of navbar -->
-        <div class="navbar-collapse collapse" id="navbar-collapsible">
+      </nav>
+      <div id="content">
+        <!-- Navbar -->
+        <nav class="navbar navbar-inverse navbar-static-top">
           <div class="container-fluid">
-            <div class="col-lg-4 col-md-5 col-sm-3">
-              <form
-                class="navbar-form"
-                id="theSearchForm"
-                name="theSearchForm"
-                role="search"
-                method="get"
-                action="#"
-                onsubmit="searchContact()"
+            <div class="d-flex">
+              <button
+                type="button"
+                id="sidebarCollapse"
+                class="btn btn-primary navbar-btn navbar-left glyphicon glyphicon-menu-hamburger"
+              ></button>
+
+              <button
+                id="addContactButton"
+                type="button"
+                style="margin-top: 10px"
+                class="btn btn-primary navbar-btn navbar-left"
+                data-toggle="modal"
+                data-target="#addContacts"
               >
-                <div class="input-group">
-                  <input
-                    onInput="searchContact()"
-                    id="searchText"
-                    type="text"
-                    class="form-control"
-                    placeholder="Search"
-                    action="searchContact()"
-                  />
-                  <div class="input-group-btn">
-                    <div
-                      class="btn btn-primary"
-                      id="search-button"
-                      onclick="searchContact()"
-                    >
-                      Search
-                    </div>
-                  </div>
-                </div>
-              </form>
+                <span class="glyphicon glyphicon-plus"></span> Add Contact
+              </button>
+
+              <div id="contactSearchResult" class="label"></div>
+              <div id="contactDeleteResult" class="label"></div>
             </div>
-            <div id="contactSearchResult" class="label"></div>
-            <div id="contactDeleteResult" class="label"></div>
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="#">Logout</a></li>
-            </ul>
+          </div>
+        </nav>
+
+        <!-- Search Bar -->
+        <form
+          class="form-horizontal"
+          id="theSearchForm"
+          name="theSearchForm"
+          role="search"
+          method="get"
+          action="#"
+          onsubmit="searchContact()"
+        >
+          <div id="searchForm" class="input-group">
+            <input
+              onInput="searchContact()"
+              id="searchText"
+              type="text"
+              class="form-control"
+              placeholder="Search"
+              action="searchContact()"
+            />
+            <div class="input-group-btn">
+              <div
+                class="btn btn-primary"
+                id="search-button"
+                onclick="searchContact()"
+              >
+                Search
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <!-- Contacts Table -->
+        <div id="contacts">
+          <div class="table-responsive">
+            <table
+              id="contactsTable"
+              class="table table-border table-hover table-fit"
+            >
+              <thead>
+                <tr>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Email Address</th>
+                  <th>Phone Number</th>
+                  <th>Friendship Level</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="contactsBody"></tbody>
+            </table>
           </div>
         </div>
       </div>
-    </nav>
-
-    <!-- Contacts Table -->
-    <div class="table-responsive">
-      <table
-        id="contactsTable"
-        class="table table-bordered table-hover table-fit"
-      >
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email Address</th>
-            <th>Phone Number</th>
-            <th>Friendship Level</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody id="contactsBody"></tbody>
-      </table>
     </div>
 
     <!-- Modal Contact Info Add Form-->
@@ -182,19 +194,6 @@
                     type="email"
                   />
                 </div>
-
-                <div class="form-group">
-                  <!-- Friendship Level field -->
-                  <label class="control-label" for="friendshipLevel"
-                    >Friendship Level</label
-                  >
-                  <input
-                    class="form-control"
-                    id="friendshipLevel"
-                    name="friendshipLevel"
-                    type="number"
-                  />
-                </div>
               </div>
 
               <div class="modal-footer">
@@ -220,6 +219,7 @@
       </div>
     </div>
 
+    <!-- Modal Contact Info Edit Form-->
     <div id="editContacts" class="modal fade" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -288,20 +288,6 @@
                     id="editEmailAddress"
                     name="emailAddress"
                     type="email"
-                  />
-                </div>
-
-                <div class="form-group">
-                  <!-- Friendship Level field -->
-                  <label class="control-label" for="friendshipLevel"
-                    >Friendship Level</label
-                  >
-                  <input
-                    value=""
-                    class="form-control"
-                    id="editFriendshipLevel"
-                    name="friendshipLevel"
-                    type="number"
                   />
                 </div>
               </div>

@@ -55,7 +55,8 @@
 		else
 		{
 			$amountOfContacts = $stmt->num_rows;
-			returnwithInfo($amountOfContacts);
+			$searchResults = '{"AmountOfContacts" : "' . $amountOfContacts. '"},' . $searchResults;
+			//returnwithInfo($amountOfContacts);
 			returnWithInfo($searchResults);
 			
 		}

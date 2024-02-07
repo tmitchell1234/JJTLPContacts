@@ -4,6 +4,7 @@
 	$searchResults = "";
 	$searchCount = 0;
 	$search = "" . $inData["search"];
+	$searchPage = $inData["pageNumber"];
 	$statement = "SELECT * FROM Contacts WHERE (";
 		
 
@@ -30,15 +31,21 @@
 
 		$result = $stmt->get_result();
 
+		$pageNumber-=1;
+		$rowsToGrab = 15 * $pageNumber;
+		$rowNumber = 1;
 		while($row = $result->fetch_assoc())
 		{
-			if( $searchCount > 0 )
-			{
-				$searchResults .= ",";
-			}
-			$searchCount++;
+			if($rowsToGrab < $rowNumber && $rowNumber <= ($rowsToGrab + 15)){
+				if( $searchCount > 0 )
+				{
+					$searchResults .= ",";
+				}
+				$searchCount++;
 
-			$searchResults .= '{"FirstName" : "' . $row["FirstName"]. '", "LastName" : "' . $row["LastName"]. '", "EmailAddress" : "' . $row["EmailAddress"]. '", "PhoneNumber" : "' . $row["PhoneNumber"]. '", "CreatedByUserID" : "' . $row["CreatedByUserID"].'", "ID" : "' . $row["ID"].'", "FriendshipLevel" : "' . $row["FriendshipLevel"]. '"}';
+				$searchResults .= '{"FirstName" : "' . $row["FirstName"]. '", "LastName" : "' . $row["LastName"]. '", "EmailAddress" : "' . $row["EmailAddress"]. '", "PhoneNumber" : "' . $row["PhoneNumber"]. '", "CreatedByUserID" : "' . $row["CreatedByUserID"].'", "ID" : "' . $row["ID"].'", "FriendshipLevel" : "' . $row["FriendshipLevel"]. '"}';
+			}
+			$rowNumber++;
 		}
 
 		if( $searchCount == 0 )

@@ -36,7 +36,6 @@
 				$stmt = $conn->prepare("INSERT into Contacts (FirstName, LastName, CreatedByUserID, PhoneNumber, EmailAddress) VALUES(?,?,?,?,?)");
                 $stmt->bind_param("ssiss", $firstName, $newLastName, $createdByUserId, $phoneNumber, $emailAddress);
                 $stmt->execute();
-				sendResultInfoAsJson("oop");
             }
 
         	updateFriendshipLevel($conn, $firstName, $newLastName, $phoneNumber, $emailAddress);

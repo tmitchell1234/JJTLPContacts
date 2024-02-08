@@ -584,8 +584,11 @@ function convertJSONtoTable(jsonData) {
 }
 
 function searchWrapper() {
-  searchContact(1);
-  createPaginationButtons(Math.trunc(numContacts / 13) + 1);
+  searchContact(1).then(() => {
+    let pages = Math.trunc(numContacts / 13);
+    if (pages % 2 != 0) pages += 1;
+    createPaginationButtons(pages);
+  });
 }
 
 function searchContact(page = pageSelected) {

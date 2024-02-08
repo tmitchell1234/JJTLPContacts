@@ -595,13 +595,13 @@ function convertJSONtoTable(data) {
   }
 }
 
-function searchContact() {
+function searchContact(page = pageSelected) {
   srch = document.getElementById("searchText").value;
 
   document.getElementById("contactSearchResult").innerHTML = "";
   document.getElementById("contactSearchResult").className = "label";
 
-  let tmp = { search: srch, createdByUserId: userId, pageNumber: pageSelected };
+  let tmp = { search: srch, createdByUserId: userId, pageNumber: page };
   let jsonPayload = JSON.stringify(tmp);
 
   let url = urlBase + "/SearchContacts." + extension;

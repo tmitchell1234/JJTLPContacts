@@ -583,14 +583,6 @@ function convertJSONtoTable(jsonData) {
   }
 }
 
-function searchWrapper() {
-  searchContact(1).then(() => {
-    let pages = Math.trunc(numContacts / 13);
-    if (pages % 2 != 0) pages += 1;
-    createPaginationButtons(pages);
-  });
-}
-
 function searchContact(page = pageSelected) {
   srch = document.getElementById("searchText").value;
 
@@ -613,7 +605,14 @@ function searchContact(page = pageSelected) {
         if (Object.keys(data).length == 2) {
           jsonData = data["results"];
           convertJSONtoTable(jsonData);
+
           numContacts = jsonData[0].AmountOfContacts;
+          let page = Math.trunc(numContacts / 13);
+
+          if (page == 1) {
+            if (pages % 2 != 0) pages += 1;
+            createPaginationButtons(pages);
+          }
         } else {
           document.getElementById("contactSearchResult").className +=
             " label-danger";

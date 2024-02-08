@@ -80,22 +80,22 @@
           role="search"
           method="get"
           action="#"
-          onsubmit="searchWrapper()"
+          onsubmit="searchContact(1)"
         >
           <div id="searchForm" class="input-group">
             <input
-              onInput="searchWrapper()"
+              onInput="searchContact(1)"
               id="searchText"
               type="text"
               class="form-control"
               placeholder="Search"
-              action="searchWrapper()"
+              action="searchContact(1)"
             />
             <div class="input-group-btn">
               <div
                 class="btn btn-primary"
                 id="search-button"
-                onclick="searchWrapper()"
+                onclick="searchContact(1)"
               >
                 Search
               </div>
@@ -324,7 +324,7 @@
     <script type="text/javascript">
       document.addEventListener("DOMContentLoaded", () => {
         readCookie();
-        searchWrapper();
+        searchContact(1);
       });
     </script>
   </body>

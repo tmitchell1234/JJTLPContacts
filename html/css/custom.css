@@ -146,6 +146,7 @@ a {
   background-color: #789461;
   color: white;
   min-height: 75%;
+  max-height: 75%;
 }
 
 .navbar-input-group {
@@ -172,14 +173,4 @@ a {
   justify-content: space-between;
   align-content: center;
   padding: 20px;
-}
-
-thead,
-tbody {
-  display: block;
-}
-
-tbody {
-  overflow-y: auto; /* Trigger vertical scroll    */
-  overflow-x: hidden; /* Hide the horizontal scroll */
 }

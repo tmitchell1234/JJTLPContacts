@@ -4,6 +4,7 @@ const extension = "php";
 let userId = 0;
 let firstName = "";
 let lastName = "";
+let pageNum = 1;
 
 let srch = "";
 
@@ -472,7 +473,7 @@ function convertJSONtoTable(data) {
     return;
   }
 
-  for (i = 0; i < jsonData.length; i++) {
+  for (i = 1; i < jsonData.length; i++) {
     let item = jsonData[i];
 
     let tr = document.createElement("tr");
@@ -529,13 +530,14 @@ function convertJSONtoTable(data) {
   }
 }
 
-function searchContact() {
+function searchContact(page = 1) {
   srch = document.getElementById("searchText").value;
+  pageNum = page;
 
   document.getElementById("contactSearchResult").innerHTML = "";
   document.getElementById("contactSearchResult").className = "label";
 
-  let tmp = { search: srch, createdByUserId: userId };
+  let tmp = { search: srch, createdByUserId: userId, pageNumber: pageNum };
   let jsonPayload = JSON.stringify(tmp);
 
   let url = urlBase + "/SearchContacts." + extension;

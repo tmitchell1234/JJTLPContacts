@@ -526,9 +526,27 @@ function createPaginationButtons(n) {
   pageSelected = 1;
 }
 
-function convertJSONtoTable(jsonData) {
+function convertJSONtoTable(data) {
+  let jsonData = "";
   let tableBody = document.getElementById("contactsBody");
   tableBody.innerHTML = "";
+
+  if (Object.keys(data).length == 2) {
+    jsonData = data["results"];
+    convertJSONtoTable(jsonData);
+
+    numContacts = jsonData[0].AmountOfContacts;
+    let pages = Math.trunc(numContacts / 13);
+
+    if (page == 1) {
+      if (pages % 2 != 0) pages += 1;
+      createPaginationButtons(pages);
+    }
+  } else {
+    document.getElementById("contactSearchResult").className += " label-danger";
+    document.getElementById("contactSearchResult").innerHTML =
+      "No Records Found";
+  }
 
   for (let i = 1; i < jsonData.length; i++) {
     let item = jsonData[i];
@@ -602,23 +620,7 @@ function searchContact(page = pageSelected) {
       if (this.readyState == 4 && this.status == 200) {
         let data = JSON.parse(xhr.responseText);
 
-        if (Object.keys(data).length == 2) {
-          jsonData = data["results"];
-          convertJSONtoTable(jsonData);
-
-          numContacts = jsonData[0].AmountOfContacts;
-          let page = Math.trunc(numContacts / 13);
-
-          if (page == 1) {
-            if (pages % 2 != 0) pages += 1;
-            createPaginationButtons(pages);
-          }
-        } else {
-          document.getElementById("contactSearchResult").className +=
-            " label-danger";
-          document.getElementById("contactSearchResult").innerHTML =
-            "No Records Found";
-        }
+        convertJSONtoTable(data);
       }
     };
 

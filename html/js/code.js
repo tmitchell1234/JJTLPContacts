@@ -492,7 +492,7 @@ function createPaginationButtons(n) {
 
   document.getElementById("pagination-list").appendChild(listItem);
 
-  for (i = 1; i <= numPages; i++) {
+  for (let i = 1; i <= numPages; i++) {
     let listItem = document.createElement("li");
 
     let pageButton = document.createElement("a");
@@ -542,7 +542,7 @@ function convertJSONtoTable(data) {
 
   createPaginationButtons(Math.trunc(numContacts / 13) + 1);
 
-  for (i = 1; i < jsonData.length; i++) {
+  for (let i = 1; i < jsonData.length; i++) {
     let item = jsonData[i];
 
     let tr = document.createElement("tr");

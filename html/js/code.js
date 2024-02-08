@@ -523,24 +523,9 @@ function createPaginationButtons(n) {
   pageSelected = 1;
 }
 
-function convertJSONtoTable(data) {
-  let jsonData = "";
-
+function convertJSONtoTable(jsonData) {
   let tableBody = document.getElementById("contactsBody");
   tableBody.innerHTML = "";
-
-  if (Object.keys(data).length == 2) {
-    jsonData = data["results"];
-  } else {
-    document.getElementById("contactSearchResult").className += " label-danger";
-    document.getElementById("contactSearchResult").innerHTML =
-      "No Records Found";
-    return;
-  }
-
-  let numContacts = jsonData[i].AmountOfContacts;
-
-  createPaginationButtons(Math.trunc(numContacts / 13) + 1);
 
   for (let i = 1; i < jsonData.length; i++) {
     let item = jsonData[i];
@@ -595,6 +580,11 @@ function convertJSONtoTable(data) {
   }
 }
 
+function searchWrapper() {
+  let numContacts = searchContact(1);
+  createPaginationButtons(Math.trunc(numContacts / 13) + 1);
+}
+
 function searchContact(page = pageSelected) {
   srch = document.getElementById("searchText").value;
 
@@ -617,9 +607,19 @@ function searchContact(page = pageSelected) {
         // document.getElementById("contactSearchResult").innerHTML =
         //   "Contact(s) have been retrieved";
 
-        let jsonObject = JSON.parse(xhr.responseText);
+        let data = JSON.parse(xhr.responseText);
 
-        convertJSONtoTable(jsonObject);
+        if (Object.keys(data).length == 2) {
+          jsonData = data["results"];
+          convertJSONtoTable(jsonDatat);
+          return jsonData[0].AmountOfContacts;
+        } else {
+          document.getElementById("contactSearchResult").className +=
+            " label-danger";
+          document.getElementById("contactSearchResult").innerHTML =
+            "No Records Found";
+          return 0;
+        }
       }
     };
 

@@ -526,14 +526,14 @@ function createPaginationButtons(n) {
   pageSelected = 1;
 }
 
-function convertJSONtoTable(data) {
+function convertJSONtoTable(data, page) {
   let jsonData = "";
+
   let tableBody = document.getElementById("contactsBody");
   tableBody.innerHTML = "";
 
   if (Object.keys(data).length == 2) {
     jsonData = data["results"];
-    convertJSONtoTable(jsonData);
 
     numContacts = jsonData[0].AmountOfContacts;
     let pages = Math.trunc(numContacts / 13);
@@ -620,7 +620,7 @@ function searchContact(page = pageSelected) {
       if (this.readyState == 4 && this.status == 200) {
         let data = JSON.parse(xhr.responseText);
 
-        convertJSONtoTable(data);
+        convertJSONtoTable(data, page);
       }
     };
 

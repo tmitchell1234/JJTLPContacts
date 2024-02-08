@@ -7,6 +7,7 @@ let lastName = "";
 
 let pageSelected = 1;
 let numPages = 1;
+let numContacts = 0;
 
 let srch = "";
 
@@ -493,7 +494,7 @@ function createPaginationButtons(n) {
   document.getElementById("pagination-list").appendChild(listItem);
 
   for (let i = 1; i <= numPages; i++) {
-    let listItem = document.createElement("li");
+    listItem = document.createElement("li");
 
     let pageButton = document.createElement("a");
     pageButton.innerText = `${i}`;
@@ -581,7 +582,7 @@ function convertJSONtoTable(jsonData) {
 }
 
 function searchWrapper() {
-  let numContacts = searchContact(1);
+  searchContact(1);
   createPaginationButtons(Math.trunc(numContacts / 13) + 1);
 }
 
@@ -611,14 +612,13 @@ function searchContact(page = pageSelected) {
 
         if (Object.keys(data).length == 2) {
           jsonData = data["results"];
-          convertJSONtoTable(jsonDatat);
-          return jsonData[0].AmountOfContacts;
+          convertJSONtoTable(jsonData);
+          numContacts = jsonData[0].AmountOfContacts;
         } else {
           document.getElementById("contactSearchResult").className +=
             " label-danger";
           document.getElementById("contactSearchResult").innerHTML =
             "No Records Found";
-          return 0;
         }
       }
     };

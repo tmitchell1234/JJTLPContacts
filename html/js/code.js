@@ -480,6 +480,8 @@ function onButtonPageChange(i) {
 function createPaginationButtons(n) {
   numPages = n + 1;
 
+  document.getElementById("pagination-list").innerHTML = "";
+
   let listItem = document.createElement("li");
   let backButton = document.createElement("a");
   backButton.innerHTML = `
@@ -603,11 +605,6 @@ function searchContact(page = pageSelected) {
   try {
     xhr.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
-        // document.getElementById("contactSearchResult").className +=
-        //   " label-success";
-        // document.getElementById("contactSearchResult").innerHTML =
-        //   "Contact(s) have been retrieved";
-
         let data = JSON.parse(xhr.responseText);
 
         if (Object.keys(data).length == 2) {

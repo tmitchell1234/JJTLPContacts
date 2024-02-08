@@ -4,7 +4,9 @@ const extension = "php";
 let userId = 0;
 let firstName = "";
 let lastName = "";
-let pageNum = 1;
+
+let pageSelected = 1;
+let numPages = 1;
 
 let srch = "";
 
@@ -458,6 +460,69 @@ function deleteContact(i) {
   }
 }
 
+function onArrowPageChange(i) {
+  if (pageSelected + i > numPages || pageSelected + i < 1) return;
+
+  document.getElementById(`Page ${pageSelected}`).classList.remove("active");
+  pageSelected += i;
+  searchContact();
+  document.getElementById(`Page ${pageSelected}`).classList.add("active");
+}
+
+function onButtonPageChange(i) {
+  document.getElementById(`Page ${pageSelected}`).classList.remove("active");
+  pageSelected = i;
+  searchContact();
+  document.getElementById(`Page ${pageSelected}`).classList.add("active");
+}
+
+function createPaginationButtons(n) {
+  numPages = n + 1;
+
+  let listItem = document.createElement("li");
+  let backButton = document.createElement("a");
+  backButton.innerHTML = `
+    <span aria-hidden="true">&laquo;</span>`;
+
+  backButton.setAttribute("id", "backArrrow");
+  backButton.setAttribute("aria-label", "Previous");
+  backButton.setAttribute("onclick", `onArrowPageChange(${-1})`);
+
+  listItem.appendChild(backButton);
+
+  document.getElementById("pagination-list").appendChild(listItem);
+
+  for (i = 1; i <= numPages; i++) {
+    let listItem = document.createElement("li");
+
+    let pageButton = document.createElement("a");
+    pageButton.innerText = `${i}`;
+    pageButton.setAttribute("onclick", `onButtonPageChange(${i})`);
+
+    listItem.appendChild(pageButton);
+    listItem.id = `Page ${i}`;
+
+    document.getElementById("pagination-list").appendChild(listItem);
+  }
+
+  listItem = document.createElement("li");
+  let forwardButton = document.createElement("a");
+  forwardButton.innerHTML = `
+    <span aria-hidden="true">&raquo;</span>`;
+
+  forwardButton.setAttribute("id", "forwardArrow");
+  forwardButton.setAttribute("aria-label", "Next");
+  forwardButton.setAttribute("onclick", `onArrowPageChange(${1})`);
+
+  listItem.appendChild(forwardButton);
+
+  document.getElementById("pagination-list").appendChild(listItem);
+
+  document.getElementById(`Page 1`).classList.add("active");
+
+  pageSelected = 1;
+}
+
 function convertJSONtoTable(data) {
   let jsonData = "";
 
@@ -473,15 +538,15 @@ function convertJSONtoTable(data) {
     return;
   }
 
+  let numContacts = jsonData[i].AmountOfContacts;
+
+  createPaginationButtons(Math.trunc(numContacts / 13) + 1);
+
   for (i = 1; i < jsonData.length; i++) {
     let item = jsonData[i];
 
     let tr = document.createElement("tr");
     tr.id = `row ${i}`;
-
-    // let td = document.createElement("td");
-    // td.innerText = i + 1;
-    // tr.appendChild(td);
 
     td = document.createElement("td");
     td.id = `firstName ${i}`;
@@ -530,14 +595,13 @@ function convertJSONtoTable(data) {
   }
 }
 
-function searchContact(page = 1) {
+function searchContact() {
   srch = document.getElementById("searchText").value;
-  pageNum = page;
 
   document.getElementById("contactSearchResult").innerHTML = "";
   document.getElementById("contactSearchResult").className = "label";
 
-  let tmp = { search: srch, createdByUserId: userId, pageNumber: pageNum };
+  let tmp = { search: srch, createdByUserId: userId, pageNumber: pageSelected };
   let jsonPayload = JSON.stringify(tmp);
 
   let url = urlBase + "/SearchContacts." + extension;

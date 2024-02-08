@@ -134,6 +134,7 @@ a {
 #content {
   width: 100%;
   min-height: 100vh;
+  max-height: 100vh;
   transition: all 0.3s;
 }
 
@@ -145,8 +146,10 @@ a {
   margin: 20px;
   background-color: #789461;
   color: white;
+
   min-height: 75%;
   max-height: 75%;
+  overflow-y: hidden;
 }
 
 .navbar-input-group {
@@ -173,4 +176,30 @@ a {
   justify-content: space-between;
   align-content: center;
   padding: 20px;
+}
+
+.pagination {
+  margin: 0;
+}
+
+.pagination > li > a,
+.pagination > li > span {
+  color: #ae876d !important;
+}
+
+.pagination > .active > a,
+.pagination > .active > a:focus,
+.pagination > .active > a:hover,
+.pagination > .active > span,
+.pagination > .active > span:focus,
+.pagination > .active > span:hover {
+  background-color: #436850 !important;
+  border-color: #436850 !important;
+  color: white !important;
+}
+
+#selectorContainer {
+  width: 100%;
+  padding-left: auto;
+  text-align: center;
 }

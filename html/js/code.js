@@ -536,7 +536,7 @@ function convertJSONtoTable(data, page) {
     jsonData = data["results"];
 
     numContacts = jsonData[0].AmountOfContacts;
-    let pages = Math.trunc(numContacts / 13);
+    let pages = Math.trunc(numContacts / 10);
 
     if (page == 1) {
       if (pages % 2 != 0) pages += 1;

@@ -182,6 +182,26 @@ function doSignUp() {
   }
 }
 
+function showPassword() {
+  let field = document.getElementById("password");
+  if(field.type == "password") {
+    field.type = "text";
+  }
+  else {
+    field.type = "password";
+  }
+}
+
+function showNewPassword() {
+  let field = document.getElementById("newPassword");
+  if(field.type == "password") {
+    field.type = "text";
+  }
+  else {
+    field.type = "password";
+  }
+}
+
 function saveCookie() {
   let minutes = 20;
   let date = new Date();

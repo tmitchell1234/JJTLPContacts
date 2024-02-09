@@ -144,7 +144,7 @@ function doSignUp() {
 
   let url = urlBase + "/SignUp." + extension;
 
-  //console.log("URL: " + url);
+  //
 
   let xhr = new XMLHttpRequest();
 
@@ -155,21 +155,19 @@ function doSignUp() {
   try {
     //Detects changes in the processing state of xhr
     xhr.onreadystatechange = function () {
-      //console.log("Ready State: " + this.readyState + ", Status: " + this.status);
-      //console.log("Response Text: " + this.responseText);
+      //
+      //
 
       //xhr request finished processing
       if (this.readyState == 4) {
-        console.log("xhr processed successfully");
-
         if (this.status == 409) {
-          //console.log("User taken");
+          //
           document.getElementById("signupResult").innerHTML =
             "Error: username is already taken";
           document.getElementById("SignupResult").color = "red";
           return;
         } else if (this.status == 200) {
-          //console.log("Adding user");
+          //
 
           saveCookie();
 
@@ -281,8 +279,6 @@ function addContact() {
   };
   let jsonPayload = JSON.stringify(tmp);
 
-  alert(jsonPayload);
-
   let url = urlBase + "/AddContact." + extension;
 
   let xhr = new XMLHttpRequest();
@@ -339,8 +335,6 @@ function onClickEdit(i) {
     phoneNumber: phone.value ?? "",
     createdByUserId: parseInt(createdByUserId, 10),
   };
-
-  console.log(oldData);
 }
 
 function editContact(oldData) {
@@ -360,8 +354,6 @@ function editContact(oldData) {
   let temp = Object.assign({}, tmp, oldData);
 
   let jsonPayload = JSON.stringify(temp);
-
-  console.log(jsonPayload);
 
   let url = urlBase + "/UpdateContact." + extension;
 
@@ -424,8 +416,6 @@ function deleteContact(i) {
   };
 
   let jsonPayload = JSON.stringify(tmp);
-
-  console.log(jsonPayload);
 
   let url = urlBase + "/DeleteContact." + extension;
 

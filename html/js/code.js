@@ -435,29 +435,26 @@ function deleteContact(i) {
     xhr.onreadystatechange = function () {
       if (this.readyState == 4) {
         if (this.status == 200) {
-          document.getElementById("contactDeleteResult").className +=
-            " label-danger";
-          document.getElementById("contactDeleteResult").innerHTML =
+          document.getElementById("contactResult").className += " label-danger";
+          document.getElementById("contactResult").innerHTML =
             "Contact has been Deleted";
 
           document.getElementById(`row ${i}`).remove();
 
-          document.getElementById("contactDeleteResult").className +=
-            " label-danger";
+          document.getElementById("contactResult").className += " label-danger";
 
           searchContact(1);
         } else {
           err = JSON.parse(xhr.responseText).error;
-          document.getElementById("contactDeleteResult").className +=
-            " label-info";
-          document.getElementById("contactDeleteResult").innerHTML = err;
+          document.getElementById("contactResult").className += " label-info";
+          document.getElementById("contactResult").innerHTML = err;
         }
       }
     };
     xhr.send(jsonPayload);
   } catch (err) {
-    document.getElementById("contactDeleteResult").className += " label-info";
-    document.getElementById("contactDeleteResult").innerHTML = err.message;
+    document.getElementById("contactResult").className += " label-info";
+    document.getElementById("contactResult").innerHTML = err.message;
   }
 }
 
@@ -543,9 +540,8 @@ function convertJSONtoTable(data, page) {
       createPaginationButtons(pages);
     }
   } else {
-    document.getElementById("contactSearchResult").className += " label-danger";
-    document.getElementById("contactSearchResult").innerHTML =
-      "No Records Found";
+    document.getElementById("contactResult").className += " label-danger";
+    document.getElementById("contactResult").innerHTML = "No Records Found";
   }
 
   for (let i = 1; i < jsonData.length; i++) {
@@ -604,8 +600,8 @@ function convertJSONtoTable(data, page) {
 function searchContact(page = pageSelected) {
   srch = document.getElementById("searchText").value;
 
-  document.getElementById("contactSearchResult").innerHTML = "";
-  document.getElementById("contactSearchResult").className = "label";
+  document.getElementById("contactResult").innerHTML = "";
+  document.getElementById("contactResult").className = "label";
 
   let tmp = { search: srch, createdByUserId: userId, pageNumber: page };
   let jsonPayload = JSON.stringify(tmp);

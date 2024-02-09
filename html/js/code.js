@@ -445,7 +445,7 @@ function deleteContact(i) {
           document.getElementById("contactDeleteResult").className +=
             " label-danger";
 
-          searchContact();
+          searchContact(1);
         } else {
           err = JSON.parse(xhr.responseText).error;
           document.getElementById("contactDeleteResult").className +=
@@ -478,7 +478,7 @@ function onButtonPageChange(i) {
 }
 
 function createPaginationButtons(n) {
-  numPages = n + 1;
+  numPages = n;
 
   document.getElementById("pagination-list").innerHTML = "";
 

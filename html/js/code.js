@@ -411,8 +411,8 @@ function deleteContact(i) {
   let email = document.getElementById(`emailAddress ${i}`).innerText;
   let phone = document.getElementById(`phoneNumber ${i}`).innerText;
 
-  document.getElementById("contactSearchResult").innerHTML = "";
-  document.getElementById("contactSearchResult").className = "label";
+  document.getElementById("contactResult").innerHTML = "";
+  document.getElementById("contactResult").className = "label";
 
   let tmp = {
     firstName: firstName,
@@ -622,7 +622,7 @@ function searchContact(page = pageSelected) {
 
     xhr.send(jsonPayload);
   } catch (err) {
-    document.getElementById("contactSearchResult").className += " label-danger";
-    document.getElementById("contactSearchResult").innerHTML = err.message;
+    document.getElementById("contactResult").className += " label-danger";
+    document.getElementById("contactResult").innerHTML = err.message;
   }
 }

@@ -204,3 +204,8 @@ a {
   padding-left: auto;
   text-align: center;
 }
+
+.table-hover tbody tr:hover td,
+.table-hover tbody tr:hover th {
+  color: #436850;
+}

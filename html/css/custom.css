@@ -56,13 +56,12 @@ a {
   background-color: #ae876d;
 }
 
-#contactSearchResult,
-#contactDeleteResult {
+#contactAddResult {
   display: inline-block;
   margin-top: 1.6em;
 }
 
-#contactAddResult {
+#contactResult {
   display: inline-block;
   margin-bottom: 1.5em;
 }

@@ -531,6 +531,7 @@ function convertJSONtoTable(data, page) {
       createPaginationButtons(pages);
     }
   } else {
+    createPaginationButtons(1);
     document.getElementById("contactResult").className += " label-danger";
     document.getElementById("contactResult").innerHTML = "No Records Found";
   }

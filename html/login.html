@@ -83,7 +83,7 @@
   </div>
 
   <!-- Login -->
-  <div class="login-container">
+  <div class="login-container" style="width:400px;">
     <form id="loginForm">
       <h2>Login</h2>
       <label for="username">Username:</label>
@@ -94,8 +94,9 @@
 
       <div style="white-space: nowrap;">
         Show Password:
-        <input type="checkbox" style="width:20px" onclick="showPassword()">
+        <input type="checkbox" style="width:20px" autocomplete="off" onclick="showPassword()">
       </div>
+
 
       <button type="button" onclick="doLogin()">Login</button>
 
@@ -118,14 +119,14 @@
 
       <div style="white-space: nowrap;">
         Show Password:
-        <input type="checkbox" style="width:20px" onclick="showNewPassword()">
+        <input type="checkbox" style="width:20px" autocomplete="off" onclick="showNewPassword()">
       </div>
 
       <button type="button" onclick="doSignUp()">Sign Up</button>
 
-      <br />
-
       <div id="signupResult"></div>
+      <div id="passwordCheck"
+        style="white-space: pre;text-align: center;display: flex;align-items: center;justify-content: center;"></div>
 
       <p class="toggle-btn" onclick="toggleForm('login')">
         Already have an account? Login!

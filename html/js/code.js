@@ -131,6 +131,33 @@ function doSignUp() {
     return;
   }
 
+  let regExUppercase = /[A-Z]/;
+  let regExLowercase = /[a-z]/;
+  let regExNumber = /\d/;
+  let regExSpecialChar = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~ ]/;
+  let password = document.getElementById("newPassword").value;
+  let errorField = document.getElementById("passwordCheck");
+  let errorMessage = ""
+  if (password.length < 8) {
+    errorMessage += "Password must be at least 8 characters long *\n";
+  }
+  if (!regExUppercase.test(password)) {
+    errorMessage += "Password must contain an uppercase letter *\n";
+  }
+  if (!regExLowercase.test(password)) {
+    errorMessage += "Password must contain a lowercase letter *\n"
+  }
+  if (!regExNumber.test(password)) {
+    errorMessage += "Password must contain a number *\n"
+  }
+  if (!regExSpecialChar.test(password)) {
+    errorMessage += "Password must contain a special character *"
+  }
+  errorField.innerHTML = errorMessage;
+  if(errorMessage != "") {
+    return;
+  }
+
   var newHash = md5(newPassword);
 
   var tmp = {
@@ -194,7 +221,7 @@ function toggleForm(formToShow) {
 
 function showPassword() {
   let field = document.getElementById("password");
-  if(field.type == "password") {
+  if (field.type == "password") {
     field.type = "text";
   }
   else {
@@ -204,7 +231,7 @@ function showPassword() {
 
 function showNewPassword() {
   let field = document.getElementById("newPassword");
-  if(field.type == "password") {
+  if (field.type == "password") {
     field.type = "text";
   }
   else {

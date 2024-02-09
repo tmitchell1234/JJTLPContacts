@@ -23,7 +23,7 @@
         $result = $stmt->get_result();
         if ($result->fetch_assoc()){
             $stmt = $conn->prepare("UPDATE Contacts SET FirstName=?, LastName=?, PhoneNumber=?, EmailAddress=? WHERE FirstName=? AND LastName=? AND PhoneNumber=? AND EmailAddress=? AND CreatedByUserID=?");
-            $stmt->bind_param("ssssssssi", $newFirstName, $newLastName, $newNumber, $newAddress, $newFriendshipLevel, $firstName, $lastName, $phoneNumber, $emailAddress, $createdByUserId);
+            $stmt->bind_param("ssssssssi", $newFirstName, $newLastName, $newNumber, $newAddress, $firstName, $lastName, $phoneNumber, $emailAddress, $createdByUserId);
             $stmt->execute();
             http_response_code(200);
             updateFriendshipLevel($conn, $firstName, $lastName, $phoneNumber, $emailAddress);

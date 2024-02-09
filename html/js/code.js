@@ -405,7 +405,7 @@ function deleteContact(i) {
   let phone = document.getElementById(`phoneNumber ${i}`).innerText;
 
   document.getElementById("contactResult").innerHTML = "";
-  document.getElementById("contactResult").className = "label";
+  document.getElementById("contactResult").className = "label navbar-right";
 
   let tmp = {
     firstName: firstName,
@@ -592,7 +592,7 @@ function searchContact(page = pageSelected) {
   srch = document.getElementById("searchText").value;
 
   document.getElementById("contactResult").innerHTML = "";
-  document.getElementById("contactResult").className = "label";
+  document.getElementById("contactResult").className = "label navbar-right";
 
   let tmp = { search: srch, createdByUserId: userId, pageNumber: page };
   let jsonPayload = JSON.stringify(tmp);

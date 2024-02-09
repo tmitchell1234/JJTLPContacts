@@ -182,6 +182,16 @@ function doSignUp() {
   }
 }
 
+function toggleForm(formToShow) {
+  if (formToShow === "signup") {
+    document.getElementById("loginForm").style.display = "none";
+    document.getElementById("signupForm").style.display = "block";
+  } else {
+    document.getElementById("signupForm").style.display = "none";
+    document.getElementById("loginForm").style.display = "block";
+  }
+}
+
 function showPassword() {
   let field = document.getElementById("password");
   if(field.type == "password") {

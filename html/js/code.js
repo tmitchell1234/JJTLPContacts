@@ -299,6 +299,7 @@ function addContact() {
             " label-success";
           document.getElementById("contactAddResult").innerHTML =
             "Contact has been added";
+          searchContact(1);
         } else {
           err = JSON.parse(xhr.responseText).error;
           document.getElementById("contactAddResult").className +=
@@ -533,10 +534,10 @@ function convertJSONtoTable(data, page) {
     jsonData = data["results"];
 
     numContacts = jsonData[0].AmountOfContacts;
-    let pages = Math.trunc(numContacts / 10);
+    let pages = numContacts / 10;
 
     if (page == 1) {
-      if (pages % 2 != 0) pages += 1;
+      if (pages % 1 != 0) pages += 1;
       createPaginationButtons(pages);
     }
   } else {

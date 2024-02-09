@@ -222,7 +222,7 @@ function readCookie() {
     window.location.href = "index.html";
   } else {
     document.getElementById("userName").innerHTML =
-      "Logged in as " + firstName + " " + lastName;
+      "Logged in as \n" + firstName + " " + lastName;
   }
 }
 

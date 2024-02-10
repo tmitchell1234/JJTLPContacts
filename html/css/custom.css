@@ -209,3 +209,10 @@ a {
 .table-hover tbody tr:hover th {
   color: #436850;
 }
+
+#login-body {
+  background-image: url(../assets/evergreen.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}

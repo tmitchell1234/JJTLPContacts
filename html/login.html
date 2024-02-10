@@ -97,7 +97,7 @@
 
     <!-- Login -->
     <div class="login-container" style="width: 400px">
-      <form id="loginForm">
+      <form id="loginForm" onsubmit="doLogin()">
         <h2>Login</h2>
         <label for="username">Username:</label>
         <input
@@ -138,7 +138,7 @@
         </p>
       </form>
 
-      <form id="signupForm" style="display: none">
+      <form id="signupForm" style="display: none" onsubmit="doSignUp()">
         <h2>Sign Up</h2>
         <label for="newUsername">Username:</label>
         <input

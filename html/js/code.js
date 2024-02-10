@@ -642,7 +642,18 @@ function convertJSONtoTable(data, page) {
 
     tableBody.appendChild(tr);
   }
+
+  $.jQueryAnimate();
 }
+
+$.jQueryAnimate = function () {
+  $("table tr").hide();
+  $("table tr").each(function (index) {
+    $(this)
+      .delay(index * 500)
+      .show(1000);
+  });
+};
 
 function searchContact(page = pageSelected) {
   srch = document.getElementById("searchText").value;
@@ -673,10 +684,3 @@ function searchContact(page = pageSelected) {
     document.getElementById("contactResult").innerHTML = err.message;
   }
 }
-
-$("table tr").hide();
-$("table tr").each(function (index) {
-  $(this)
-    .delay(index * 500)
-    .show(1000);
-});

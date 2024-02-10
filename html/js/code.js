@@ -650,8 +650,8 @@ $.jQueryAnimate = function () {
   $("tbody tr").hide();
   $("tbody tr").each(function (index) {
     $(this)
-      .delay(index * 250)
-      .show(750);
+      .delay(index * 100)
+      .show(250);
   });
 };
 

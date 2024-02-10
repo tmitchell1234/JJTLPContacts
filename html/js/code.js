@@ -647,11 +647,11 @@ function convertJSONtoTable(data, page) {
 }
 
 $.jQueryAnimate = function () {
-  $("table tr").hide();
-  $("table tr").each(function (index) {
+  $("tbody tr").hide();
+  $("tbody tr").each(function (index) {
     $(this)
-      .delay(index * 500)
-      .show(1000);
+      .delay(index * 250)
+      .show(750);
   });
 };
 

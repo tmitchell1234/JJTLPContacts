@@ -140,6 +140,26 @@
 
       <form id="signupForm" style="display: none" onsubmit="doSignUp()">
         <h2>Sign Up</h2>
+        <label for="firstName" style="width:175px;">First Name:</label>
+        <label for="lastName"style="width:175px;">Last Name:</label>
+        <br>
+        <input
+          type="text"
+          id="firstName"
+          name="firstName"
+          placeholder="First Name"
+          required
+          style="width: 175px;"
+        />
+        <input
+          type="text"
+          id="lastName"
+          name="lastName"
+          placeholder="Last Name"
+          required
+          style="width: 175px;"
+        />
+        <br>
         <label for="newUsername">Username:</label>
         <input
           type="text"
@@ -169,6 +189,8 @@
         </div>
 
         <button type="button" onclick="doSignUp()">Sign Up</button>
+
+        <div id="nameResult" style="font-weight: bold"></div>
 
         <div id="signupResult" style="font-weight: bold"></div>
         <div

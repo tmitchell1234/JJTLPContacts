@@ -99,28 +99,58 @@ function doSignUp() {
   userId = 0;
   firstName = "";
   lastName = "";
+  let pass = 1;
 
   let newLogin = document.getElementById("newUsername").value;
   let newPassword = document.getElementById("newPassword").value;
+  firstName = document.getElementById("firstName").value;
+  lastName = document.getElementById("lastName").value;
 
   document.getElementById("signupResult").innerHTML = "";
   document.getElementById("newUsername").style.color = "inherit";
   document.getElementById("newPassword").style.color = "inherit";
   document.getElementById("newUsername").placeholder = "Username";
   document.getElementById("newPassword").placeholder = "Password";
+  document.getElementById("nameResult").innerHTML = "";
+  document.getElementById("firstName").style.color = "inherit";
+  document.getElementById("lastName").style.color = "inherit";
+  document.getElementById("firstName").placeholder = "First Name";
+  document.getElementById("lastName").placeholder = "Last Name";
+
+  if (firstName == "" && lastName != "") {
+    document.getElementById("nameResult").innerHTML =
+      "First name field is empty *";
+    document.getElementById("firstName").style.color = "red";
+    document.getElementById("firstName").placeholder = "First Name *";
+    pass = 0;
+  } else if (lastName == "" && firstName != "") {
+    document.getElementById("nameResult").innerHTML =
+      "Last name field is empty *";
+    document.getElementById("lastName").style.color = "red";
+    document.getElementById("lastName").placeholder = "Last Name *";
+    pass = 0;
+  } else if (firstName == "" && lastName == "") {
+    document.getElementById("nameResult").innerHTML =
+      "First and last name fields are empty *";
+    document.getElementById("firstName").style.color = "red";
+    document.getElementById("firstName").placeholder = "First Name *";
+    document.getElementById("lastName").style.color = "red";
+    document.getElementById("lastName").placeholder = "Last Name *";
+    pass = 0;
+  }
 
   if (newLogin == "" && newPassword != "") {
     document.getElementById("signupResult").innerHTML =
       "Username field is empty *";
     document.getElementById("newUsername").style.color = "red";
     document.getElementById("newUsername").placeholder = "Username *";
-    return;
+    pass = 0;
   } else if (newPassword == "" && newLogin != "") {
     document.getElementById("signupResult").innerHTML =
       "Password field is empty *";
     document.getElementById("newPassword").style.color = "red";
     document.getElementById("newPassword").placeholder = "Password *";
-    return;
+    pass = 0;
   } else if (newPassword == "" && newLogin == "") {
     document.getElementById("signupResult").innerHTML =
       "Username and password fields are empty *";
@@ -128,7 +158,7 @@ function doSignUp() {
     document.getElementById("newUsername").placeholder = "Username *";
     document.getElementById("newPassword").style.color = "red";
     document.getElementById("newPassword").placeholder = "Password *";
-    return;
+    pass = 0;
   }
 
   let regExUppercase = /[A-Z]/;
@@ -138,6 +168,7 @@ function doSignUp() {
   let password = document.getElementById("newPassword").value;
   let errorField = document.getElementById("passwordCheck");
   let errorMessage = "";
+
   if (password.length < 8) {
     errorMessage += "Password must be at least 8 characters long *\n";
   }
@@ -154,7 +185,7 @@ function doSignUp() {
     errorMessage += "Password must contain a special character *";
   }
   errorField.innerHTML = errorMessage;
-  if (errorMessage != "") {
+  if (errorMessage != "" || pass == 0) {
     return;
   }
 

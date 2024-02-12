@@ -161,6 +161,10 @@ function doSignUp() {
     pass = 0;
   }
 
+  if (pass == 0) {
+    return;
+  }
+
   let regExUppercase = /[A-Z]/;
   let regExLowercase = /[a-z]/;
   let regExNumber = /\d/;
@@ -185,7 +189,7 @@ function doSignUp() {
     errorMessage += "Password must contain a special character *";
   }
   errorField.innerHTML = errorMessage;
-  if (errorMessage != "" || pass == 0) {
+  if (errorMessage != "") {
     return;
   }
 

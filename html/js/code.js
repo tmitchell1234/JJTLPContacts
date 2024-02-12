@@ -116,6 +116,8 @@ function doSignUp() {
   document.getElementById("lastName").style.color = "inherit";
   document.getElementById("firstName").placeholder = "First Name";
   document.getElementById("lastName").placeholder = "Last Name";
+  document.getElementById("passwordCheck").innerHTML = "";
+  
 
   if (firstName == "" && lastName != "") {
     document.getElementById("nameResult").innerHTML =
@@ -160,8 +162,9 @@ function doSignUp() {
     document.getElementById("newPassword").placeholder = "Password *";
     pass = 0;
   }
+  console.log("newPassword: " + newPassword);
 
-  if (pass == 0) {
+  if (newPassword == "") {
     return;
   }
 
@@ -173,6 +176,7 @@ function doSignUp() {
   let errorField = document.getElementById("passwordCheck");
   let errorMessage = "";
 
+  
   if (password.length < 8) {
     errorMessage += "Password must be at least 8 characters long *\n";
   }
@@ -189,7 +193,7 @@ function doSignUp() {
     errorMessage += "Password must contain a special character *";
   }
   errorField.innerHTML = errorMessage;
-  if (errorMessage != "") {
+  if (errorMessage != "" || pass == 0) {
     return;
   }
 

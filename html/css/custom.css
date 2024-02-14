@@ -150,6 +150,7 @@ a {
 
   min-height: 72%;
   max-height: 72%;
+  overflow-y: auto;
 }
 
 .navbar-input-group {

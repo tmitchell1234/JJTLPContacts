@@ -27,8 +27,15 @@
             $stmt = $conn->prepare("INSERT into Users (FirstName, LastName, Login, Password) VALUES(?,?,?,?)");
             $stmt->bind_param("ssss", $firstName, $lastName, $login, $password);
             $stmt->execute();
+            
+            $stmt = $conn->prepare("SELECT * FROM Users WHERE Login=?");
+            $stmt->bind_param("s", $login);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $row = $result->fetch_assoc();
+            returnWithInfo($row["ID"]);
+            
             http_response_code(200);
-            returnWithSuccess();
             $stmt->close();
 		    $conn->close();
 
@@ -45,6 +52,12 @@
 	{
 		header('Content-type: application/json');
 		echo $obj;
+	}
+
+    function returnWithInfo( $id )
+	{
+		$retValue = '{"id":' . $id . '","error":""}';
+		sendResultInfoAsJson( $retValue );
 	}
 	
 	function returnWithError( $err )

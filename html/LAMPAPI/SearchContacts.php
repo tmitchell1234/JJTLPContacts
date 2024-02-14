@@ -31,7 +31,7 @@
 
 		$result = $stmt->get_result();
 
-		$pageSize = 10;
+		$pageSize = 12;
 		$rowsToGrab = $pageSize * ($pageNumber - 1);
 		$rowNumber = 1;
 		while($row = $result->fetch_assoc())

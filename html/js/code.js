@@ -117,7 +117,6 @@ function doSignUp() {
   document.getElementById("firstName").placeholder = "First Name";
   document.getElementById("lastName").placeholder = "Last Name";
   document.getElementById("passwordCheck").innerHTML = "";
-  
 
   if (firstName == "" && lastName != "") {
     document.getElementById("nameResult").innerHTML =
@@ -176,7 +175,6 @@ function doSignUp() {
   let errorField = document.getElementById("passwordCheck");
   let errorMessage = "";
 
-  
   if (password.length < 8) {
     errorMessage += "Password must be at least 8 characters long *\n";
   }
@@ -210,8 +208,6 @@ function doSignUp() {
 
   let url = urlBase + "/SignUp." + extension;
 
-  //
-
   let xhr = new XMLHttpRequest();
 
   xhr.open("POST", url, true);
@@ -221,9 +217,6 @@ function doSignUp() {
   try {
     //Detects changes in the processing state of xhr
     xhr.onreadystatechange = function () {
-      //
-      //
-
       //xhr request finished processing
       if (this.readyState == 4) {
         if (this.status == 409) {
@@ -233,10 +226,10 @@ function doSignUp() {
           document.getElementById("SignupResult").color = "red";
           return;
         } else if (this.status == 200) {
-          //
+          let jsonObject = JSON.parse(xhr.responseText);
+          userId = jsonObject.id;
 
           saveCookie();
-
           window.location.href = "./landing-page.html?#";
         }
       }

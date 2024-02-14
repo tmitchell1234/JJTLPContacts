@@ -148,7 +148,8 @@ a {
   background-color: #789461;
   color: white;
 
-  max-height: 70%;
+  min-width: 72%;
+  max-height: 72%;
   overflow-y: auto;
 }
 

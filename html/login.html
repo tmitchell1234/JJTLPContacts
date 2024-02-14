@@ -32,6 +32,7 @@
       width: 300px;
       text-align: center;
       margin: 20vh auto;
+      display: inline-block;
     }
 
     input {
@@ -87,128 +88,139 @@
       </div>
     </nav>
 
-    <!-- Jumbotron
-  <div class="jumbotron">
-    <div class="container">
-      <h1>&#x1F332; ForestFolio</h1>
-      <p>Make Connections. Grow your forest.</p>
-    </div>
-  </div> -->
-
-    <!-- Login -->
-    <div class="login-container" style="width: 400px">
-      <form id="loginForm" onsubmit="doLogin()">
-        <h2>Login</h2>
-        <label for="username">Username:</label>
-        <input
-          type="text"
-          id="username"
-          name="username"
-          placeholder="Username"
-          required
-        />
-
-        <label for="password">Password:</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          placeholder="Password"
-          required
-        />
-
-        <div style="white-space: nowrap">
-          Show Password:
+    <div class="container" style="display: flex; justify-content: center">
+      <!-- Login -->
+      <div
+        class="login-container"
+        style="width: 400px; margin-right: auto; display: relative; z-index: 99"
+      >
+        <form id="loginForm" onsubmit="doLogin()">
+          <h2>Login</h2>
+          <label for="username">Username:</label>
           <input
-            type="checkbox"
-            style="width: 20px"
-            autocomplete="off"
-            onclick="showPassword()"
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Username"
+            required
           />
-        </div>
 
-        <button type="button" onclick="doLogin()">Login</button>
-
-        <br />
-
-        <div id="loginResult" style="font-weight: bold"></div>
-
-        <p class="toggle-btn" onclick="toggleForm('signup')">
-          Don't have an account? Sign up!
-        </p>
-      </form>
-
-      <form id="signupForm" style="display: none" onsubmit="doSignUp()">
-        <h2>Sign Up</h2>
-        <label for="firstName" style="width:175px;">First Name:</label>
-        <label for="lastName"style="width:175px;">Last Name:</label>
-        <br>
-        <input
-          type="text"
-          id="firstName"
-          name="firstName"
-          placeholder="First Name"
-          required
-          style="width: 175px;"
-        />
-        <input
-          type="text"
-          id="lastName"
-          name="lastName"
-          placeholder="Last Name"
-          required
-          style="width: 175px;"
-        />
-        <br>
-        <label for="newUsername">Username:</label>
-        <input
-          type="text"
-          id="newUsername"
-          name="newUsername"
-          placeholder="Username"
-          required
-        />
-
-        <label for="newPassword">Password:</label>
-        <input
-          type="password"
-          id="newPassword"
-          name="newPassword"
-          placeholder="Password"
-          required
-        />
-
-        <div style="white-space: nowrap">
-          Show Password:
+          <label for="password">Password:</label>
           <input
-            type="checkbox"
-            style="width: 20px"
-            autocomplete="off"
-            onclick="showNewPassword()"
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Password"
+            required
           />
-        </div>
 
-        <button type="button" onclick="doSignUp()">Sign Up</button>
+          <div style="white-space: nowrap">
+            Show Password:
+            <input
+              type="checkbox"
+              style="width: 20px"
+              autocomplete="off"
+              onclick="showPassword()"
+            />
+          </div>
 
-        <div id="nameResult" style="font-weight: bold"></div>
+          <button type="button" onclick="doLogin()">Login</button>
 
-        <div id="signupResult" style="font-weight: bold"></div>
-        <div
-          id="passwordCheck"
-          style="
-            white-space: pre;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-          "
-        ></div>
+          <br />
 
-        <p class="toggle-btn" onclick="toggleForm('login')">
-          Already have an account? Login!
-        </p>
-      </form>
+          <div id="loginResult" style="font-weight: bold"></div>
+
+          <p class="toggle-btn" onclick="toggleForm('signup')">
+            Don't have an account? Sign up!
+          </p>
+        </form>
+
+        <form id="signupForm" style="display: none" onsubmit="doSignUp()">
+          <h2>Sign Up</h2>
+          <label for="firstName" style="width: 175px">First Name:</label>
+          <label for="lastName" style="width: 175px">Last Name:</label>
+          <br />
+          <input
+            type="text"
+            id="firstName"
+            name="firstName"
+            placeholder="First Name"
+            required
+            style="width: 175px"
+          />
+          <input
+            type="text"
+            id="lastName"
+            name="lastName"
+            placeholder="Last Name"
+            required
+            style="width: 175px"
+          />
+          <br />
+          <label for="newUsername">Username:</label>
+          <input
+            type="text"
+            id="newUsername"
+            name="newUsername"
+            placeholder="Username"
+            required
+          />
+
+          <label for="newPassword">Password:</label>
+          <input
+            type="password"
+            id="newPassword"
+            name="newPassword"
+            placeholder="Password"
+            required
+          />
+
+          <div style="white-space: nowrap">
+            Show Password:
+            <input
+              type="checkbox"
+              style="width: 20px"
+              autocomplete="off"
+              onclick="showNewPassword()"
+            />
+          </div>
+
+          <button type="button" onclick="doSignUp()">Sign Up</button>
+
+          <div id="nameResult" style="font-weight: bold"></div>
+
+          <div id="signupResult" style="font-weight: bold"></div>
+          <div
+            id="passwordCheck"
+            style="
+              white-space: pre;
+              text-align: center;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-weight: bold;
+            "
+          ></div>
+
+          <p class="toggle-btn" onclick="toggleForm('login')">
+            Already have an account? Login!
+          </p>
+        </form>
+      </div>
+
+      <img
+        class="img-fluid"
+        style="
+          width: 400px;
+          height: 400px;
+          display: inline-block;
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          transform: rotateY(180deg);
+        "
+        src="./assets/Forest_Guide_Leinecker.png"
+      />
     </div>
 
     <!-- Bootstrap stuff don't touch -->

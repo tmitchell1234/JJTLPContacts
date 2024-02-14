@@ -145,12 +145,11 @@ a {
   border-color: #789461;
   border-style: solid;
   margin: 20px;
-  background-color: #789461;
+  background-color: #789461d8;
   color: white;
 
-  min-width: 72%;
+  min-height: 72%;
   max-height: 72%;
-  overflow-y: auto;
 }
 
 .navbar-input-group {
@@ -186,6 +185,7 @@ a {
 .pagination > li > a,
 .pagination > li > span {
   color: #ae876d !important;
+  background-color: rgba(255, 255, 255, 0.86);
 }
 
 .pagination > .active > a,
@@ -194,7 +194,7 @@ a {
 .pagination > .active > span,
 .pagination > .active > span:focus,
 .pagination > .active > span:hover {
-  background-color: #436850 !important;
+  background-color: #436850df !important;
   border-color: #436850 !important;
   color: white !important;
 }
@@ -208,10 +208,18 @@ a {
 .table-hover tbody tr:hover td,
 .table-hover tbody tr:hover th {
   color: #436850;
+  background-color: rgba(255, 255, 255, 0.818);
 }
 
 #login-body {
   background-image: url(../assets/evergreen.webp);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#content {
+  background-image: url(../assets/pexels-nejc-košir-338936.webp);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

@@ -225,3 +225,20 @@ a {
   background-repeat: no-repeat;
   background-position: center;
 }
+
+.aboutContainer {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin: 10px;
+  font-size: large;
+  
+}
+.aboutContainer img {
+  width: 128px;
+  height: 128px;
+  border-radius: 10px;
+  border: 1px solid black;
+}
